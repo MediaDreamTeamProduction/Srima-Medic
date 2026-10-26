@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { company, NAV, ui } from "@/content/site";
-import { href, type Lang } from "@/lib/i18n";
+import { href, withBase, type Lang } from "@/lib/i18n";
 import { Icon } from "./Icon";
 
 const copy = {
@@ -47,14 +47,14 @@ export function Footer({ lang }: { lang: Lang }) {
         <div className="footer__top">
           <div>
             <span className="footer__brand">
-              <Image src="/brand/logo-srima.png" alt="Srima-Medic" width={900} height={178} style={{ height: 34, width: "auto" }} />
+              <Image src={withBase("/brand/logo-srima.png")} alt="Srima-Medic" width={900} height={178} style={{ height: 34, width: "auto" }} />
             </span>
             <p style={{ marginTop: 14, maxWidth: "36ch", lineHeight: 1.6 }}>{company.name[lang]}</p>
             <div className="footer__social">
               <a href={company.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <Icon name="facebook" size={16} />
               </a>
-              <a href={company.line ?? href(lang, "/contact#social")} aria-label="LINE">
+              <a href={company.line ?? withBase(href(lang, "/contact#social"))} aria-label="LINE">
                 <Icon name="message-circle" size={16} />
               </a>
             </div>

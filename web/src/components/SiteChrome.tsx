@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { company, ui } from "@/content/site";
-import { href, type Lang } from "@/lib/i18n";
+import { href, withBase, type Lang } from "@/lib/i18n";
 import { Icon } from "./Icon";
 
 /** Fixed bottom-right cluster on every page. Order top→bottom: LINE, phone, scroll-up. */
 export function StickyContact({ lang }: { lang: Lang }) {
-  const lineHref = company.line ?? href(lang, "/contact#social");
+  const lineHref = company.line ?? withBase(href(lang, "/contact#social"));
   return (
     <div className="fab">
       <a className="fab__line" href={lineHref} aria-label="LINE" {...(company.line ? { target: "_blank", rel: "noopener noreferrer" } : {})}>

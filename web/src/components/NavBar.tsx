@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { NAV, ui } from "@/content/site";
-import { href, LANGS, type Lang } from "@/lib/i18n";
+import { href, LANGS, withBase, type Lang } from "@/lib/i18n";
 import { Icon } from "./Icon";
 
 export function NavBar({ lang }: { lang: Lang }) {
@@ -29,7 +29,7 @@ export function NavBar({ lang }: { lang: Lang }) {
       <div className="container">
         <div className="nav__inner">
           <Link href={href(lang)} className="nav__logo" aria-label="Srima-Medic">
-            <Image src="/brand/logo-srima.png" alt="บริษัท สีมา-เมดิก จำกัด / SRiMA-MEDiC CO.,LTD." width={900} height={178} priority />
+            <Image src={withBase("/brand/logo-srima.png")} alt="บริษัท สีมา-เมดิก จำกัด / SRiMA-MEDiC CO.,LTD." width={900} height={178} priority />
           </Link>
           <ul className="nav__menu">{links}</ul>
           <div className="nav__right">

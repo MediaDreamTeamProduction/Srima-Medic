@@ -8,6 +8,10 @@ npm run dev      # http://localhost:3000
 npm run build
 ```
 
+## GitHub Pages preview
+
+Every push to `main` publishes a static preview to https://mediadreamteamproduction.github.io/Srima-Medic/ (workflow: `../.github/workflows/pages.yml`). It builds with `GITHUB_PAGES=true`, which switches `next.config.ts` to a static export under `/Srima-Medic`, then runs `scripts/github-pages-postexport.mjs`. Plain `<a>` tags and `next/image` sources need `withBase()` from `src/lib/i18n.ts`; `next/link` adds the prefix itself. Don't run a build while `npm run dev` is running in this folder, because both write to `.next`.
+
 ## Where things live
 
 - `src/app/globals.css`: design tokens (copied from the handoff into `src/styles/tokens`) plus the component styles.
