@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);position:relative;">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="ผลิตภัณฑ์" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+    <section style="padding:0;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" description="{{ heroDescription }}" height="320px" hint-size="100%,320px"></x-import>
+    </section>
+
+    <section style="padding:32px 0 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <sc-for list="{{ categoryBadges }}" as="c" hint-placeholder-count="6">
+            <span onclick="{{ c.onClick }}" style="cursor:pointer;">
+              <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="{{ c.tone }}" hint-size="auto,28px">{{ c.label }}</x-import>
+            </span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:24px 0 64px;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+          <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;">
+              <div style="height:120px;border-radius:8px;background:var(--surface-alt);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--text-faint);">PHOTO</div>
+              <div style="display:flex;gap:6px;">
+                <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="region" hint-size="auto,24px">{{ p.category }}</x-import>
+                <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="success" hint-size="auto,24px">Installed ✓</x-import>
+              </div>
+              <div>
+                <div style="font-weight:600;font-size:15px;">{{ p.name }}</div>
+                <div style="font-size:12.5px;color:var(--text-faint);margin-top:4px;">{{ p.model }} (ข้อมูลตัวอย่าง)</div>
+              </div>
+              <div>
+                <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Button" variant="ghost" iconAfter="arrow-right" onclick="{{ openGate }}" hint-size="auto,36px">ดูรายละเอียดสินค้า</x-import>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+  <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(12,58,66,.55);z-index:60;display:flex;align-items:center;justify-content:center;padding:24px;">
+      <div style="background:var(--surface);border-radius:20px;max-width:440px;width:100%;padding:32px;position:relative;box-shadow:var(--shadow-md);">
+        <button onclick="{{ closeGate }}" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:18px;color:var(--text-faint);cursor:pointer;">✕</button>
+        <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.GatedForm" title="Professional Access Only" note="สเปกเชิงลึกและภาพเคสทางคลินิกสงวนไว้สำหรับบุคลากรทางการแพทย์ กรอกข้อมูลเพื่อให้ทีมขายติดต่อกลับ" submitLabel="ขอเข้าถึงสเปกเชิงลึก" onSubmit="{{ submitGate }}" submitted="{{ gateSubmitted }}" hint-size="100%,340px"></x-import>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH', activeCategory: 'ทั้งหมด', gateOpen: false, gateSubmitted: false };
+  categories = ['ทั้งหมด', 'CT', 'MRI', 'Ultrasound', 'X-ray', 'Cath Lab'];
+  allProducts = [
+    { name: 'Philips Incisive CT', category: 'CT', model: 'CT รุ่น Incisive' },
+    { name: 'Philips Ambition MRI', category: 'MRI', model: 'MRI รุ่น Ambition 1.5T' },
+    { name: 'Philips Affiniti Ultrasound', category: 'Ultrasound', model: 'Ultrasound รุ่น Affiniti 70' },
+    { name: 'Philips DigitalDiagnost', category: 'X-ray', model: 'X-ray รุ่น DigitalDiagnost C90' },
+    { name: 'Philips Azurion Cath Lab', category: 'Cath Lab', model: 'Interventional รุ่น Azurion 7' },
+    { name: 'Philips Access CT', category: 'CT', model: 'CT รุ่น Access CT' },
+  ];
+  openGate() { this.setState({ gateOpen: true, gateSubmitted: false }); }
+  closeGate() { this.setState({ gateOpen: false }); }
+  submitGate() { this.setState({ gateSubmitted: true }); }
+  renderVals() {
+    const active = this.state.activeCategory;
+    const products = active === 'ทั้งหมด' ? this.allProducts : this.allProducts.filter((p) => p.category === active);
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: [{ title: 'ผลิตภัณฑ์ภาพวินิจฉัย' }],
+      heroDescription: 'จัดจำหน่ายเครื่องมือแพทย์ภาพวินิจฉัยของ Philips พร้อมการติดตั้งและแผนบำรุงรักษาในสัญญาเดียว',
+      categoryBadges: this.categories.map((label) => ({
+        label,
+        tone: label === active ? 'brand' : 'region',
+        onClick: () => this.setState({ activeCategory: label }),
+      })),
+      products,
+      gateOpen: this.state.gateOpen,
+      gateSubmitted: this.state.gateSubmitted,
+      openGate: () => this.openGate(),
+      closeGate: () => this.closeGate(),
+      submitGate: () => this.submitGate(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

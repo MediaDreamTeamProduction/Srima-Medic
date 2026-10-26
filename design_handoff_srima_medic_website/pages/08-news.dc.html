@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="ข่าวสารและกิจกรรม" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+    <section style="padding:0;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" description="{{ heroDescription }}" height="320px" hint-size="100%,320px"></x-import>
+    </section>
+
+    <section style="padding:56px 0 32px;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:26px;line-height:1.25;font-weight:600;margin:0 0 24px;">ข่าวสาร</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+          <sc-for list="{{ newsItems }}" as="n" hint-placeholder-count="4">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+              <div style="height:140px;background:var(--surface-alt);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--text-faint);">PHOTO</div>
+              <div style="padding:18px;">
+                <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="region" hint-size="auto,24px">{{ n.tag }}</x-import>
+                <div style="font-weight:600;font-size:15px;margin-top:12px;">{{ n.title }}</div>
+                <p style="font-size:13px;color:var(--text-soft);line-height:1.55;margin:8px 0 0;">{{ n.excerpt }} (ข้อมูลตัวอย่าง)</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:32px 0 64px;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:26px;line-height:1.25;font-weight:600;margin:0 0 24px;">กิจกรรม — Events &amp; Seminars</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+          <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--cyan);margin-bottom:10px;">{{ e.date }}</div>
+              <div style="font-weight:600;font-size:15px;">{{ e.title }}</div>
+              <p style="font-size:13px;color:var(--text-soft);line-height:1.55;margin:8px 0 0;">{{ e.desc }} (ข้อมูลตัวอย่าง)</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH' };
+  newsItems = [
+    { tag: 'Medical Technology News', title: 'Philips เปิดตัวเทคโนโลยี CT รุ่นใหม่', excerpt: 'อัปเดตความเคลื่อนไหวเทคโนโลยีภาพวินิจฉัยล่าสุดจาก Philips' },
+    { tag: 'Medical Technology News', title: 'แนวโน้มเทคโนโลยี MRI ปี 2026', excerpt: 'สรุปทิศทางเทคโนโลยี MRI ที่จะมาถึงในอุตสาหกรรม' },
+    { tag: 'Knowledge Base', title: 'การดูแลรักษาเครื่อง CT เบื้องต้น', excerpt: 'แนวทางการดูแลเครื่องมือแพทย์ให้พร้อมใช้งานเสมอ' },
+    { tag: 'Knowledge Base', title: 'ทำความเข้าใจแผนบำรุงรักษา PM/CM', excerpt: 'ความแตกต่างระหว่างการบำรุงรักษาเชิงป้องกันและการซ่อมบำรุง' },
+  ];
+  events = [
+    { date: '15 ต.ค. 2569', title: 'สัมมนา Philips CT Application Update', desc: 'อบรมการใช้งานฟีเจอร์ใหม่สำหรับทีมรังสีเทคนิค' },
+    { date: '02 พ.ย. 2569', title: 'งาน Open House ศูนย์บริการ Srima-Medic', desc: 'เยี่ยมชมศูนย์บริการและพบทีมวิศวกร' },
+    { date: '20 พ.ย. 2569', title: 'สัมมนา MRI Safety Workshop', desc: 'อบรมความปลอดภัยในการใช้งานเครื่อง MRI' },
+  ];
+  renderVals() {
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: [{ title: 'ข่าวสารและกิจกรรม' }],
+      heroDescription: 'ความเคลื่อนไหวด้านเทคโนโลยีภาพวินิจฉัย ความรู้เชิงเทคนิค และกิจกรรมสัมมนาจาก Srima-Medic',
+      newsItems: this.newsItems,
+      events: this.events,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="ติดต่อเรา" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+
+    <section style="padding:0;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" description="{{ heroDescription }}" height="280px" hint-size="100%,280px"></x-import>
+    </section>
+
+    <section style="padding:56px 0 32px;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:start;">
+        <div>
+          <h2 style="font-size:22px;font-weight:600;margin:0 0 12px;">ที่ตั้งสำนักงาน</h2>
+          <div style="background:var(--navy);color:#fff;border-radius:20px;padding:24px;">
+            <div style="font-family:var(--font-mono);font-weight:600;letter-spacing:.02em;">SRIMA MEDIC</div>
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px;font-size:14px;color:rgba(255,255,255,.85);">
+              <span style="display:inline-flex;gap:10px;align-items:flex-start;"><x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="map-pin" size="16" color="var(--cyan)" hint-size="16px,16px"></x-import>123 ถนนพระราม 9 แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพฯ 10310 (ข้อมูลตัวอย่าง)</span>
+              <span style="display:inline-flex;gap:10px;align-items:center;"><x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="phone" size="16" color="var(--cyan)" hint-size="16px,16px"></x-import>085-509-5831</span>
+              <span style="display:inline-flex;gap:10px;align-items:center;"><x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="clock" size="16" color="var(--cyan)" hint-size="16px,16px"></x-import>จ–ส 08:30–17:30</span>
+            </div>
+          </div>
+        </div>
+        <div style="height:260px;border-radius:20px;background:var(--surface-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:12.5px;text-align:center;">
+          <div><div style="font-family:var(--font-mono);margin-bottom:4px;">MAP</div>แผนที่สำนักงาน (ข้อมูลตัวอย่าง)</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:32px 0;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:22px;font-weight:600;margin:0 0 20px;">ทีมบริการประจำภูมิภาค</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+          <sc-for list="{{ regionalContacts }}" as="r" hint-placeholder-count="5">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;">
+              <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="region" hint-size="auto,26px">{{ r.label }}</x-import>
+              <div style="margin-top:12px;font-size:14px;font-weight:600;">{{ r.contactName }}</div>
+              <div style="font-size:12.5px;color:var(--text-faint);margin-top:4px;">{{ r.phone }} (ข้อมูลตัวอย่าง)</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:56px 0 32px;">
+      <div style="max-width:800px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:22px;font-weight:600;margin:0 0 8px;">ส่งคำขอถึงทีมงาน</h2>
+        <p style="font-size:14px;line-height:1.6;color:var(--text-soft);margin:0 0 24px;">แจ้งความต้องการเครื่องใหม่ ขอใบเสนอราคาแผน PM หรือแจ้งเครื่องขัดข้องได้จากฟอร์มนี้</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Field" label="ชื่อ-นามสกุล" placeholder="นพ.สมชาย ใจดี" hint-size="100%,64px"></x-import>
+          <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Field" label="หน่วยงาน / โรงพยาบาล" placeholder="รพ.ศรีมา" hint-size="100%,64px"></x-import>
+          <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Field" label="อีเมลติดต่อกลับ" type="email" placeholder="somchai@hospital.go.th" hint-size="100%,64px"></x-import>
+          <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Field" label="เบอร์โทร" placeholder="08x-xxx-xxxx" hint-size="100%,64px"></x-import>
+        </div>
+        <div style="margin-top:16px;">
+          <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Field" label="รายละเอียดที่ต้องการ" placeholder="เช่น ขอใบเสนอราคาแผน PM สำหรับเครื่อง CT" hint-size="100%,64px"></x-import>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--text-faint);margin:16px 0;">
+          <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="lock" size="14" hint-size="14px,14px"></x-import>
+          reCAPTCHA — ป้องกันสแปมก่อนส่งคำขอ
+        </div>
+        <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Button" variant="primary" onclick="{{ submit }}" hint-size="auto,44px">ส่งคำขอ</x-import>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;gap:6px;align-items:center;margin-top:14px;color:var(--success);font-size:14px;">
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="check" size="16" hint-size="16px,16px"></x-import>
+            ส่งคำขอแล้ว ทีมงานจะติดต่อกลับภายใน 1 วันทำการ
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section style="padding:32px 0 64px;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;text-align:center;">
+        <h2 style="font-size:20px;font-weight:600;margin:0 0 20px;">ติดตามข่าวสารของเรา</h2>
+        <div style="display:flex;gap:16px;justify-content:center;">
+          <a href="#" aria-label="LINE" style="width:48px;height:48px;border-radius:50%;background:var(--line-green);color:#fff;display:inline-flex;align-items:center;justify-content:center;">
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="message-circle" size="22" color="#fff" hint-size="22px,22px"></x-import>
+          </a>
+          <a href="#" aria-label="Facebook" style="width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;">
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="facebook" size="22" color="#fff" hint-size="22px,22px"></x-import>
+          </a>
+        </div>
+        <p style="font-size:12px;color:var(--text-faint);margin:14px 0 0;">ลิงก์โซเชียลมีเดียเป็นข้อมูลตัวอย่าง</p>
+      </div>
+    </section>
+
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH', sent: false };
+  regionalContacts = [
+    { label: 'เหนือ', contactName: 'คุณสมหมาย ใจงาม', phone: '081-234-5601' },
+    { label: 'อีสาน', contactName: 'คุณประวิทย์ ศรีสุข', phone: '081-234-5602' },
+    { label: 'กลาง', contactName: 'คุณวราภรณ์ ทองแท้', phone: '081-234-5603' },
+    { label: 'ใต้', contactName: 'คุณอนันต์ พรหมมา', phone: '081-234-5604' },
+    { label: 'กรุงเทพฯ', contactName: 'คุณกิตติ วงศ์ไพศาล', phone: '081-234-5605' },
+  ];
+  renderVals() {
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: [{ title: 'ติดต่อทีมขายและทีมบริการ' }],
+      heroDescription: 'แจ้งความต้องการเครื่องใหม่ ขอใบเสนอราคาแผน PM หรือแจ้งเครื่องขัดข้องได้จากฟอร์มด้านล่าง',
+      sent: this.state.sent,
+      submit: () => this.setState({ sent: true }),
+      regionalContacts: this.regionalContacts,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

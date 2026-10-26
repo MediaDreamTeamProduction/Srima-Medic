@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="ผลงานการติดตั้ง" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+    <section style="padding:0;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" description="{{ heroDescription }}" height="320px" hint-size="100%,320px"></x-import>
+    </section>
+
+    <section style="padding:56px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:center;">
+        <div>
+          <h2 style="font-size:26px;line-height:1.25;font-weight:600;margin:0 0 12px;">จุดติดตั้งทั่วประเทศ</h2>
+          <p style="font-size:14px;color:var(--text-soft);line-height:1.6;margin:0 0 20px;max-width:44ch;">แผนที่แสดงจุดติดตั้งเครื่องมือแพทย์ Philips ครอบคลุม 5 ภูมิภาคทั่วประเทศ (ข้อมูลตัวอย่าง)</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ regionBadges }}" as="r" hint-placeholder-count="5">
+              <span onclick="{{ r.onClick }}" style="cursor:pointer;">
+                <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="{{ r.tone }}" hint-size="auto,28px">{{ r.label }}</x-import>
+              </span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="height:320px;border-radius:20px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:12.5px;text-align:center;">
+          <div><div style="font-family:var(--font-mono);margin-bottom:4px;">MAP</div>แผนที่ประเทศไทยปักหมุดจุดติดตั้ง (ข้อมูลตัวอย่าง)</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:24px 0 64px;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:26px;line-height:1.25;font-weight:600;margin:0 0 24px;">รายชื่อ รพ. / Imaging Center แยกตามภูมิภาค</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+          <sc-for list="{{ sites }}" as="s" hint-placeholder-count="6">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+              <div style="height:140px;background:var(--surface-alt);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--text-faint);">PHOTO</div>
+              <div style="padding:16px;">
+                <div style="display:flex;gap:6px;margin-bottom:10px;">
+                  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="region" hint-size="auto,24px">{{ s.region }}</x-import>
+                  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="success" hint-size="auto,24px">Installed ✓</x-import>
+                </div>
+                <div style="font-weight:600;font-size:14px;">{{ s.name }} (ข้อมูลตัวอย่าง)</div>
+                <div style="font-size:12.5px;color:var(--text-faint);margin-top:4px;">อุปกรณ์: {{ s.equipment }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:26px;line-height:1.25;font-weight:600;margin:0 0 24px;">เรื่องราวการส่งมอบเครื่อง</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:32px;">
+          <sc-for list="{{ deliveries }}" as="d" hint-placeholder-count="3">
+            <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+              <div style="height:130px;background:var(--surface-alt);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--text-faint);">PHOTO</div>
+              <div style="padding:14px;font-size:13px;color:var(--text-soft);">{{ d.caption }} (ข้อมูลตัวอย่าง)</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:var(--navy);color:#fff;border-radius:20px;padding:40px;max-width:720px;">
+          <div style="font-size:32px;color:var(--cyan);line-height:1;margin-bottom:12px;">"</div>
+          <p style="font-size:16px;line-height:1.6;margin:0 0 16px;color:rgba(255,255,255,.9);">ทีมงาน Srima-Medic ดูแลตั้งแต่การติดตั้งจนถึงบำรุงรักษา ทำให้เครื่องพร้อมใช้งานตลอดเวลา (ข้อมูลตัวอย่าง)</p>
+          <div style="font-size:13px;color:rgba(255,255,255,.7);">นพ. สมศักดิ์ วัฒนกุล · โรงพยาบาลศรีนคร (ข้อมูลตัวอย่าง)</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH', activeRegion: null };
+  regions = ['เหนือ', 'อีสาน', 'กลาง', 'ใต้', 'กรุงเทพฯ'];
+  allSites = [
+    { region: 'เหนือ', equipment: 'CT', name: 'รพ.เชียงใหม่ศรีเวช' },
+    { region: 'อีสาน', equipment: 'MRI', name: 'รพ.ขอนแก่นราม' },
+    { region: 'กลาง', equipment: 'X-ray', name: 'รพ.นครสวรรค์เมดิคอล' },
+    { region: 'ใต้', equipment: 'Cath Lab', name: 'รพ.หาดใหญ่อินเตอร์' },
+    { region: 'กรุงเทพฯ', equipment: 'CT', name: 'รพ.ศรีนครินทร์' },
+    { region: 'กลาง', equipment: 'MRI', name: 'ศูนย์ภาพวินิจฉัยอยุธยา' },
+  ];
+  deliveries = [
+    { caption: 'ส่งมอบ Philips CT ให้ รพ.ศรีนครินทร์' },
+    { caption: 'ติดตั้ง Philips MRI ที่ศูนย์ภาพวินิจฉัยอยุธยา' },
+    { caption: 'ทดสอบระบบ Cath Lab ที่หาดใหญ่' },
+  ];
+  renderVals() {
+    const active = this.state.activeRegion;
+    const sites = active ? this.allSites.filter((s) => s.region === active) : this.allSites;
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: [{ title: 'ผลงานการติดตั้ง' }],
+      heroDescription: 'ติดตั้งระบบภาพวินิจฉัยไปแล้ว 320+ ระบบ ใน 150+ ศูนย์ภาพวินิจฉัยทั่วประเทศ',
+      regionBadges: this.regions.map((label) => ({
+        label,
+        tone: label === active ? 'brand' : 'region',
+        onClick: () => this.setState({ activeRegion: active === label ? null : label }),
+      })),
+      sites,
+      deliveries: this.deliveries,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

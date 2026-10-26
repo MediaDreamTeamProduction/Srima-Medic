@@ -1,0 +1,10 @@
+# Client source files: confidential originals, not part of the site
+*.psd
+*.pdf
+*.xlsx
+*.docx
+
+# Local tooling
+.claude/
+.impeccable/hook.cache.json
+.DS_Store

@@ -1,0 +1,37 @@
+:root{
+  --font-display:'IBM Plex Sans','IBM Plex Sans Thai',-apple-system,sans-serif;
+  --font-body:'IBM Plex Sans','IBM Plex Sans Thai',-apple-system,sans-serif;
+  --font-mono:'IBM Plex Mono','IBM Plex Sans Thai',ui-monospace,monospace;
+
+  /* Display — hero headline, 34–56px / 1.1 / 600 */
+  --display-size-min:34px;
+  --display-size-max:56px;
+  --display-weight:600;
+  --display-leading:1.1;
+  --display-tracking:-0.02em;
+
+  /* Heading — section titles, 20–28px / 1.25 / 600 */
+  --heading-size-min:20px;
+  --heading-size-max:28px;
+  --heading-weight:600;
+  --heading-leading:1.25;
+
+  /* Body — 15–17px / 1.6 / 400 */
+  --body-size-min:15px;
+  --body-size:16px;
+  --body-size-max:17px;
+  --body-weight:400;
+  --body-leading:1.6;
+
+  /* Caption / label — 12–13px / 1.4 / 500 */
+  --caption-size-min:12px;
+  --caption-size:13px;
+  --caption-weight:500;
+  --caption-leading:1.4;
+
+  /* Data / mono — 16–32px / 1.1 / 500–600 */
+  --data-size-min:16px;
+  --data-size-max:32px;
+  --data-weight:600;
+  --data-leading:1.1;
+}

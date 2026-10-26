@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="เกี่ยวกับเรา" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+
+    <section style="padding:0;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" description="{{ heroDescription }}" height="320px" hint-size="100%,320px"></x-import>
+    </section>
+
+    <section style="padding:64px 0;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0 0 32px;">เส้นทางของเรา (2001 – ปัจจุบัน)</h2>
+        <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Timeline" items="{{ milestones }}" orientation="horizontal" hint-size="100%,240px"></x-import>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0 0 32px;">วิสัยทัศน์และพันธกิจ</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
+            <h3 style="font-size:20px;font-weight:600;margin:0 0 12px;">Vision</h3>
+            <p style="font-size:14px;color:var(--text-soft);line-height:1.6;margin:0;">เป็นผู้นำด้านโซลูชันเครื่องมือแพทย์ภาพวินิจฉัยที่โรงพยาบาลและศูนย์ภาพวินิจฉัยทั่วประเทศไทยไว้วางใจมากที่สุด (ข้อมูลตัวอย่าง)</p>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
+            <h3 style="font-size:20px;font-weight:600;margin:0 0 12px;">Mission</h3>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+                <div style="display:flex;gap:10px;align-items:center;font-size:14px;color:var(--text);">
+                  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="badge-check" size="18" color="var(--cyan)" hint-size="18px,18px"></x-import>{{ p.label }}
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0 0 8px;">ทีมงานของเรา</h2>
+        <p style="font-size:15px;color:var(--text-soft);margin:0 0 32px;">วิศวกรบริการ 9 คน ครอบคลุม 5 ภูมิภาคทั่วประเทศ</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;">
+          <sc-for list="{{ team }}" as="t" hint-placeholder-count="4">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;">
+              <div style="width:72px;height:72px;border-radius:50%;background:var(--surface-alt);border:1px solid var(--border);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;color:var(--text-faint);">PHOTO</div>
+              <div style="font-weight:600;font-size:14px;">{{ t.name }}</div>
+              <div style="font-size:12.5px;color:var(--text-faint);margin-top:4px;">{{ t.role }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size:12px;color:var(--text-faint);margin:16px 0 0;">รายชื่อและตำแหน่งเป็นข้อมูลตัวอย่าง</p>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0 0 32px;">การรับรองและรางวัล</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+          <sc-for list="{{ certs }}" as="c" hint-placeholder-count="3">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;">
+              <div style="width:120px;height:48px;border:1px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;color:var(--text-faint);">{{ c.tag }}</div>
+              <span style="font-size:13px;color:var(--text-soft);">{{ c.label }} (ข้อมูลตัวอย่าง)</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH' };
+  milestones = [
+    { year: '2001', title: 'Tomograph Co., Ltd.', logos: ['LOGO'] },
+    { year: '2013', title: 'Srima-Medic Co., Ltd.', logos: ['LOGO'] },
+    { year: '2015', title: 'Sima Renovation Co., Ltd.', sub: '(ข้อมูลตัวอย่าง)', logos: ['LOGO'] },
+    { year: '2017', title: 'Sima Health Care Co., Ltd. + Sima MRI Co., Ltd.', sub: '(ข้อมูลตัวอย่าง)', logos: ['LOGO', 'LOGO'] },
+    { year: '2018', title: 'Sima Solutions Co., Ltd.', sub: '(ข้อมูลตัวอย่าง)', logos: ['LOGO'] },
+  ];
+  pillars = ['Clinical Precision', 'Global Partnership (Philips)', 'Nationwide Reach', 'End-to-End Care'];
+  team = [
+    { name: 'สมชาย ศรีมา', role: 'กรรมการผู้จัดการ' },
+    { name: 'วิภา ทองดี', role: 'หัวหน้าวิศวกรบริการ' },
+    { name: 'อนุชา แสงทอง', role: 'ผู้จัดการฝ่ายขาย' },
+    { name: 'ปิยะ รักเรียน', role: 'วิศวกรบริการ' },
+  ];
+  certs = [
+    { tag: 'CERT', label: 'ISO 9001:2015' },
+    { tag: 'AWARD', label: 'Philips Partner of the Year 2024' },
+    { tag: 'CERT', label: 'ใบอนุญาตนำเข้าเครื่องมือแพทย์' },
+  ];
+  renderVals() {
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: [{ title: 'เกี่ยวกับ Srima-Medic' }],
+      heroDescription: 'Srima-Medic จัดจำหน่าย ติดตั้ง และบำรุงรักษาเครื่องมือแพทย์ภาพวินิจฉัย ในฐานะ Authorized Partner ของ Philips ดูแลโรงพยาบาลและศูนย์ภาพวินิจฉัยตลอดอายุการใช้งานเครื่อง',
+      milestones: this.milestones,
+      pillars: this.pillars.map((label) => ({ label })),
+      team: this.team,
+      certs: this.certs,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

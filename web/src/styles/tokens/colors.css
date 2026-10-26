@@ -1,0 +1,90 @@
+:root{
+  /* Neutral — white rooms with a faint green cast taken from the logo */
+  --bg:#F6FAF7;
+  --surface:#FFFFFF;
+  --surface-alt:#EAF3EC;
+  --border:#D3E2D7;
+  --text:#13241A;
+  --text-soft:#46594D;
+  --text-faint:#5F7066;
+
+  /* Forest — structural (header / hero band / footer / quote panels) */
+  --forest:#0E3A24;
+  --forest-deep:#092818;
+  --forest-tint:#E4EFE7;
+  --forest-ink-on:#FFFFFF;
+
+  /* Srima Green — the logo green. Fills, marks and focus only; never text on light */
+  --green:#53E177;
+  --green-hover:#46D36A;
+  --green-tint:#E3F6E8;
+  --green-ink-on:#062B14;
+
+  /* Green Ink — the brand green darkened until it reads as text (≥5:1 on every light surface) */
+  --green-ink:#13753D;
+  --green-ink-hover:#0E5A2F;
+
+  /* Semantic */
+  --success:#17703B;
+  --warning:#8A5700;
+  --warning-on-dark:#F2C46D;
+  --danger:#B23A36;
+
+  /* Third-party brand colors (not brand tokens, fixed by owner) */
+  --line-green:#06C755;
+
+  /* Semantic aliases */
+  --text-heading:var(--text);
+  --text-body:var(--text);
+  --text-muted:var(--text-soft);
+  --text-caption:var(--text-faint);
+  --text-link:var(--green-ink);
+  --text-link-hover:var(--green-ink-hover);
+  --surface-page:var(--bg);
+  --surface-card:var(--surface);
+  --surface-sunken:var(--surface-alt);
+  --surface-structural:var(--forest);
+  --border-card:var(--border);
+  --border-strong:var(--forest);
+  --action-cta:var(--green);
+  --action-cta-ink:var(--green-ink-on);
+  --action-secondary-ink:var(--forest);
+  --focus-ring:var(--green-ink);
+}
+
+/* Dark theme.
+   Values are declared once, under an explicit [data-theme] scope, so they register
+   as design-system theme tokens. Auto-following the OS is opt-in — set
+   data-theme="dark" on <html> (a one-line matchMedia listener if you want it
+   automatic); a prefers-color-scheme block here would leave the tokens
+   unregistered for consumers. */
+:root[data-theme="dark"]{
+    --bg:#08150D;
+    --surface:#0E2016;
+    --surface-alt:#14301F;
+    --border:#254831;
+    --text:#E6F4EA;
+    --text-soft:#A3C2AD;
+    --text-faint:#8AA894;
+
+    --forest:#0A1F13;
+    --forest-deep:#061409;
+    --forest-tint:#14301F;
+    --forest-ink-on:#FFFFFF;
+
+    --green:#53E177;
+    --green-hover:#6BE88B;
+    --green-tint:#123A20;
+    --green-ink-on:#062B14;
+
+    --green-ink:#6BE88B;
+    --green-ink-hover:#9AF0AF;
+
+    --success:#5FD98A;
+    --warning:#F2C46D;
+    --warning-on-dark:#F2C46D;
+    --danger:#E5726E;
+
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+    --shadow-md:0 16px 32px -14px rgba(0,0,0,.55);
+  }

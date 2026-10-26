@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="บริการและสนับสนุน" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+    <section style="padding:0;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" description="{{ heroDescription }}" height="320px" hint-size="100%,320px"></x-import>
+    </section>
+
+    <section style="padding:56px 0 32px;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;">
+              <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="{{ s.icon }}" size="40" color="var(--cyan)" hint-size="40px,40px"></x-import>
+              <h3 style="font-size:18px;font-weight:600;margin:16px 0 8px;">{{ s.title }}</h3>
+              <p style="font-size:13.5px;color:var(--text-soft);line-height:1.55;margin:0;">{{ s.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center;">
+        <div>
+          <h2 style="font-size:26px;line-height:1.25;font-weight:600;margin:0 0 16px;">เลือกภูมิภาคเพื่อดูทีมบริการ</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ regionBadges }}" as="r" hint-placeholder-count="5">
+              <span onclick="{{ r.onClick }}" style="cursor:pointer;">
+                <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="{{ r.tone }}" hint-size="auto,28px">{{ r.label }}</x-import>
+              </span>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StatTile" value="{{ activeRegion }}" label="ภูมิภาคที่เลือก" hint-size="180px,100px"></x-import>
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StatTile" value="24 ชม." label="ตอบรับคำขอบริการ" hint-size="180px,100px"></x-import>
+          </div>
+          <div style="margin-top:24px;">
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Button" variant="primary" hint-size="auto,44px">ขอใบเสนอราคาแผน PM</x-import>
+          </div>
+        </div>
+        <div style="height:300px;border-radius:20px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:12.5px;text-align:center;">
+          <div><div style="font-family:var(--font-mono);margin-bottom:4px;">PHOTO</div>แผนที่พื้นที่ให้บริการ / ภาพทีมวิศวกร (ข้อมูลตัวอย่าง)</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:26px;line-height:1.25;font-weight:600;margin:0 0 32px;">ขั้นตอนการทำงาน</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Icon" name="{{ st.icon }}" size="28" color="var(--cyan)" hint-size="28px,28px"></x-import>
+                <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-faint);">{{ st.num }}</span>
+              </div>
+              <div style="margin-top:14px;font-size:15px;font-weight:600;">{{ st.title }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH', activeRegion: 'กลาง' };
+  regions = ['เหนือ', 'อีสาน', 'กลาง', 'ใต้', 'กรุงเทพฯ'];
+  services = [
+    { icon: 'ruler', title: 'Installation & Renovation', body: 'บริการออกแบบและปรับปรุงห้องตรวจ ภายใต้ Sima Renovation' },
+    { icon: 'wrench', title: 'Maintenance Service (PM/CM)', body: 'ทีมวิศวกร 9 ท่าน ดูแลเชิงป้องกันและซ่อมบำรุง' },
+    { icon: 'clipboard-list', title: 'Application Training', body: 'อบรมการใช้งานเครื่องมือแพทย์โดย Product Specialist' },
+    { icon: 'monitor-dot', title: 'Remote Support', body: 'ระบบช่วยเหลือทางไกลลด Downtime ของเครื่อง' },
+  ];
+  steps = [
+    { icon: 'clipboard-list', title: 'สำรวจหน้างาน' },
+    { icon: 'ruler', title: 'ออกแบบและปรับปรุงห้อง' },
+    { icon: 'package-check', title: 'ติดตั้งและทดสอบ' },
+    { icon: 'refresh-cw', title: 'PM ตามรอบ' },
+  ];
+  renderVals() {
+    const active = this.state.activeRegion;
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: [{ title: 'บริการและสนับสนุน' }],
+      heroDescription: 'ดูแลเครื่องตลอดอายุการใช้งาน ตั้งแต่ออกแบบห้องตรวจ ติดตั้ง ฝึกอบรมการใช้งาน จนถึงบำรุงรักษาและซัพพอร์ตระยะไกล',
+      services: this.services,
+      steps: this.steps.map((s, i) => ({ ...s, num: '0' + (i + 1) })),
+      activeRegion: active,
+      regionBadges: this.regions.map((label) => ({
+        label,
+        tone: label === active ? 'brand' : 'region',
+        onClick: () => this.setState({ activeRegion: label }),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+:root{
+  --font-display:'IBM Plex Sans','IBM Plex Sans Thai',-apple-system,sans-serif;
+  --font-body:'IBM Plex Sans','IBM Plex Sans Thai',-apple-system,sans-serif;
+  --font-mono:'IBM Plex Mono','IBM Plex Sans Thai',ui-monospace,monospace;
+
+  /* Display — hero headline, 34–56px / 1.15 / 600 */
+  --display-size-min:34px;
+  --display-size-max:56px;
+  --display-weight:600;
+  --display-leading:1.15;
+  --display-tracking:-0.015em;
+
+  /* Heading — section titles, 24–32px / 1.3 / 600 */
+  --heading-size-min:24px;
+  --heading-size-max:32px;
+  --heading-weight:600;
+  --heading-leading:1.3;
+
+  /* Body — 16–17px / 1.7 / 400. Thai glyphs need the extra leading. */
+  --body-size-min:16px;
+  --body-size:16px;
+  --body-size-max:17px;
+  --body-weight:400;
+  --body-leading:1.7;
+
+  /* Small — card copy, captions, disclaimer: never below 14px for Thai */
+  --small-size:15px;
+  --caption-size-min:14px;
+  --caption-size:14px;
+  --caption-weight:500;
+  --caption-leading:1.55;
+
+  /* Data / mono — 16–44px / 1.05 / 600 */
+  --data-size-min:16px;
+  --data-size-max:44px;
+  --data-weight:600;
+  --data-leading:1.05;
+}

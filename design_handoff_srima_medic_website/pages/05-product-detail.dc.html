@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="ผลิตภัณฑ์" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+    <section style="padding:0;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" description="{{ heroDescription }}" height="280px" hint-size="100%,280px"></x-import>
+    </section>
+
+    <section style="padding:32px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div style="font-size:13px;color:var(--text-faint);margin-bottom:20px;">ผลิตภัณฑ์ / CT / Philips Incisive CT</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;">
+          <div>
+            <div style="height:340px;border-radius:16px;background:var(--surface-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;color:var(--text-faint);margin-bottom:12px;">PHOTO</div>
+            <div style="display:flex;gap:10px;">
+              <sc-for list="{{ thumbs }}" as="th" hint-placeholder-count="4">
+                <div style="flex:1;height:64px;border-radius:8px;background:var(--surface-alt);border:1px solid var(--border);"></div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;gap:8px;margin-bottom:14px;">
+              <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="region" hint-size="auto,26px">CT</x-import>
+              <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="success" hint-size="auto,26px">Installed ✓</x-import>
+            </div>
+            <h2 style="font-family:var(--font-display);font-size:26px;line-height:1.25;font-weight:600;margin:0;">Philips Incisive CT</h2>
+            <p style="font-size:14px;color:var(--text-faint);margin:10px 0 24px;">Multi-slice CT scanner (ข้อมูลตัวอย่าง)</p>
+            <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+              <sc-for list="{{ specs }}" as="sp" hint-placeholder-count="4">
+                <div style="display:flex;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);font-size:14px;">
+                  <span style="color:var(--text-soft);">{{ sp.label }}</span>
+                  <span style="font-family:var(--font-mono);color:var(--text);">{{ sp.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="font-size:12px;color:var(--text-faint);margin:10px 0 0;">สเปกด้านบนเป็นข้อมูลตัวอย่าง</p>
+            <div style="display:flex;gap:12px;margin-top:24px;">
+              <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Button" variant="primary" hint-size="auto,44px">ติดต่อฝ่ายขาย</x-import>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:56px 0;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;">
+        <div>
+          <h2 style="font-size:24px;font-weight:600;margin:0 0 8px;">Professional Access Only</h2>
+          <p style="font-size:14px;color:var(--text-soft);line-height:1.6;margin:0 0 20px;max-width:44ch;">สเปกเชิงลึกและภาพเคสทางคลินิกสงวนไว้สำหรับบุคลากรทางการแพทย์ กรอกข้อมูลด้านขวาเพื่อให้ทีมขายติดต่อกลับ</p>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;">
+          <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.GatedForm" onSubmit="{{ submitGate }}" submitted="{{ gateSubmitted }}" hint-size="100%,320px"></x-import>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:56px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:24px;font-weight:600;margin:0 0 24px;">ผลิตภัณฑ์ที่เกี่ยวข้อง</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;">
+              <div style="height:90px;border-radius:8px;background:var(--surface-alt);margin-bottom:10px;"></div>
+              <div style="font-size:14px;font-weight:600;">{{ r.name }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH', gateSubmitted: false };
+  specs = [
+    { label: 'Modality', value: 'Multi-slice CT' },
+    { label: 'Detector', value: '64-slice' },
+    { label: 'Gantry', value: '75 cm bore' },
+    { label: 'Power Supply', value: '80 kW' },
+  ];
+  related = [{ name: 'Philips Ambition MRI' }, { name: 'Philips DigitalDiagnost' }, { name: 'Philips Azurion Cath Lab' }];
+  renderVals() {
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: [{ title: 'Philips Incisive CT' }],
+      heroDescription: 'Multi-slice CT scanner จาก Philips (ข้อมูลตัวอย่าง)',
+      thumbs: [1, 2, 3, 4],
+      specs: this.specs,
+      related: this.related,
+      gateSubmitted: this.state.gateSubmitted,
+      submitGate: () => this.setState({ gateSubmitted: true }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

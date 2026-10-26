@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/styles.css">
+  <script src="_ds/srima-medic-design-system-0abcde13-25f3-47cb-b528-a8099e6c09b2/_ds_bundle.js"></script>
+  <style>a{color:var(--cyan)} a:hover{color:var(--sky)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--font-body);">
+
+  <div style="position:sticky;top:0;z-index:40;background:var(--navy);padding:12px 0;box-shadow:var(--shadow-md);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.NavBar" active="หน้าหลัก" items="{{ navItems }}" lang="{{ lang }}" onLangChange="{{ setLang }}" hint-size="100%,44px"></x-import>
+    </div>
+  </div>
+
+  <main style="flex:1;">
+
+    <section style="padding:0;">
+      <div style="position:relative;">
+        <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.HeroSlider" slides="{{ heroSlides }}" height="600px" hint-size="100%,600px"></x-import>
+        <div style="position:absolute;left:0;right:0;bottom:64px;padding:0 clamp(24px,6vw,72px);pointer-events:none;">
+          <p style="margin:0 0 20px;max-width:52ch;color:rgba(255,255,255,.9);font-size:15px;line-height:1.6;">{{ heroDescription }}</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto;">
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Button" variant="primary" size="lg" hint-size="auto,48px">ติดต่อฝ่ายขาย</x-import>
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Button" variant="ghost" size="lg" iconAfter="arrow-right" hint-size="auto,48px">ดูรายละเอียดสินค้า</x-import>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:center;">
+        <div>
+          <div style="font-family: var(--font-mono); font-weight: 600; letter-spacing: .02em; color: var(--cyan); margin-bottom: 10px; font-size: 48px">SRIMA MEDIC</div>
+          <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0;">ผู้เชี่ยวชาญด้านเครื่องมือแพทย์ภาพวินิจฉัยที่โรงพยาบาลไว้ใจได้ตลอดอายุการใช้งานเครื่อง</h2>
+          <p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--text-soft);">Srima-Medic จัดจำหน่าย ติดตั้ง และบำรุงรักษาเครื่องมือแพทย์ภาพวินิจฉัย ในฐานะ Authorized Partner ของ Philips พร้อมทีมวิศวกรบริการครอบคลุม 5 ภูมิภาคทั่วประเทศ</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;">
+            <sc-for list="{{ pillarBadges }}" as="p" hint-placeholder-count="4">
+              <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Badge" tone="region" hint-size="auto,28px">{{ p.label }}</x-import>
+            </sc-for>
+          </div>
+        </div>
+        <div style="height:320px;border-radius:20px;background:var(--surface-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:12.5px;text-align:center;">
+          <div><div style="font-family:var(--font-mono);margin-bottom:4px;">PHOTO</div>ภาพทีมงาน / อุปกรณ์ (ข้อมูลตัวอย่าง)</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0 0 32px;">ตัวเลขที่สะท้อนประสบการณ์</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+            <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StatTile" value="{{ s.value }}" label="{{ s.label }}" hint-size="220px,110px"></x-import>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0 0 8px;">Authorized Partner ของ Philips</h2>
+        <p style="font-size:13px;color:var(--text-faint);margin:0 0 32px;">ชื่อรางวัลเป็นข้อมูลตัวอย่าง ต้องขอชื่อรางวัลจริงจากลูกค้า</p>
+        <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Timeline" items="{{ partnershipTimeline }}" orientation="horizontal" hint-size="100%,200px"></x-import>
+      </div>
+    </section>
+
+    <section style="padding:64px 0;background:var(--surface-alt);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <h2 style="font-size:28px;line-height:1.25;font-weight:600;margin:0 0 32px;">โรงพยาบาลและศูนย์ภาพวินิจฉัยที่ไว้วางใจ</h2>
+        <div style="display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;">
+          <sc-for list="{{ clientLogos }}" as="c" hint-placeholder-count="6">
+            <div style="flex:0 0 160px;height:80px;border:1px solid var(--border);border-radius:8px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--text-faint);">LOGO</div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div style="width:100%;background:var(--navy);">
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px;width:100%;box-sizing:border-box;">
+      <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.Footer" links="{{ navItems }}" style="{{ footerStyle }}" hint-size="100%,180px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="SrimaMedicDesignSystem_0abcde.StickyContactCluster" position="fixed" hint-size="46px,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'TH' };
+  heroSlides = [
+    { title: 'Delivering Advanced CT Imaging Solutions' },
+    { title: 'Delivering Advanced MRI Imaging Solutions' },
+    { title: 'Delivering Advanced X-ray & Interventional Solutions' },
+  ];
+  pillars = ['Clinical Precision', 'Global Partnership (Philips)', 'Nationwide Reach', 'End-to-End Care'];
+  stats = [
+    { value: '320+', label: 'Systems Installed' },
+    { value: '150+', label: 'Imaging Centers' },
+    { value: '20+', label: 'Years Experience' },
+  ];
+  partnershipTimeline = [
+    { year: '2021', title: 'Philips Partnership Excellence Award', sub: '(ข้อมูลตัวอย่าง)' },
+    { year: '2022', title: 'Philips Partnership Excellence Award', sub: '(ข้อมูลตัวอย่าง)' },
+    { year: '2023', title: 'Philips Partnership Excellence Award', sub: '(ข้อมูลตัวอย่าง)' },
+    { year: '2024', title: 'Philips Partnership Excellence Award', sub: '(ข้อมูลตัวอย่าง)' },
+    { year: '2024', title: 'Philips Partnership Excellence Award', sub: '(ข้อมูลตัวอย่าง)' },
+  ];
+  renderVals() {
+    return {
+      lang: this.state.lang,
+      setLang: (l) => this.setState({ lang: l }),
+      navItems: ['หน้าหลัก','เกี่ยวกับเรา','ผลิตภัณฑ์','บริการและสนับสนุน','ผลงานการติดตั้ง','ข่าวสารและกิจกรรม','ติดต่อเรา'],
+      footerStyle: { borderRadius: 0, padding: 0, background: 'transparent' },
+      heroSlides: this.heroSlides,
+      heroDescription: 'Srima-Medic จัดจำหน่าย ติดตั้ง และบำรุงรักษาเครื่องมือแพทย์ภาพวินิจฉัย ในฐานะ Authorized Partner ของ Philips พร้อมทีมวิศวกรบริการครอบคลุม 5 ภูมิภาคทั่วประเทศ',
+      pillarBadges: this.pillars.map((label) => ({ label })),
+      stats: this.stats,
+      partnershipTimeline: this.partnershipTimeline,
+      clientLogos: [1, 2, 3, 4, 5, 6],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

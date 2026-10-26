@@ -1,0 +1,95 @@
+:root{
+  /* Neutral */
+  --bg:#F4FAF9;
+  --surface:#FFFFFF;
+  --surface-alt:#E8F3F1;
+  --border:#D3E4E1;
+  --text:#142522;
+  --text-soft:#4C625E;
+  --text-faint:#82938F;
+
+  /* Deep Marine — structural (header / nav / footer) */
+  --navy:#0C3A42;
+  --navy-tint:#E2EEEF;
+  --navy-ink-on:#FFFFFF;
+
+  /* Teal — PRIMARY brand color */
+  --cyan:#21ACA0;
+  --cyan-tint:#DFF5F2;
+  --cyan-ink-on:#062420;
+
+  /* Sky — secondary accent */
+  --sky:#2E8FC7;
+  --sky-tint:#E4F1FA;
+  --sky-ink-on:#06212F;
+
+  /* Vital Amber — CTA only */
+  --amber:#F2A23B;
+  --amber-tint:#FCEBD2;
+  --amber-ink-on:#2B1900;
+
+  /* Semantic */
+  --success:#2E9E5A;
+  --warning:#C97A0A;
+  --danger:#C7433F;
+
+  /* Third-party brand colors (not brand tokens, fixed by owner) */
+  --line-green:#06C755;
+
+  /* Semantic aliases */
+  --text-heading:var(--text);
+  --text-body:var(--text);
+  --text-muted:var(--text-soft);
+  --text-caption:var(--text-faint);
+  --text-link:var(--cyan);
+  --text-link-hover:var(--sky);
+  --surface-page:var(--bg);
+  --surface-card:var(--surface);
+  --surface-sunken:var(--surface-alt);
+  --surface-structural:var(--navy);
+  --border-card:var(--border);
+  --border-strong:var(--navy);
+  --action-cta:var(--amber);
+  --action-cta-ink:var(--amber-ink-on);
+  --action-secondary-ink:var(--navy);
+  --focus-ring:var(--cyan);
+}
+
+/* Dark theme.
+   Values are declared once, under an explicit [data-theme] scope, so they register
+   as design-system theme tokens. Auto-following the OS is opt-in — set
+   data-theme="dark" on <html> (a one-line matchMedia listener if you want it
+   automatic); a prefers-color-scheme block here would leave the tokens
+   unregistered for consumers. */
+:root[data-theme="dark"]{
+    --bg:#081615;
+    --surface:#0E211F;
+    --surface-alt:#153330;
+    --border:#254D48;
+    --text:#E6F5F2;
+    --text-soft:#9CBFB9;
+    --text-faint:#6D8D87;
+
+    --navy:#3E8A85;
+    --navy-tint:#153330;
+    --navy-ink-on:#04120F;
+
+    --cyan:#3FCFC0;
+    --cyan-tint:#113330;
+    --cyan-ink-on:#062420;
+
+    --sky:#5FB8E8;
+    --sky-tint:#12293A;
+    --sky-ink-on:#06212F;
+
+    --amber:#F2B564;
+    --amber-tint:#2E2410;
+    --amber-ink-on:#241600;
+
+    --success:#35D083;
+    --warning:#E3A749;
+    --danger:#E5726E;
+
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+    --shadow-md:0 16px 32px -14px rgba(0,0,0,.55);
+  }

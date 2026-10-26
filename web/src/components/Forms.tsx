@@ -1,0 +1,164 @@
+"use client";
+
+import Link from "next/link";
+import { useState, type FormEvent } from "react";
+import { ui } from "@/content/site";
+import { href, type Lang } from "@/lib/i18n";
+import { Icon } from "./Icon";
+
+const c = {
+  name: { th: "ชื่อ-นามสกุล", en: "Full name" },
+  org: { th: "หน่วยงาน / โรงพยาบาล", en: "Organisation / hospital" },
+  email: { th: "อีเมล", en: "Email" },
+  emailOptional: { th: "อีเมล (ถ้ามี)", en: "Email (optional)" },
+  phone: { th: "เบอร์โทรศัพท์", en: "Phone" },
+  profession: { th: "ตำแหน่ง / วิชาชีพ", en: "Position / profession" },
+  interest: { th: "บริการที่สนใจ", en: "I'm interested in" },
+  callback: { th: "วันและเวลาที่สะดวกให้ติดต่อกลับ", en: "Preferred date & time for a call back" },
+  message: { th: "ข้อความเพิ่มเติม", en: "Message" },
+  recaptcha: { th: "reCAPTCHA — ป้องกันสแปมก่อนส่งข้อมูล (จะเชื่อมต่อจริงก่อนเปิดใช้งาน)", en: "reCAPTCHA spam protection (to be connected before launch)" },
+  consentA: { th: "ข้าพเจ้ายินยอมให้บริษัทเก็บและใช้ข้อมูลข้างต้นเพื่อติดต่อกลับ ตาม", en: "I agree that the company may collect and use the information above to contact me, as described in the" },
+  submit: { th: "ส่งข้อมูล", en: "Send" },
+  sent: { th: "ส่งข้อมูลแล้ว ทีมงานจะติดต่อกลับภายใน 1 วันทำการ", en: "Thank you — our team will get back to you within 1 business day." },
+  draftNote: { th: "เวอร์ชันร่าง: ฟอร์มยังไม่ส่งอีเมลจริง", en: "Draft: the form does not send email yet" },
+  gateSubmit: { th: "ขอเข้าถึงข้อมูลเชิงลึก", en: "Request professional access" },
+  gateSent: { th: "ส่งคำขอแล้ว ทีมขายจะติดต่อกลับภายใน 1 วันทำการ", en: "Request sent — our sales team will contact you within 1 business day." },
+};
+
+const INTERESTS = [
+  { th: "สนใจสินค้า / ขอใบเสนอราคา", en: "Products / quotation" },
+  { th: "ขอใบเสนอราคาแผนบำรุงรักษา (PM)", en: "Maintenance plan (PM) quotation" },
+  { th: "แจ้งซ่อม / เครื่องขัดข้อง", en: "Service request / breakdown" },
+  { th: "ปรึกษา-สอบถามเพิ่มเติม", en: "General enquiry" },
+  { th: "โครงการร่วมลงทุน / PPP", en: "Investment / PPP projects" },
+];
+
+function Consent({ lang }: { lang: Lang }) {
+  return (
+    <label className="consent">
+      <input type="checkbox" required />
+      <span>
+        {c.consentA[lang]} <Link href={href(lang, "/privacy")}>{ui.privacy[lang]}</Link>
+      </span>
+    </label>
+  );
+}
+
+function Recaptcha({ lang }: { lang: Lang }) {
+  return (
+    <div className="recaptcha">
+      <Icon name="lock" size={14} />
+      {c.recaptcha[lang]}
+    </div>
+  );
+}
+
+function useDraftSubmit() {
+  const [sent, setSent] = useState(false);
+  // Draft only — wire to an email/SMTP endpoint once the client supplies credentials.
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setSent(true);
+  };
+  return { sent, onSubmit };
+}
+
+export function ContactForm({ lang, defaultInterest }: { lang: Lang; defaultInterest?: number }) {
+  const { sent, onSubmit } = useDraftSubmit();
+  return (
+    <form onSubmit={onSubmit}>
+      <div className="form-grid">
+        <div className="field">
+          <label htmlFor="cf-name">{c.name[lang]} *</label>
+          <input id="cf-name" name="name" required autoComplete="name" />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-org">{c.org[lang]}</label>
+          <input id="cf-org" name="organisation" autoComplete="organization" />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-phone">{c.phone[lang]} *</label>
+          <input id="cf-phone" name="phone" type="tel" required autoComplete="tel" />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-email">{c.emailOptional[lang]}</label>
+          <input id="cf-email" name="email" type="email" autoComplete="email" />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-interest">{c.interest[lang]} *</label>
+          <select id="cf-interest" name="interest" required defaultValue={defaultInterest ?? ""}>
+            <option value="" disabled>
+              —
+            </option>
+            {INTERESTS.map((o, i) => (
+              <option key={o.en} value={i}>
+                {o[lang]}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="cf-callback">{c.callback[lang]}</label>
+          <input id="cf-callback" name="callback" type="datetime-local" />
+        </div>
+      </div>
+      <div className="field">
+        <label htmlFor="cf-message">{c.message[lang]}</label>
+        <textarea id="cf-message" name="message" />
+      </div>
+      <Consent lang={lang} />
+      <Recaptcha lang={lang} />
+      <button type="submit" className="btn btn--primary">
+        {c.submit[lang]}
+      </button>
+      {sent ? (
+        <div className="success" role="status">
+          <Icon name="check" size={16} />
+          {c.sent[lang]}
+          <span className="sample">{c.draftNote[lang]}</span>
+        </div>
+      ) : null}
+    </form>
+  );
+}
+
+/** "Professional Access Only" lead-capture gate for in-depth specs and clinical cases. */
+export function GatedForm({ lang, product }: { lang: Lang; product?: string }) {
+  const { sent, onSubmit } = useDraftSubmit();
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="hidden" name="product" value={product ?? ""} />
+      <div className="field">
+        <label htmlFor="gf-name">
+          {c.name[lang]} / {c.org[lang]} *
+        </label>
+        <input id="gf-name" name="name" required />
+      </div>
+      <div className="field">
+        <label htmlFor="gf-prof">{c.profession[lang]} *</label>
+        <input id="gf-prof" name="profession" required placeholder={lang === "th" ? "เช่น รังสีแพทย์, นักรังสีการแพทย์" : "e.g. radiologist, radiographer"} />
+      </div>
+      <div className="form-grid">
+        <div className="field">
+          <label htmlFor="gf-email">{c.email[lang]} *</label>
+          <input id="gf-email" name="email" type="email" required />
+        </div>
+        <div className="field">
+          <label htmlFor="gf-phone">{c.phone[lang]}</label>
+          <input id="gf-phone" name="phone" type="tel" />
+        </div>
+      </div>
+      <Consent lang={lang} />
+      <Recaptcha lang={lang} />
+      <button type="submit" className="btn btn--primary btn--full">
+        {c.gateSubmit[lang]}
+      </button>
+      {sent ? (
+        <div className="success" role="status">
+          <Icon name="check" size={16} />
+          {c.gateSent[lang]}
+        </div>
+      ) : null}
+    </form>
+  );
+}
