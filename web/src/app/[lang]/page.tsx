@@ -2,7 +2,7 @@ import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
 import { ButtonLink, Figures, Photo, Section, Timeline } from "@/components/ui";
-import { IMG } from "@/content/images";
+import { IMG, IMG_BY_CATEGORY } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
 import { company, ui } from "@/content/site";
 import { href, type Lang, type PageParams } from "@/lib/i18n";
@@ -113,6 +113,7 @@ export default async function HomePage({ params }: PageParams) {
         <div className="modalities">
           {PRODUCTS.map((p) => (
             <Link key={p.slug} href={href(lang, `/products/${p.slug}`)} className="modality">
+              <Photo src={IMG_BY_CATEGORY[p.category]} alt={p.name} height={160} sizes="(max-width: 560px) 100vw, (max-width: 1023px) 50vw, 25vw" note={ui.aiSample[lang]} style={{ marginBottom: 8 }} />
               <span className="modality__code">{p.category}</span>
               <h3>{p.name}</h3>
               <p>{p.summary[lang]}</p>

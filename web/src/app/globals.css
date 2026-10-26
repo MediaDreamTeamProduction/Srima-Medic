@@ -339,6 +339,8 @@ button.badge[aria-pressed="true"] { background: var(--forest); color: #fff; bord
 .modality:first-child { border-left: 0; padding-left: 0; }
 .modality:hover { color: inherit; }
 @media (hover: hover) and (min-width: 1024px) { .modality:not(:first-child):hover { background: var(--surface); } }
+.modality .photo img { transition: transform 400ms var(--ease); }
+@media (hover: hover) { .modality:hover .photo img { transform: scale(1.03); } }
 .modality__code { font-family: var(--font-mono); font-size: 34px; font-weight: 600; line-height: 1; color: var(--green-ink); letter-spacing: -.01em; }
 .modality h3 { font-size: 18px; }
 .modality p { font-size: var(--small-size); color: var(--text-soft); line-height: 1.65; flex: 1; }
