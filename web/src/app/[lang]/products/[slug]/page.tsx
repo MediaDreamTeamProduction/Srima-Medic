@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GatedForm } from "@/components/Forms";
 import { Icon } from "@/components/Icon";
-import { Badge, ButtonLink, Grid, PageHero, Section } from "@/components/ui";
+import { Badge, ButtonLink, Grid, PageHero, Photo, Section } from "@/components/ui";
+import { IMG_BY_CATEGORY } from "@/content/images";
 import { getProduct, PRODUCTS } from "@/content/products";
 import { NAV, ui } from "@/content/site";
 import { href, LANGS, type Lang, type PageParams } from "@/lib/i18n";
@@ -46,11 +47,7 @@ export default async function ProductDetailPage({ params }: PageParams<{ slug: s
         </nav>
         <div className="split" style={{ alignItems: "start", gap: 40 }}>
           <div>
-            <div className="ph ph--rounded ph--tint" style={{ height: 340, marginBottom: 12 }}>
-              <Icon name={p.icon} size={64} />
-              <span className="ph__tag">PHOTO</span>
-              <span>{copy.gallery[lang]}</span>
-            </div>
+            <Photo variant="rounded" height={340} src={IMG_BY_CATEGORY[p.category]} alt={p.name} note={copy.gallery[lang]} style={{ marginBottom: 12 }} />
             <div className="row" style={{ gap: 10, flexWrap: "nowrap" }}>
               {[1, 2, 3, 4].map((n) => (
                 <div key={n} className="ph" style={{ flex: 1, height: 64, border: "1px solid var(--border)" }} />

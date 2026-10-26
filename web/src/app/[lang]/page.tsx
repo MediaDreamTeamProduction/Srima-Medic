@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
-import { ButtonLink, Figures, Placeholder, Sample, Section, Timeline } from "@/components/ui";
+import { ButtonLink, Figures, Photo, Section, Timeline } from "@/components/ui";
+import { IMG } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
 import { company, ui } from "@/content/site";
 import { href, type Lang, type PageParams } from "@/lib/i18n";
@@ -95,7 +96,7 @@ export default async function HomePage({ params }: PageParams) {
               ))}
             </ul>
           </div>
-          <Placeholder variant="rounded" height={360} icon="building" label={<>{lang === "th" ? "ภาพห้องตรวจ / เครื่อง Philips (ไม่ติดบุคคล)" : "Imaging suite / Philips system (no people)"}<Sample>{ui.pending[lang]}</Sample></>} />
+          <Photo variant="rounded" height={360} src={IMG.mri} alt={lang === "th" ? "ห้องตรวจ MRI" : "MRI suite"} note={ui.aiSample[lang]} />
         </div>
       </Section>
 

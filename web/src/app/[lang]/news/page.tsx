@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
-import { Badge, Grid, PageHero, Section } from "@/components/ui";
+import { Badge, Grid, PageHero, Photo, Section } from "@/components/ui";
+import { IMG } from "@/content/images";
 import { ARTICLES, EVENTS, formatDate, TAGS } from "@/content/news";
 import { ui } from "@/content/site";
 import { href, type Lang, type PageParams } from "@/lib/i18n";
+
+const NEWS_IMG: Record<string, string> = { "ct-vs-mri": IMG.mri, "pm-vs-cm": IMG.xray, "philips-ct-update": IMG.ct, "mri-trends": IMG.hospital };
 
 const copy = {
   title: { th: "ข่าวสารและกิจกรรม", en: "News & Events" },
@@ -33,9 +36,7 @@ export default async function NewsPage({ params }: PageParams) {
           {ARTICLES.map((a) => {
             const inner = (
               <>
-                <div className="ph ph--square" style={{ height: 150 }}>
-                  <span className="ph__tag">PHOTO</span>
-                </div>
+                <Photo variant="square" height={150} src={NEWS_IMG[a.slug] ?? IMG.hospital} alt="" sizes="(max-width: 768px) 100vw, 33vw" note={ui.aiSample[lang]} />
                 <div className="card__body">
                   <Badge tone={a.tag === "news" ? "sky" : "region"}>{TAGS[a.tag][lang]}</Badge>
                   <div className="caption mono" style={{ marginTop: 12, color: "var(--text-soft)" }}>

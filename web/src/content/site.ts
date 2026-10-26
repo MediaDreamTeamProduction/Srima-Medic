@@ -52,6 +52,7 @@ export const ui = {
   viewOnPhilips: { th: "ดูรุ่นทั้งหมดบนเว็บไซต์ Philips", en: "See all models on Philips.com" },
   sample: { th: "(ข้อมูลตัวอย่าง)", en: "(sample data)" },
   pending: { th: "(รอข้อมูลจากลูกค้า)", en: "(pending client data)" },
+  aiSample: { th: "ภาพตัวอย่าง (AI) รอภาพจริง", en: "AI sample image, real photo pending" },
   all: { th: "ทั้งหมด", en: "All" },
   installed: { th: "ติดตั้งแล้ว", en: "Installed" },
   systems: { th: "ระบบ", en: "systems" },

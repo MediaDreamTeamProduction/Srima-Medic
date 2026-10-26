@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { SiteList } from "@/components/Filters";
 import { Icon } from "@/components/Icon";
-import { Figures, Grid, PageHero, Placeholder, Section } from "@/components/ui";
+import { Figures, Grid, PageHero, Photo, Section } from "@/components/ui";
+import { IMG } from "@/content/images";
 import { REGIONS, ui } from "@/content/site";
 import type { Lang, PageParams } from "@/lib/i18n";
 
@@ -82,8 +83,8 @@ export default async function InstallationsPage({ params }: PageParams) {
         <h2 className="h2 h2--sm">{copy.storiesTitle[lang]}</h2>
         <p className="section-intro">{copy.storiesNote[lang]}</p>
         <Grid min={240} style={{ marginBottom: 32 }}>
-          {[1, 2, 3].map((n) => (
-            <Placeholder key={n} variant="rounded" height={190} label={<span className="sample">{ui.sample[lang]}</span>} />
+          {[IMG.hospital, IMG.seminar, IMG.ct].map((src) => (
+            <Photo key={src} variant="rounded" height={190} src={src} alt="" sizes="(max-width: 768px) 100vw, 33vw" note={ui.aiSample[lang]} />
           ))}
         </Grid>
         <blockquote className="quote" style={{ margin: 0 }}>

@@ -5,7 +5,9 @@ import { useState, type CSSProperties } from "react";
 import type { Product } from "@/content/products";
 import { REGIONS, ui } from "@/content/site";
 import { href, type L, type Lang } from "@/lib/i18n";
+import { IMG_BY_CATEGORY } from "@/content/images";
 import { Icon } from "./Icon";
+import { Photo } from "./ui";
 
 /** Category badges that filter the product grid; active badge uses the brand tone. */
 export function ProductGrid({ lang, products }: { lang: Lang; products: Product[] }) {
@@ -25,10 +27,7 @@ export function ProductGrid({ lang, products }: { lang: Lang; products: Product[
       <div className="grid" style={{ "--min": "260px" } as CSSProperties}>
         {shown.map((p) => (
           <article key={p.slug} className="card card--flush" style={{ display: "flex", flexDirection: "column" }}>
-            <div className="ph ph--square ph--tint" style={{ height: 170 }}>
-              <Icon name={p.icon} size={48} />
-              <span className="ph__tag">PHOTO · {p.category}</span>
-            </div>
+            <Photo variant="square" height={170} src={IMG_BY_CATEGORY[p.category]} alt={p.name} sizes="(max-width: 768px) 100vw, 25vw" note={ui.aiSample[lang]} />
             <div className="card__body stack" style={{ flex: 1 }}>
               <div className="row" style={{ gap: 6 }}>
                 <span className="badge badge--region">{p.category}</span>
@@ -80,9 +79,7 @@ export function SiteList({ lang, sites }: { lang: Lang; sites: Site[] }) {
       <div className="grid" style={{ "--min": "260px" } as CSSProperties}>
         {shown.map((s, i) => (
           <div key={i} className="card card--flush">
-            <div className="ph ph--square" style={{ height: 140 }}>
-              <span className="ph__tag">PHOTO</span>
-            </div>
+            <Photo variant="square" height={140} src={IMG_BY_CATEGORY[s.equipment]} alt="" sizes="(max-width: 768px) 100vw, 33vw" note={ui.aiSample[lang]} />
             <div className="card__body">
               <div className="row" style={{ gap: 6, marginBottom: 10 }}>
                 <span className="badge badge--region">{REGIONS[s.region][lang]}</span>

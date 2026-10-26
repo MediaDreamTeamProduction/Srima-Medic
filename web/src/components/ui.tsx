@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import { withBase } from "@/lib/i18n";
 import { Icon, type IconName } from "./Icon";
 
 export function Section({ alt, className = "", id, children, style }: { alt?: boolean; className?: string; id?: string; children: ReactNode; style?: CSSProperties }) {
@@ -94,6 +96,16 @@ export function Placeholder({ tag = "PHOTO", label, height = 160, variant, icon,
       {icon ? <Icon name={icon} size={40} /> : null}
       <span className="ph__tag">{tag}</span>
       {label ? <span>{label}</span> : null}
+    </div>
+  );
+}
+
+/** Draft photo with a pending chip; drop `note` once the client's real photo replaces `src`. */
+export function Photo({ src, alt, note, height = 160, variant, sizes = "(max-width: 768px) 100vw, 50vw", style }: { src: string; alt: string; note?: ReactNode; height?: number | string; variant?: "rounded" | "square"; sizes?: string; style?: CSSProperties }) {
+  return (
+    <div className={`photo ${variant ? `ph--${variant}` : ""}`} style={{ height, ...style }}>
+      <Image src={withBase(src)} alt={alt} fill sizes={sizes} />
+      {note ? <span className="photo__note">{note}</span> : null}
     </div>
   );
 }

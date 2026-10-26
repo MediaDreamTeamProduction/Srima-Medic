@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Icon } from "@/components/Icon";
-import { Figures, Grid, PageHero, Placeholder, Sample, Section, Timeline } from "@/components/ui";
+import { Figures, Grid, PageHero, Photo, Placeholder, Sample, Section, Timeline } from "@/components/ui";
+import { IMG } from "@/content/images";
 import { ui } from "@/content/site";
 import type { Lang, PageParams } from "@/lib/i18n";
 
@@ -114,7 +115,7 @@ export default async function AboutPage({ params }: PageParams) {
               ))}
             </div>
           </div>
-          <Placeholder variant="rounded" height={340} icon="building" label={<>{lang === "th" ? "ภาพสำนักงาน (ไม่ติดบุคคล)" : "Office photo (no people)"}<Sample>{ui.pending[lang]}</Sample></>} />
+          <Photo variant="rounded" height={340} src={IMG.office} alt={lang === "th" ? "สำนักงาน" : "Office"} note={ui.aiSample[lang]} />
         </div>
       </Section>
 

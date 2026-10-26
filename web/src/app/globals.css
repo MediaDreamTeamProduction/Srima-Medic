@@ -132,6 +132,12 @@ button.badge[aria-pressed="true"] { background: var(--forest); color: #fff; bord
 .ph--rounded { border-radius: var(--radius-lg); border: 1px solid var(--border); }
 .ph--square { border-radius: 0; }
 .ph--tint { background: var(--green-tint); }
+/* Draft photo: AI stand-in until the client's photo arrives; the chip keeps it honest */
+.photo { position: relative; overflow: hidden; background: var(--surface-alt); border-radius: var(--radius-sm); }
+.photo.ph--rounded { border-radius: var(--radius-lg); border: 1px solid var(--border); }
+.photo.ph--square { border-radius: 0; }
+.photo img { object-fit: cover; }
+.photo__note { position: absolute; left: 10px; bottom: 10px; z-index: 1; max-width: calc(100% - 20px); font-size: 12px; font-weight: 500; line-height: 1.35; color: var(--warning); background: rgba(255,255,255,.94); border: 1px dashed currentColor; border-radius: 4px; padding: 2px 7px; }
 
 /* ---------- Proof figures (inline row, not tiles) ---------- */
 .figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 160px), 100%), 1fr)); gap: 0; list-style: none; margin: 0; padding: 0; }
