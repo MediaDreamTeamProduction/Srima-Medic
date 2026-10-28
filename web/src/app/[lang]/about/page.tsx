@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Icon } from "@/components/Icon";
 import { Figures, Grid, PageHero, Photo, Placeholder, Sample, Section, Timeline } from "@/components/ui";
 import { IMG } from "@/content/images";
+import { AWARDS } from "@/content/recognition";
 import { ui } from "@/content/site";
 import type { Lang, PageParams } from "@/lib/i18n";
 
@@ -24,7 +25,7 @@ const copy = {
       "Today Srima-Medic works with Philips and its sister companies to serve public and private hospitals nationwide — supplying and servicing medical equipment and co-investing in CT and MRI projects, as well as X-ray and other radiology equipment.",
     ],
   },
-  timelineTitle: { th: "เส้นทางของกลุ่มบริษัท (2001 – ปัจจุบัน)", en: "Our group's journey (2001 – today)" },
+  timelineTitle: { th: "เส้นทางของกลุ่มบริษัท", en: "Our group's journey" },
   groupTitle: { th: "Sima Group of Companies", en: "Sima Group of Companies" },
   groupIntro: {
     th: "โซลูชันด้านสุขภาพแบบครบวงจร ตั้งแต่การลงทุนจนถึงการติดตั้งและการดูแลระยะยาว",
@@ -66,15 +67,15 @@ const copy = {
     en: "Supply and manage medical equipment for hospitals to ensure accessibility and utmost benefits to all.",
   },
   leadersTitle: { th: "ผู้บริหาร", en: "Leadership" },
-  leadersNote: { th: "รอยืนยันรายชื่อ 3 ท่านที่จะแสดง และรูปถ่ายที่อนุญาตให้เผยแพร่", en: "Pending confirmation of the 3 people to feature and approved photos" },
+  leadersNote: { th: "รอรูปถ่ายที่อนุญาตให้เผยแพร่", en: "Approved photos pending" },
   teamTitle: { th: "ความแข็งแกร่งของทีม", en: "Team strength" },
   certsTitle: { th: "การรับรองและรางวัล", en: "Certifications & awards" },
 };
 
 const LEADERS = [
   { initials: "TT", name: { th: "คุณธนานันต์ เตชะธรรมนุกูล", en: "Thananan Taechadhumnukul" }, role: { th: "ประธานเจ้าหน้าที่บริหาร (CEO)", en: "Chief Executive Officer (CEO)" } },
-  { initials: "CT", name: { th: "Chatthachai Thubthimsri", en: "Chatthachai Thubthimsri" }, role: { th: "Chief Product Officer (CPO)", en: "Chief Product Officer (CPO)" } },
   { initials: "CN", name: { th: "Chatuphong Nudchanart", en: "Chatuphong Nudchanart" }, role: { th: "Chief Service Officer (CSO)", en: "Chief Service Officer (CSO)" } },
+  { initials: "NB", name: { th: "Natsanu Bamphenthamsakul", en: "Natsanu Bamphenthamsakul" }, role: { th: "Director of Project Operations", en: "Director of Project Operations" } },
 ];
 
 const TEAM = [
@@ -179,9 +180,20 @@ export default async function AboutPage({ params }: PageParams) {
 
       <Section alt>
         <h2 className="h2">{copy.certsTitle[lang]}</h2>
-        <Grid min={220}>
+        <ol className="award-list">
+          {AWARDS.map((a) => (
+            <li key={a.name}>
+              <span className="award__year">{a.year}</span>
+              <div>
+                <h3>{a.name}</h3>
+                <p>{a.detail[lang]}</p>
+              </div>
+              <Icon name="badge-check" size={22} />
+            </li>
+          ))}
+        </ol>
+        <Grid min={240} style={{ marginTop: 24 }}>
           {[
-            { tag: "AWARD", label: "Recognition from Philips 2021–2024" },
             { tag: "LICENCE", label: lang === "th" ? "ใบอนุญาตขายเครื่องมือแพทย์" : "Medical device sales licence" },
             { tag: "DBD", label: "DBD Registered" },
           ].map((c) => (

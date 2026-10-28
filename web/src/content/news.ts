@@ -9,6 +9,8 @@ export type Article = {
   /** Article body as paragraphs; `## ` starts a sub-heading. */
   body?: { th: string[]; en: string[] };
   sample: boolean;
+  /** Equipment-related articles end with a "contact sales" call to action; general articles don't. */
+  aboutEquipment: boolean;
 };
 
 export const TAGS = {
@@ -20,6 +22,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "ct-vs-mri",
     tag: "knowledge",
+    aboutEquipment: true,
     date: "2026-10-20",
     title: { th: "CT กับ MRI ต่างกันอย่างไร", en: "CT vs MRI: what's the difference?" },
     excerpt: {
@@ -51,6 +54,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "pm-vs-cm",
     tag: "knowledge",
+    aboutEquipment: true,
     date: "2026-10-12",
     title: { th: "ทำความเข้าใจแผนบำรุงรักษา PM และ CM", en: "Understanding PM and CM maintenance" },
     excerpt: {
@@ -62,6 +66,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "philips-ct-update",
     tag: "news",
+    aboutEquipment: true,
     date: "2026-09-30",
     title: { th: "อัปเดตเทคโนโลยี CT จาก Philips", en: "CT technology update from Philips" },
     excerpt: {
@@ -73,6 +78,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "mri-trends",
     tag: "news",
+    aboutEquipment: true,
     date: "2026-09-15",
     title: { th: "แนวโน้มเทคโนโลยี MRI", en: "Trends in MRI technology" },
     excerpt: {

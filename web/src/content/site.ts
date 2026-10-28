@@ -48,6 +48,7 @@ export const REGIONS: L[] = [
 export const ui = {
   contactSales: { th: "ติดต่อฝ่ายขาย", en: "Contact Sales" },
   viewProducts: { th: "ดูรายละเอียดสินค้า", en: "View Products" },
+  viewAllProducts: { th: "ดูสินค้าทั้งหมด", en: "View all products" },
   viewDetails: { th: "ดูรายละเอียด", en: "View details" },
   viewOnPhilips: { th: "ดูรุ่นทั้งหมดบนเว็บไซต์ Philips", en: "See all models on Philips.com" },
   sample: { th: "(ข้อมูลตัวอย่าง)", en: "(sample data)" },

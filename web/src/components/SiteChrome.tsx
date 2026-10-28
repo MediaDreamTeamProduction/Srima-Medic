@@ -62,17 +62,19 @@ export function CookieBanner({ lang }: { lang: Lang }) {
   if (stored !== null || dismissed) return null;
   return (
     <div className="cookie" role="dialog" aria-label="Cookie notice">
-      <p>
-        {cookieCopy.body[lang]}{" "}
-        <Link href={href(lang, "/privacy")}>{cookieCopy.more[lang]}</Link>
-      </p>
-      <div className="row">
-        <button className="btn btn--secondary btn--sm" onClick={() => choose("necessary")}>
-          {cookieCopy.necessary[lang]}
-        </button>
-        <button className="btn btn--primary btn--sm" onClick={() => choose("all")}>
-          {cookieCopy.accept[lang]}
-        </button>
+      <div className="container cookie__inner">
+        <p>
+          {cookieCopy.body[lang]}{" "}
+          <Link href={href(lang, "/privacy")}>{cookieCopy.more[lang]}</Link>
+        </p>
+        <div className="row">
+          <button className="btn btn--secondary btn--sm" onClick={() => choose("necessary")}>
+            {cookieCopy.necessary[lang]}
+          </button>
+          <button className="btn btn--primary btn--sm" onClick={() => choose("all")}>
+            {cookieCopy.accept[lang]}
+          </button>
+        </div>
       </div>
     </div>
   );

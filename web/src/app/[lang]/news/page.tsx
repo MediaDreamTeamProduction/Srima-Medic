@@ -16,6 +16,7 @@ const copy = {
     en: "Imaging technology news, knowledge articles and seminars from Srima-Medic.",
   },
   news: { th: "ข่าวสารและบทความ", en: "News & articles" },
+  ceoPhoto: { th: "รอรูป CEO ร่วมงาน", en: "CEO event photo pending" },
   events: { th: "กิจกรรม — Events & Seminars", en: "Events & Seminars" },
 };
 
@@ -72,15 +73,22 @@ export default async function NewsPage({ params }: PageParams) {
         <h2 className="h2">{copy.events[lang]}</h2>
         <Grid min={260}>
           {EVENTS.map((e) => (
-            <div key={e.title.en} className="card">
-              <div className="mono" style={{ fontSize: 14, fontWeight: 600, color: "var(--forest)", marginBottom: 10 }}>
-                {e.date[lang]}
+            <div key={e.title.en} className="card card--flush">
+              <div className="ph ph--square" style={{ height: 180 }}>
+                <Icon name="users" size={32} />
+                <span className="ph__tag">PHOTO</span>
+                <span className="sample">{copy.ceoPhoto[lang]}</span>
               </div>
-              <h3 style={{ fontSize: 18, margin: 0 }}>{e.title[lang]}</h3>
-              <p style={{ marginTop: 8 }}>
-                {e.desc[lang]}
-                <span className="sample">{ui.sample[lang]}</span>
-              </p>
+              <div className="card__body">
+                <div className="mono" style={{ fontSize: 14, fontWeight: 600, color: "var(--marine)", marginBottom: 10 }}>
+                  {e.date[lang]}
+                </div>
+                <h3 style={{ fontSize: 18, margin: 0 }}>{e.title[lang]}</h3>
+                <p style={{ marginTop: 8 }}>
+                  {e.desc[lang]}
+                  <span className="sample">{ui.sample[lang]}</span>
+                </p>
+              </div>
             </div>
           ))}
         </Grid>

@@ -3,8 +3,8 @@
   --radius-md:12px;
   --radius-lg:20px;
   --radius-full:999px;
-  --shadow-sm:0 1px 2px rgba(14,58,36,.09);
-  --shadow-md:0 12px 28px -12px rgba(14,58,36,.28);
+  --shadow-sm:0 1px 2px rgba(10,59,55,.09);
+  --shadow-md:0 12px 28px -12px rgba(10,59,55,.28);
   --border-width:1px;
   --border-width-strong:1.5px;
   --ease:cubic-bezier(.2,.7,.3,1); /* @kind other */

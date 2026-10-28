@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { RegionPicker } from "@/components/Filters";
 import { Icon } from "@/components/Icon";
-import { ButtonLink, PageHero, Placeholder, Sample, Section, ServiceCard } from "@/components/ui";
+import { ButtonLink, PageHero, Section, ServiceCard } from "@/components/ui";
 import { SERVICES } from "@/content/services";
-import { ui } from "@/content/site";
 import { href, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
@@ -77,7 +76,7 @@ export default async function ServicesPage({ params }: PageParams) {
       </Section>
 
       <Section alt>
-        <div className="split">
+        <div style={{ maxWidth: 720 }}>
           <div>
             <h2 className="h2 h2--sm">{copy.regionTitle[lang]}</h2>
             <p className="section-intro" style={{ marginBottom: 20 }}>
@@ -88,7 +87,6 @@ export default async function ServicesPage({ params }: PageParams) {
               <ButtonLink href={href(lang, "/contact")}>{copy.pmCta[lang]}</ButtonLink>
             </div>
           </div>
-          <Placeholder variant="rounded" height={300} icon="map-pin" tag="MAP" label={<>{lang === "th" ? "แผนที่พื้นที่ให้บริการ" : "Service area map"}<Sample>{ui.sample[lang]}</Sample></>} style={{ background: "var(--surface)" }} />
         </div>
       </Section>
 

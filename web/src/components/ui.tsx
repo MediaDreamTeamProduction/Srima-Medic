@@ -110,6 +110,34 @@ export function Photo({ src, alt, note, height = 160, variant, sizes = "(max-wid
   );
 }
 
+const MOCK_HOSPITALS = [
+  { th: "โรงพยาบาลตัวอย่าง ก", en: "Sample Hospital A", shape: "cross", color: "#0B6E65" },
+  { th: "ศูนย์ภาพวินิจฉัยตัวอย่าง", en: "Sample Imaging Center", shape: "circle", color: "#2563A6" },
+  { th: "โรงพยาบาลตัวอย่าง ข", en: "Sample Hospital B", shape: "leaf", color: "#3E7D3A" },
+  { th: "โรงพยาบาลตัวอย่าง ค", en: "Sample Hospital C", shape: "shield", color: "#8A3B5C" },
+  { th: "ศูนย์การแพทย์ตัวอย่าง", en: "Sample Medical Center", shape: "cross", color: "#B05A1E" },
+  { th: "โรงพยาบาลตัวอย่าง ง", en: "Sample Hospital D", shape: "circle", color: "#4B4E9C" },
+] as const;
+
+/** Fictional hospital marks standing in for client logos until real ones are cleared for publication. */
+export function MockHospitalLogo({ index, lang }: { index: number; lang: "th" | "en" }) {
+  const h = MOCK_HOSPITALS[index % MOCK_HOSPITALS.length];
+  const mark = {
+    cross: <path d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z" />,
+    circle: <path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10z" />,
+    leaf: <path d="M20 3C9 3 3 9 3 17c0 1.5.3 2.8.7 4C6 13 12 9 17 8c-5 3-8 7-9.5 12.5C17 20 21 13 20 3z" />,
+    shield: <path d="M12 2l8 3v6c0 5.5-3.4 9.7-8 11-4.6-1.3-8-5.5-8-11V5zm-1 6v3H8v2h3v3h2v-3h3v-2h-3V8z" />,
+  }[h.shape];
+  return (
+    <span className="mock-logo" style={{ color: h.color }}>
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden>
+        {mark}
+      </svg>
+      <span>{h[lang]}</span>
+    </span>
+  );
+}
+
 /** "(ข้อมูลตัวอย่าง)" marker: keep until real client content replaces the value. */
 export function Sample({ children }: { children: ReactNode }) {
   return <span className="sample">{children}</span>;
@@ -143,8 +171,8 @@ export function HeroArt() {
     <svg className="hero__art" viewBox="0 0 200 200" aria-hidden>
       <path
         d="M76 14h48a8 8 0 0 1 8 8v46h46a8 8 0 0 1 8 8v48a8 8 0 0 1-8 8h-46v46a8 8 0 0 1-8 8H76a8 8 0 0 1-8-8v-46H22a8 8 0 0 1-8-8V76a8 8 0 0 1 8-8h46V22a8 8 0 0 1 8-8z"
-        fill="rgba(83,225,119,.07)"
-        stroke="rgba(83,225,119,.55)"
+        fill="rgba(33,172,160,.10)"
+        stroke="rgba(33,172,160,.6)"
         strokeWidth="1"
       />
       <path d="M88 40h24v48h48v24h-48v48H88v-48H40V88h48z" fill="none" stroke="rgba(255,255,255,.16)" strokeWidth="1" />

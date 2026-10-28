@@ -12,6 +12,12 @@ export const IMG = {
   hospital: "/images/hospital.webp",
 };
 
+/** Real photos supplied by the client (no AI chip). */
+export const REAL = {
+  /** Srima-Medic office building, from the cover of the Company Profile 2026. */
+  building: "/images/building.webp",
+};
+
 /** Room photo for a modality, keyed by the product/equipment category label. */
 export const IMG_BY_CATEGORY: Record<string, string> = {
   CT: IMG.ct,

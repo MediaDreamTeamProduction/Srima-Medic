@@ -1,25 +1,25 @@
 ---
 name: Srima-Medic
-description: Corporate site for an authorised Philips imaging distributor in Thailand, built on the logo's green-and-white identity
+description: Corporate site for an authorised Philips imaging distributor in Thailand, built on the logo's teal-and-white identity
 colors:
-  page-mist: "#F6FAF7"
+  page-mist: "#F5FAF9"
   surface-white: "#FFFFFF"
-  surface-sunken: "#EAF3EC"
-  border-hairline: "#D3E2D7"
-  border-field: "#B9CCBF"
-  ink: "#13241A"
-  ink-soft: "#46594D"
-  ink-faint: "#5F7066"
-  forest: "#0E3A24"
-  forest-deep: "#092818"
-  forest-tint: "#E4EFE7"
-  srima-green: "#53E177"
-  srima-green-hover: "#46D36A"
-  green-tint: "#E3F6E8"
-  green-ink-on: "#062B14"
-  green-ink: "#13753D"
-  green-ink-hover: "#0E5A2F"
-  success: "#17703B"
+  surface-sunken: "#E8F3F1"
+  border-hairline: "#D2E3E0"
+  border-field: "#B4CDC9"
+  ink: "#12302C"
+  ink-soft: "#45605B"
+  ink-faint: "#5C716D"
+  marine: "#0A3B37"
+  marine-deep: "#072B28"
+  marine-tint: "#E3EFED"
+  srima-teal: "#21ACA0"
+  srima-teal-hover: "#1B9E92"
+  teal-tint: "#DFF4F1"
+  teal-ink-on: "#03201D"
+  teal-ink: "#0B6E65"
+  teal-ink-hover: "#08544D"
+  success: "#0B6E65"
   pending-amber: "#8A5700"
   pending-amber-on-dark: "#F2C46D"
   danger: "#B23A36"
@@ -78,36 +78,36 @@ spacing:
   "7": "64px"
 components:
   button-primary:
-    backgroundColor: "{colors.srima-green}"
-    textColor: "{colors.green-ink-on}"
+    backgroundColor: "{colors.srima-teal}"
+    textColor: "{colors.teal-ink-on}"
     rounded: "{rounded.sm}"
     padding: "13px 22px"
     height: "44px"
   button-primary-hover:
-    backgroundColor: "{colors.srima-green-hover}"
-    textColor: "{colors.green-ink-on}"
+    backgroundColor: "{colors.srima-teal-hover}"
+    textColor: "{colors.teal-ink-on}"
   button-secondary:
     backgroundColor: "transparent"
-    textColor: "{colors.forest}"
+    textColor: "{colors.marine}"
     rounded: "{rounded.sm}"
     padding: "13px 22px"
   button-secondary-hover:
-    backgroundColor: "{colors.forest}"
+    backgroundColor: "{colors.marine}"
     textColor: "{colors.surface-white}"
   button-ghost:
     backgroundColor: "transparent"
-    textColor: "{colors.green-ink}"
+    textColor: "{colors.teal-ink}"
   card:
     backgroundColor: "{colors.surface-white}"
     rounded: "{rounded.md}"
     padding: "24px"
   chip-filter:
-    backgroundColor: "{colors.forest-tint}"
-    textColor: "{colors.forest}"
+    backgroundColor: "{colors.marine-tint}"
+    textColor: "{colors.marine}"
     rounded: "{rounded.full}"
     height: "36px"
   chip-filter-active:
-    backgroundColor: "{colors.forest}"
+    backgroundColor: "{colors.marine}"
     textColor: "{colors.surface-white}"
   pending-marker:
     textColor: "{colors.pending-amber}"
@@ -123,7 +123,7 @@ components:
     textColor: "{colors.ink-soft}"
     height: "72px"
   hero-band:
-    backgroundColor: "{colors.forest}"
+    backgroundColor: "{colors.marine}"
     textColor: "{colors.surface-white}"
 ---
 
@@ -133,41 +133,41 @@ components:
 
 **Creative North Star: "The Clean Room"**
 
-The site should feel like a bright, orderly imaging suite. Surfaces are mostly white and a faint green-tinged mist, with hairline borders. Colour works the way indicator lights do on a scanner console: the logo green marks the action and the live figures, and almost nothing else. The audience is hospital buyers and clinicians, so density is moderate and the tone is calm. Credibility comes from facts set cleanly, not from decoration.
+The site should feel like a bright, orderly imaging suite. Surfaces are mostly white and a faint teal-tinged mist, with hairline borders. Colour works the way indicator lights do on a scanner console: the brand teal (client-specified, 2026-10-29) marks the action and the live figures, and almost nothing else. The audience is hospital buyers and clinicians, so density is moderate and the tone is calm. Credibility comes from facts set cleanly, not from decoration.
 
-Three dark surfaces give the page structure: the forest hero band on every page, the contact panel on the Contact page, and the footer. Everything else stays light. The brand mark is the logo's own rounded cross. It appears as a hairline outline cropped by the hero band, and it stands in for room photography until real photos arrive.
+Three dark surfaces give the page structure: the marine hero band on every page, the contact panel on the Contact page, and the footer. Everything else stays light. The brand mark is the logo's own rounded cross. It appears as a hairline outline cropped by the hero band, and it stands in for room photography until real photos arrive.
 
 This system replaced a Draft 1 palette of navy, teal and an amber CTA. Hold to the replacement. Don't bring back teal accents, gradient glows, icon tiles stacked above headings, or rows of stat cards.
 
 **Key Characteristics:**
-- White and mist surfaces, hairline borders, one green for action.
-- Forest hero band with the cropped cross outline; a white nav bar carrying the full-colour logo.
+- White and mist surfaces, hairline borders, one teal for action.
+- Marine hero band with the cropped cross outline; a white nav bar carrying the full-colour logo.
 - IBM Plex Sans + Plex Sans Thai throughout. Plex Mono is used only for figures, modality codes, licence numbers and phone numbers.
 - Proof is set as inline figures with hairline dividers, never as tiles.
 - Pending client data is always visible, as a dashed amber chip.
 
 ## Colors
 
-The palette is green and white, taken from the logo, and every text pairing passes WCAG AA.
+The palette is teal (#21ACA0, set by the client on 2026-10-29) and white, and every text pairing passes WCAG AA.
 
 ### Primary
-- **Srima Green** (#53E177): the logo green. Use it for the primary button fill, the active nav underline, carousel dots, timeline markers, hero figures on forest, and text selection. It is only 1.7:1 on white, so it never carries text on a light surface.
-- **Green Ink** (#13753D): the same hue darkened for type. Use it for links, ghost buttons, modality codes, inline icons and the focus ring. It reaches at least 5:1 on every light surface.
+- **Srima Teal** (#21ACA0): the brand teal (client-specified, 2026-10-29). Use it for the primary button fill, the active nav underline, carousel dots, timeline markers, hero figures on marine, and text selection. It is only 1.7:1 on white, so it never carries text on a light surface.
+- **Teal Ink** (#0B6E65): the same hue darkened for type. Use it for links, ghost buttons, modality codes, inline icons and the focus ring. It reaches at least 5:1 on every light surface.
 
 ### Secondary
-- **Forest** (#0E3A24): the structural colour. Use it for the hero band, footer, dark panels, the secondary button outline, active filter chips and the main figures on light surfaces. **Forest Deep** (#092818) is the darker right-hand panel of the hero, where photography will sit.
+- **Marine** (#0A3B37): the structural colour. Use it for the hero band, footer, dark panels, the secondary button outline, active filter chips and the main figures on light surfaces. **Marine Deep** (#072B28) is the darker right-hand panel of the hero, where photography will sit.
 
 ### Tertiary
-- **Pending Amber** (#8A5700, or #F2C46D on forest): reserved for the "(ข้อมูลตัวอย่าง)" / "(รอข้อมูลจากลูกค้า)" markers. It never means action.
+- **Pending Amber** (#8A5700, or #F2C46D on marine): reserved for the "(ข้อมูลตัวอย่าง)" / "(รอข้อมูลจากลูกค้า)" markers. It never means action.
 
 ### Neutral
-- **Ink** (#13241A) for headings and body. **Ink Soft** (#46594D) for secondary copy. **Ink Faint** (#5F7066) for captions; it is the lightest grey that still passes on the sunken surface.
-- **Page Mist** (#F6FAF7), **Surface White**, and **Surface Sunken** (#EAF3EC) for alternating sections. **Hairline** (#D3E2D7) for dividers and card borders. **Field Border** (#B9CCBF) for inputs, which need a firmer edge than cards.
+- **Ink** (#12302C) for headings and body. **Ink Soft** (#45605B) for secondary copy. **Ink Faint** (#5C716D) for captions; it is the lightest grey that still passes on the sunken surface.
+- **Page Mist** (#F5FAF9), **Surface White**, and **Surface Sunken** (#E8F3F1) for alternating sections. **Hairline** (#D2E3E0) for dividers and card borders. **Field Border** (#B4CDC9) for inputs, which need a firmer edge than cards.
 
 ### Named Rules
-**The Indicator Light Rule.** Srima Green marks action and live figures only. If something green is not clickable and is not a number, question it.
+**The Indicator Light Rule.** Srima Teal marks action and live figures only. If something teal is not clickable and is not a number, question it.
 
-**The Two Greens Rule.** Light green fills, dark green writes. Never set #53E177 as text on white. Never use #13753D as a large fill.
+**The Two Teals Rule.** Light teal fills, dark teal writes. Never set #21ACA0 as text on white. Never use #0B6E65 as a large fill.
 
 **The Amber Means Pending Rule.** Amber appears only on unconfirmed client data, so a reader can tell at a glance what is still unconfirmed.
 
@@ -202,8 +202,8 @@ The container is 1200px with a 24px gutter (20px under 768px). Sections are padd
 The design is flat by default and builds depth with tone and hairlines. Shadows appear only on floating or interactive layers.
 
 ### Shadow Vocabulary
-- **Float** (`box-shadow: 0 12px 28px -12px rgba(14,58,36,.28)`): floating contact buttons, cookie notice, modal, and link-card hover.
-- **Hairline lift** (`box-shadow: 0 1px 2px rgba(14,58,36,.09)`): the back-to-top button.
+- **Float** (`box-shadow: 0 12px 28px -12px rgba(10,59,55,.28)`): floating contact buttons, cookie notice, modal, and link-card hover.
+- **Hairline lift** (`box-shadow: 0 1px 2px rgba(10,59,55,.09)`): the back-to-top button.
 
 ### Named Rules
 **The Flat At Rest Rule.** Cards and panels carry a 1px border and no shadow. A shadow appears on hover or on layers that float above the page.
@@ -216,47 +216,47 @@ Corners are gently rounded: 8px for buttons and inputs, 12px for cards and FAQ i
 
 ### Buttons
 - **Shape:** 8px radius, minimum height 44px.
-- **Primary:** Srima Green fill with near-black green ink, weight 600. Every "ติดต่อฝ่ายขาย" uses it.
-- **Hover / Focus:** the fill steps to #46D36A. Focus is a 2px Green Ink outline with a 2px offset.
-- **Secondary:** a 1.5px forest outline that fills forest on hover. **Ghost:** Green Ink text with an arrow. **On-dark:** a 70% white outline on the hero.
+- **Primary:** Srima Teal fill with near-black teal ink, weight 600. Every "ติดต่อฝ่ายขาย" uses it.
+- **Hover / Focus:** the fill steps to #1B9E92. Focus is a 2px Teal Ink outline with a 2px offset.
+- **Secondary:** a 1.5px marine outline that fills marine on hover. **Ghost:** Teal Ink text with an arrow. **On-dark:** a 70% white outline on the hero.
 
 ### Chips
-- **Filter:** forest-tint pill, 36px tall. When pressed it turns solid forest with white text.
+- **Filter:** marine-tint pill, 36px tall. When pressed it turns solid marine with white text.
 - **Pending marker:** dashed amber chip, `max(.8em, 12px)`.
 
 ### Cards / Containers
 - **Corner Style:** 12px.
 - **Background:** white on mist sections.
-- **Shadow Strategy:** none at rest. Link cards get the Float shadow and a Green Ink border on hover.
+- **Shadow Strategy:** none at rest. Link cards get the Float shadow and a Teal Ink border on hover.
 - **Internal Padding:** 24px.
-- **Icons:** placed inline beside the heading (26px, Green Ink), never in a tile above it.
+- **Icons:** placed inline beside the heading (26px, Teal Ink), never in a tile above it.
 
 ### Inputs / Fields
-- **Style:** white field, firm border (#B9CCBF), 8px radius, 48px tall, 16px text, labels above in ink at weight 500.
-- **Focus:** 2px Green Ink outline, and the border shifts to Green Ink.
+- **Style:** white field, firm border (#B4CDC9), 8px radius, 48px tall, 16px text, labels above in ink at weight 500.
+- **Focus:** 2px Teal Ink outline, and the border shifts to Teal Ink.
 
 ### Navigation
 - White bar, 72px tall, with a hairline bottom border and the full-colour logo.
-- Links are 15px Ink Soft. The active link is forest at weight 600 with a 2px Srima Green underline.
-- The TH/EN switch is a pill; the active language is solid forest.
+- Links are 15px Ink Soft. The active link is marine at weight 600 with a 2px Srima Teal underline.
+- The TH/EN switch is a pill; the active language is solid marine.
 - The mobile drawer uses 17px rows separated by hairlines.
 
 ### Modality Index (signature)
-CT, MRI, IGT and X-ray sit in one ruled grid with a 2px forest top rule. Each column shows:
-- the modality code in 34px Green Ink mono;
+CT, MRI, IGT and X-ray sit in one ruled grid with a 2px marine top rule. Each column shows:
+- the modality code in 34px Teal Ink mono;
 - the name and a one-line summary;
-- a footer row with the installed count in forest mono and an arrow.
+- a footer row with the installed count in marine mono and an arrow.
 
 ### Service Lifecycle (signature)
-Five numbered steps on one hairline rail. Each step has an inline icon, a mono step number, a title and a line of copy. After-sales (the wrench step) is the anchor and is set in forest.
+Five numbered steps on one hairline rail. Each step has an inline icon, a mono step number, a title and a line of copy. After-sales (the wrench step) is the anchor and is set in marine.
 
 ### Hero Band (signature)
-A solid forest band with a deeper right-hand panel and the cropped cross outline. The home hero rotates its headline with a pause button and pauses on hover, focus and reduced motion. It ends in a row of proof figures under a hairline.
+A solid marine band with a deeper right-hand panel and the cropped cross outline. The home hero rotates its headline with a pause button and pauses on hover, focus and reduced motion. It ends in a row of proof figures under a hairline.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** set every primary action in Srima Green with dark ink (#062B14), and every text link in Green Ink (#13753D).
+- **Do** set every primary action in Srima Teal with dark ink (#03201D), and every text link in Teal Ink (#0B6E65).
 - **Do** show proof as inline mono figures with hairline dividers.
 - **Do** put icons inline beside their heading.
 - **Do** keep pending markers visible as the dashed amber chip until real client data replaces them.

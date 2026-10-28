@@ -39,10 +39,12 @@ export default async function ArticlePage({ params }: PageParams<{ slug: string 
         </div>
         <Photo variant="rounded" height={300} src={NEWS_IMG[a.slug] ?? IMG.hospital} alt="" sizes="(max-width: 768px) 100vw, 720px" note={ui.aiSample[lang]} style={{ marginBottom: 28 }} />
         {a.body[lang].map((block, i) => (block.startsWith("## ") ? <h2 key={i}>{block.slice(3)}</h2> : <p key={i}>{block}</p>))}
-        <div className="card" style={{ marginTop: 40, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center", justifyContent: "space-between" }}>
-          <span style={{ fontWeight: 600 }}>{lang === "th" ? "ต้องการคำปรึกษาเรื่องเครื่องมือแพทย์?" : "Need advice on imaging equipment?"}</span>
-          <ButtonLink href={href(lang, "/contact")}>{ui.contactSales[lang]}</ButtonLink>
-        </div>
+        {a.aboutEquipment ? (
+          <div className="card" style={{ marginTop: 40, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center", justifyContent: "space-between" }}>
+            <span style={{ fontWeight: 600 }}>{lang === "th" ? "ต้องการคำปรึกษาเรื่องเครื่องมือแพทย์?" : "Need advice on imaging equipment?"}</span>
+            <ButtonLink href={href(lang, "/contact")}>{ui.contactSales[lang]}</ButtonLink>
+          </div>
+        ) : null}
       </article>
     </Section>
   );

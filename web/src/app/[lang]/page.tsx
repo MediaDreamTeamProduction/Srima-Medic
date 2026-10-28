@@ -1,11 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
-import { ButtonLink, Figures, Photo, Section, Timeline } from "@/components/ui";
-import { IMG, IMG_BY_CATEGORY } from "@/content/images";
+import { ButtonLink, Figures, MockHospitalLogo, Photo, Sample, Section } from "@/components/ui";
+import { IMG, IMG_BY_CATEGORY, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
+import { AWARDS, PARTNERS } from "@/content/recognition";
 import { company, ui } from "@/content/site";
-import { href, type Lang, type PageParams } from "@/lib/i18n";
+import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
 import { SERVICES } from "@/content/services";
 
 const copy = {
@@ -14,6 +16,7 @@ const copy = {
     { title: { th: "ระบบ CT และ MRI จาก Philips สำหรับโรงพยาบาลทั่วประเทศ", en: "Philips CT & MRI for hospitals nationwide" } },
     { title: { th: "ดูแลตั้งแต่ติดตั้ง จนถึงบริการหลังการขาย", en: "From installation to after-sales care" } },
   ],
+  authorized: { th: "ตัวแทนจำหน่ายที่ได้รับอนุญาต", en: "Authorized Partner" },
   heroDesc: {
     th: "Srima-Medic ให้บริการโซลูชันด้านภาพวินิจฉัยทางการแพทย์ ครอบคลุม CT, MRI, X-ray และระบบรังสีร่วมรักษา ในฐานะ Authorized Partner ของ Philips",
     en: "Srima-Medic delivers medical imaging solutions — CT, MRI, X-ray and interventional systems — as an authorised partner of Philips.",
@@ -35,6 +38,7 @@ const copy = {
     { value: "20+", label: { th: "ปีของประสบการณ์ในเครือ", en: "Years of group experience" } },
   ],
   productsTitle: { th: "ผลิตภัณฑ์ภาพวินิจฉัยจาก Philips", en: "Philips imaging solutions" },
+  productsSource: { th: "คำอธิบายผลิตภัณฑ์สรุปจากเว็บไซต์ Philips (philips.co.th)", en: "Product descriptions summarised from the Philips website (philips.co.th)." },
   servicesTitle: { th: "บริการของเรา", en: "Our services" },
   servicesIntro: {
     th: "โซลูชันด้านระบบภาพวินิจฉัยทางการแพทย์ สำหรับโรงพยาบาลและสถานพยาบาล",
@@ -49,22 +53,39 @@ const copy = {
     th: "ได้รับการยกย่องจาก Philips ด้านผลการดำเนินงานและความเป็นพันธมิตรในภูมิภาคเอเชียแปซิฟิก",
     en: "Recognised by Philips for performance and partnership across the Asia-Pacific region.",
   },
-  awardName: { th: "Recognition from Philips", en: "Recognition from Philips" },
-  awardPending: { th: "ชื่อรางวัล (รอข้อมูลจากลูกค้า)", en: "Award name (pending)" },
+  awardPhoto: { th: "รอรูปรางวัล", en: "Award photo pending" },
   groupTitle: { th: "พันธมิตรทางธุรกิจ", en: "Business partners" },
   clientsTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัยที่ไว้วางใจ", en: "Trusted by hospitals and imaging centers" },
+  clientsNote: { th: "โลโก้ตัวอย่าง รอโลโก้โรงพยาบาลคู่ค้าที่ได้รับอนุญาตให้เผยแพร่", en: "Sample logos: waiting for client hospital logos cleared for publication" },
   installedLabel: { th: "ระบบที่ติดตั้งแล้ว", en: "systems installed" },
-  closingTitle: { th: "วางแผนติดตั้งหรือเปลี่ยนเครื่องภาพวินิจฉัย?", en: "Planning a new or replacement imaging system?" },
-  closingBody: { th: "คุยกับทีมขายเพื่อรับคำปรึกษาและใบเสนอราคา", en: "Talk to our sales team for advice and a quotation." },
+  contactTitle: { th: "ติดต่อเรา", en: "Contact us" },
+  contactBody: { th: "สอบถามข้อมูลผลิตภัณฑ์ ขอใบเสนอราคา หรือนัดหมายให้ทีมงานติดต่อกลับ", en: "Ask about products, request a quotation, or book a call back from our team." },
+  contactCta: { th: "ไปที่หน้าติดต่อเรา", en: "Go to the contact page" },
 };
 
 export default async function HomePage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
 
+  const slides = [
+    { title: copy.slides[0].title[lang], image: IMG.ct, note: ui.aiSample[lang] },
+    {
+      title: copy.slides[1].title[lang],
+      image: IMG.mri,
+      note: ui.aiSample[lang],
+      badge: (
+        <>
+          <Image src={withBase("/logos/philips.png")} alt="Philips" width={84} height={106} />
+          <span>{copy.authorized[lang]}</span>
+        </>
+      ),
+    },
+    { title: copy.slides[2].title[lang], image: REAL.building },
+  ];
+
   return (
     <>
       <HeroCarousel
-        slides={copy.slides.map((s) => ({ title: s.title[lang] }))}
+        slides={slides}
         labels={{ pause: copy.carousel.pause[lang], play: copy.carousel.play[lang] }}
         proof={<Figures items={copy.stats.map((s) => ({ value: s.value, label: s.label[lang] }))} />}
       >
@@ -100,14 +121,14 @@ export default async function HomePage({ params }: PageParams) {
         </div>
       </Section>
 
-      {/* Products: a modality index rather than icon cards */}
+      {/* Products: a modality index; copy summarised from Philips */}
       <Section alt>
         <div className="row" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 28, gap: 16 }}>
           <h2 className="h2" style={{ margin: 0 }}>
             {copy.productsTitle[lang]}
           </h2>
           <ButtonLink href={href(lang, "/products")} variant="ghost" iconAfter="arrow-right">
-            {ui.viewProducts[lang]}
+            {ui.viewAllProducts[lang]}
           </ButtonLink>
         </div>
         <div className="modalities">
@@ -116,7 +137,7 @@ export default async function HomePage({ params }: PageParams) {
               <Photo src={IMG_BY_CATEGORY[p.category]} alt={p.name} height={160} sizes="(max-width: 560px) 100vw, (max-width: 1023px) 50vw, 25vw" note={ui.aiSample[lang]} style={{ marginBottom: 8 }} />
               <span className="modality__code">{p.category}</span>
               <h3>{p.name}</h3>
-              <p>{p.summary[lang]}</p>
+              <p>{p.philipsSummary[lang]}</p>
               <span className="modality__count">
                 <span>
                   <strong>{p.installed}</strong> {copy.installedLabel[lang]}
@@ -126,6 +147,9 @@ export default async function HomePage({ params }: PageParams) {
             </Link>
           ))}
         </div>
+        <p className="caption" style={{ marginTop: 16 }}>
+          {copy.productsSource[lang]}
+        </p>
       </Section>
 
       {/* Services: the lifecycle, with after-sales as the anchor */}
@@ -154,59 +178,82 @@ export default async function HomePage({ params }: PageParams) {
         </blockquote>
       </Section>
 
-      {/* Strategic partnership */}
+      {/* Strategic partnership: Philips awards, photo frames waiting for the client's pictures */}
       <Section alt>
         <h2 className="h2 h2--sm">{copy.partnerTitle[lang]}</h2>
         <p className="section-intro">{copy.partnerIntro[lang]}</p>
-        <Timeline
-          items={["2021", "2022", "2023", "2024", "2024"].map((year) => ({
-            year,
-            title: copy.awardName[lang],
-            sub: <span className="sample">{copy.awardPending[lang]}</span>,
-          }))}
-        />
+        <ol className="awards">
+          {AWARDS.map((a) => (
+            <li key={a.name} className="award">
+              <div className="award__frame">
+                <Icon name="badge-check" size={28} />
+                <span className="sample">{copy.awardPhoto[lang]}</span>
+              </div>
+              <span className="award__year">{a.year}</span>
+              <h3>{a.name}</h3>
+              <p>{a.detail[lang]}</p>
+            </li>
+          ))}
+        </ol>
       </Section>
 
-      {/* Group & business partners */}
+      {/* Group & business partners (real logos), then sample hospital logos */}
       <Section>
         <h2 className="h2" style={{ marginBottom: 24 }}>
           {copy.groupTitle[lang]}
         </h2>
-        <div className="strip">
-          {["Philips", "Sima Corporate", "Sima Solutions", "Sima Renovation"].map((n) => (
-            <div key={n} className="strip__named">
-              {n}
+        <div className="strip strip--logos">
+          {PARTNERS.map((p) => (
+            <div key={p.name} title={p.name}>
+              {p.logo ? <Image src={withBase(p.logo)} alt={p.name} width={240} height={120} /> : p.name}
             </div>
           ))}
         </div>
         <h2 className="h2" style={{ marginTop: 56, marginBottom: 24 }}>
           {copy.clientsTitle[lang]}
         </h2>
-        <div className="strip strip--pending">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
+        <div className="strip strip--logos">
+          {[0, 1, 2, 3, 4, 5].map((n) => (
             <div key={n}>
-              <span className="mono">LOGO</span>
+              <MockHospitalLogo index={n} lang={lang} />
             </div>
           ))}
         </div>
         <p className="caption" style={{ marginTop: 12 }}>
-          <span className="sample">{lang === "th" ? "รอโลโก้โรงพยาบาลคู่ค้าที่ได้รับอนุญาตให้เผยแพร่" : "Waiting for client hospital logos cleared for publication"}</span>
+          <Sample>{copy.clientsNote[lang]}</Sample>
         </p>
       </Section>
 
-      {/* Closing contact band */}
+      {/* Contact summary */}
       <section className="section closing">
-        <div className="container closing__inner">
+        <div className="container contact-brief">
           <div>
-            <h2>{copy.closingTitle[lang]}</h2>
-            <p>{copy.closingBody[lang]}</p>
+            <h2 className="h2 h2--sm">{copy.contactTitle[lang]}</h2>
+            <p className="section-intro" style={{ marginBottom: 0 }}>
+              {copy.contactBody[lang]}
+            </p>
           </div>
-          <div className="row" style={{ gap: 20 }}>
-            <a href={company.phoneHref} className="closing__phone">
-              {company.phone}
-            </a>
-            <ButtonLink href={href(lang, "/contact")} size="lg">
-              {ui.contactSales[lang]}
+          <ul className="contact-brief__list">
+            <li className="contact-line">
+              <Icon name="map-pin" size={18} />
+              <span>{company.address[lang]}</span>
+            </li>
+            <li className="contact-line">
+              <Icon name="phone" size={18} />
+              <a href={company.phoneHref}>{company.phone}</a>
+            </li>
+            <li className="contact-line">
+              <Icon name="mail" size={18} />
+              <a href={`mailto:${company.email}`}>{company.email}</a>
+            </li>
+            <li className="contact-line">
+              <Icon name="clock" size={18} />
+              <span>{company.hours[lang]}</span>
+            </li>
+          </ul>
+          <div className="contact-brief__cta">
+            <ButtonLink href={href(lang, "/contact")} size="lg" iconAfter="arrow-right">
+              {copy.contactCta[lang]}
             </ButtonLink>
           </div>
         </div>

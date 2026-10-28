@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GatedForm } from "@/components/Forms";
-import { Icon } from "@/components/Icon";
 import { Badge, ButtonLink, Grid, PageHero, Photo, Section } from "@/components/ui";
 import { IMG_BY_CATEGORY } from "@/content/images";
 import { getProduct, PRODUCTS } from "@/content/products";
@@ -13,11 +11,6 @@ const copy = {
   gallery: { th: "ภาพเครื่อง (รอภาพจริง / ภาพ AI สำหรับ Draft)", en: "Product photo (pending real / AI draft image)" },
   fda: { th: "เลขที่ใบรับแจ้งรายการละเอียด / ใบจดแจ้ง (อย.)", en: "Thai FDA notification no." },
   ad: { th: "เลขที่ใบอนุญาตโฆษณา", en: "Advertising licence no." },
-  gateTitle: { th: "Professional Access Only", en: "Professional Access Only" },
-  gateNote: {
-    th: "สเปกเชิงลึกและภาพเคสทางคลินิกสงวนไว้สำหรับบุคลากรทางการแพทย์ กรอกข้อมูลเพื่อให้ทีมขายติดต่อกลับพร้อมข้อมูลที่ท่านต้องการ",
-    en: "In-depth specifications and clinical case images are reserved for healthcare professionals. Leave your details and our sales team will follow up with the information you need.",
-  },
   related: { th: "ผลิตภัณฑ์อื่น", en: "Other products" },
 };
 
@@ -79,9 +72,11 @@ export default async function ProductDetailPage({ params }: PageParams<{ slug: s
             </div>
 
             <div className="row" style={{ gap: 16, marginTop: 24 }}>
-              <ButtonLink href={href(lang, "/contact")}>{ui.contactSales[lang]}</ButtonLink>
-              <ButtonLink href={p.philipsUrl} variant="secondary" iconAfter="external" external>
+              <ButtonLink href={p.philipsUrl} iconAfter="external" external>
                 {ui.viewOnPhilips[lang]}
+              </ButtonLink>
+              <ButtonLink href={href(lang, "/contact")} variant="secondary">
+                {ui.contactSales[lang]}
               </ButtonLink>
             </div>
           </div>
@@ -89,23 +84,6 @@ export default async function ProductDetailPage({ params }: PageParams<{ slug: s
       </Section>
 
       <Section alt>
-        <div className="split" style={{ alignItems: "start", gap: 40 }}>
-          <div>
-            <div className="icon-head" style={{ marginBottom: 12 }}>
-              <Icon name="lock" size={26} />
-              <h2 className="h2" style={{ margin: 0 }}>{copy.gateTitle[lang]}</h2>
-            </div>
-            <p className="soft" style={{ maxWidth: "44ch" }}>
-              {copy.gateNote[lang]}
-            </p>
-          </div>
-          <div className="card" style={{ padding: 28, borderRadius: "var(--radius-lg)" }}>
-            <GatedForm lang={lang} product={p.slug} />
-          </div>
-        </div>
-      </Section>
-
-      <Section>
         <h2 className="h2">{copy.related[lang]}</h2>
         <Grid min={220}>
           {PRODUCTS.filter((o) => o.slug !== p.slug).map((o) => (

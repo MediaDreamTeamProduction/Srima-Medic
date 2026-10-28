@@ -8,6 +8,8 @@ export type Product = {
   name: string;
   localName: L;
   summary: L;
+  /** Short summary paraphrased from the Philips category page (philipsUrl). */
+  philipsSummary: L;
   description: L;
   installed: string;
   philipsUrl: string;
@@ -31,6 +33,10 @@ export const PRODUCTS: Product[] = [
     },
     installed: "200+",
     philipsUrl: "https://www.philips.co.th/healthcare/diagnostic-imaging/computed-tomography/ct-systems",
+    philipsSummary: {
+      th: "เครื่อง CT ที่ออกแบบมารองรับปริมาณงานที่เพิ่มขึ้นและเคสทางคลินิกที่ซับซ้อน ช่วยให้ทีมได้ผลการตรวจที่ชัดเจนอย่างรวดเร็ว",
+      en: "CT scanners built for growing workloads and complex clinical cases, helping teams reach clear answers quickly.",
+    },
   },
   {
     slug: "mri",
@@ -48,6 +54,10 @@ export const PRODUCTS: Product[] = [
     },
     installed: "40+",
     philipsUrl: "https://www.philips.co.th/healthcare/diagnostic-imaging/magnetic-resonance-imaging",
+    philipsSummary: {
+      th: "ระบบ MRI และโซลูชันที่ให้ภาพวินิจฉัยคุณภาพสูง ช่วยเพิ่มประสิทธิภาพการทำงาน และดูแลประสบการณ์ของผู้ป่วยตลอดการตรวจ",
+      en: "MRI systems and solutions for high-quality diagnostic images, better productivity and a better experience for patients.",
+    },
   },
   {
     slug: "igt",
@@ -65,6 +75,10 @@ export const PRODUCTS: Product[] = [
     },
     installed: "60+",
     philipsUrl: "https://www.philips.co.th/healthcare/image-guided-therapy",
+    philipsSummary: {
+      th: "ชุดระบบภาพรังสีร่วมรักษา อุปกรณ์ ซอฟต์แวร์ และบริการที่ทำงานร่วมกัน สำหรับหัตถการที่ซับซ้อน",
+      en: "An integrated portfolio of interventional imaging systems, devices, software and services for complex procedures.",
+    },
   },
   {
     slug: "x-ray",
@@ -82,6 +96,10 @@ export const PRODUCTS: Product[] = [
     },
     installed: "20+",
     philipsUrl: "https://www.philips.co.th/healthcare/diagnostic-imaging/radiography",
+    philipsSummary: {
+      th: "ระบบเอกซเรย์ทั่วไป (Radiography) ที่ช่วยให้ขั้นตอนการทำงานลื่นไหลและได้ภาพคุณภาพดี รองรับผู้ป่วยจำนวนมากและการวินิจฉัย",
+      en: "Radiography systems with smooth workflow and good image quality, supporting patient throughput and diagnosis.",
+    },
   },
 ];
 

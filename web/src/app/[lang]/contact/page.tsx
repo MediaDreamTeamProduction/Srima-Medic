@@ -13,7 +13,7 @@ const copy = {
   },
   office: { th: "ที่ตั้งสำนักงาน", en: "Head office" },
   regional: { th: "ทีมขายประจำภูมิภาค", en: "Regional sales contacts" },
-  formTitle: { th: "ส่งคำขอถึงทีมงาน", en: "Send us a request" },
+  formTitle: { th: "นัดหมายให้ทีมงานติดต่อกลับ", en: "Book a call back" },
   formIntro: { th: "กรอกข้อมูลด้านล่าง ทีมงานจะติดต่อกลับตามวันและเวลาที่ท่านสะดวก", en: "Fill in the form and our team will call you back at a time that suits you." },
   faq: { th: "คำถามที่พบบ่อย", en: "Frequently asked questions" },
   faqNote: { th: "คำถามตัวอย่าง — รอรายการคำถามจริงจากลูกค้า", en: "Sample questions — pending the client's list" },

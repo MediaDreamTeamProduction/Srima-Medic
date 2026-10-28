@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { SiteList } from "@/components/Filters";
-import { Icon } from "@/components/Icon";
 import { Figures, Grid, PageHero, Photo, Section } from "@/components/ui";
 import { IMG } from "@/content/images";
-import { REGIONS, ui } from "@/content/site";
+import { ui } from "@/content/site";
 import type { Lang, PageParams } from "@/lib/i18n";
 
 const copy = {
@@ -12,13 +11,8 @@ const copy = {
     th: "ติดตั้งระบบภาพวินิจฉัยไปแล้วกว่า 320 ระบบ และพัฒนาศูนย์ภาพวินิจฉัยกว่า 150 แห่งทั่วประเทศ",
     en: "More than 320 imaging systems installed and over 150 imaging centers developed across Thailand.",
   },
-  mapTitle: { th: "จุดติดตั้งทั่วประเทศ", en: "Installations nationwide" },
-  mapIntro: {
-    th: "แผนที่ประเทศไทยปักหมุดจุดติดตั้งเครื่อง เพื่อแสดงพื้นที่ที่เราดูแลลูกค้าอยู่ในแต่ละจังหวัด",
-    en: "A map of Thailand pinning each installation, showing the provinces where we support customers.",
-  },
+  mapTitle: { th: "จุดติดตั้งทั่วประเทศและเรื่องราวการส่งมอบเครื่อง", en: "Installations nationwide and delivery stories" },
   listTitle: { th: "รายชื่อโรงพยาบาลและศูนย์ภาพวินิจฉัย แยกตามภูมิภาค", en: "Hospitals & imaging centers by region" },
-  storiesTitle: { th: "เรื่องราวการส่งมอบเครื่อง", en: "Delivery stories" },
   storiesNote: { th: "ใช้ภาพบรรยากาศการส่งมอบและการใช้งานจริงที่ได้รับอนุญาต (ไม่เน้นภาพบุคคล)", en: "Approved photos of handovers and systems in use (no close-ups of people)" },
 };
 
@@ -50,39 +44,10 @@ export default async function InstallationsPage({ params }: PageParams) {
       <PageHero title={copy.title[lang]} description={copy.desc[lang]} art="map-pin" />
 
       <Section>
-        <div className="split">
-          <div>
-            <h2 className="h2 h2--sm">{copy.mapTitle[lang]}</h2>
-            <p className="section-intro" style={{ marginBottom: 24 }}>
-              {copy.mapIntro[lang]}
-            </p>
-            <Figures small min={110} items={SYSTEMS.map((s) => ({ value: s.value, label: `${s.label} · ${ui.systems[lang]}` }))} />
-          </div>
-          <div className="ph ph--rounded" style={{ height: 380, background: "var(--surface)" }}>
-            <Icon name="map-pin" size={40} />
-            <span className="ph__tag">MAP</span>
-            <span>{lang === "th" ? "แผนที่ประเทศไทยปักหมุดจุดติดตั้ง" : "Thailand installation map"}</span>
-            <div className="row" style={{ justifyContent: "center", marginTop: 8 }}>
-              {REGIONS.map((r) => (
-                <span key={r.en} className="badge badge--region">
-                  {r[lang]}
-                </span>
-              ))}
-            </div>
-            <span className="sample">{ui.pending[lang]}</span>
-          </div>
-        </div>
-      </Section>
-
-      <Section alt>
-        <h2 className="h2">{copy.listTitle[lang]}</h2>
-        <SiteList lang={lang} sites={SITES} />
-      </Section>
-
-      <Section>
-        <h2 className="h2 h2--sm">{copy.storiesTitle[lang]}</h2>
+        <h2 className="h2 h2--sm">{copy.mapTitle[lang]}</h2>
         <p className="section-intro">{copy.storiesNote[lang]}</p>
-        <Grid min={240} style={{ marginBottom: 32 }}>
+        <Figures small min={110} items={SYSTEMS.map((s) => ({ value: s.value, label: `${s.label} · ${ui.systems[lang]}` }))} />
+        <Grid min={240} style={{ margin: "40px 0 32px" }}>
           {[IMG.hospital, IMG.seminar, IMG.ct].map((src) => (
             <Photo key={src} variant="rounded" height={190} src={src} alt="" sizes="(max-width: 768px) 100vw, 33vw" note={ui.aiSample[lang]} />
           ))}
@@ -100,6 +65,11 @@ export default async function InstallationsPage({ params }: PageParams) {
             {lang === "th" ? "ความเห็นจากโรงพยาบาลลูกค้า" : "Customer hospital"} <span className="sample">{ui.sample[lang]}</span>
           </cite>
         </blockquote>
+      </Section>
+
+      <Section alt>
+        <h2 className="h2">{copy.listTitle[lang]}</h2>
+        <SiteList lang={lang} sites={SITES} />
       </Section>
     </>
   );

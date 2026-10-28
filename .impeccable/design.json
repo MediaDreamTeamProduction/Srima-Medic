@@ -1,67 +1,67 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-24T04:42:11.232Z",
+  "generatedAt": "2026-10-28T18:39:21.825Z",
   "title": "Design System: Srima-Medic",
   "extensions": {
     "colorMeta": {
-      "srima-green": {
+      "srima-teal": {
         "role": "primary",
-        "displayName": "Srima Green",
-        "canonical": "oklch(80.9% 0.191 148)",
+        "displayName": "Srima Teal",
+        "canonical": "oklch(67.3% 0.112 185)",
         "tonalRamp": [
-          "#001600",
-          "#003500",
-          "#005600",
-          "#007701",
-          "#009D35",
-          "#2CC45B",
-          "#77E78E",
-          "#AFFFBD"
+          "#001310",
+          "#00312B",
+          "#005148",
+          "#007167",
+          "#00958A",
+          "#39BBAF",
+          "#7DDFD3",
+          "#B2FFF6"
         ]
       },
-      "green-ink": {
+      "teal-ink": {
         "role": "primary",
-        "displayName": "Green Ink",
-        "canonical": "oklch(49.6% 0.123 152)",
+        "displayName": "Teal Ink",
+        "canonical": "oklch(48.5% 0.083 184)",
         "tonalRamp": [
-          "#001300",
-          "#003105",
-          "#00511B",
-          "#097039",
-          "#3C955B",
-          "#63BB7E",
-          "#96DEA9",
-          "#C4FFD3"
+          "#00120E",
+          "#002E28",
+          "#004D45",
+          "#076C64",
+          "#3C9086",
+          "#63B6AB",
+          "#96DAD0",
+          "#C4FCF3"
         ]
       },
-      "forest": {
+      "marine": {
         "role": "secondary",
-        "displayName": "Forest",
-        "canonical": "oklch(31.2% 0.062 157)",
+        "displayName": "Marine",
+        "canonical": "oklch(32.0% 0.050 186)",
         "tonalRamp": [
-          "#001005",
-          "#082B1A",
-          "#1F4A33",
-          "#3E6850",
-          "#608C72",
-          "#84B196",
-          "#AFD5BD",
-          "#D8F8E3"
+          "#00100E",
+          "#032B27",
+          "#1B4844",
+          "#3A6762",
+          "#5D8A85",
+          "#81AFAA",
+          "#ACD4CF",
+          "#D6F7F2"
         ]
       },
-      "forest-deep": {
+      "marine-deep": {
         "role": "secondary",
-        "displayName": "Forest Deep",
-        "canonical": "oklch(24.9% 0.048 157)",
+        "displayName": "Marine Deep",
+        "canonical": "oklch(26.3% 0.040 187)",
         "tonalRamp": [
-          "#010F06",
-          "#112A1C",
-          "#294736",
-          "#476653",
-          "#698975",
-          "#8CAE99",
-          "#B6D3C0",
-          "#DDF6E6"
+          "#000F0D",
+          "#0E2927",
+          "#254743",
+          "#436561",
+          "#658884",
+          "#89ADA9",
+          "#B3D2CE",
+          "#DBF5F1"
         ]
       },
       "pending-amber": {
@@ -82,91 +82,91 @@
       "ink": {
         "role": "neutral",
         "displayName": "Ink",
-        "canonical": "oklch(24.2% 0.030 157)",
+        "canonical": "oklch(28.5% 0.037 183)",
         "tonalRamp": [
-          "#040E08",
-          "#1A281F",
-          "#33453A",
-          "#506357",
-          "#728679",
-          "#96AB9D",
-          "#BED0C4",
-          "#E4F3E9"
+          "#010F0C",
+          "#112926",
+          "#284642",
+          "#466560",
+          "#688882",
+          "#8CADA7",
+          "#B5D2CD",
+          "#DDF4F0"
         ]
       },
       "ink-soft": {
         "role": "neutral",
         "displayName": "Ink Soft",
-        "canonical": "oklch(44.4% 0.030 157)",
+        "canonical": "oklch(46.6% 0.033 182)",
         "tonalRamp": [
-          "#040E08",
-          "#19281F",
-          "#324539",
-          "#506357",
-          "#728679",
-          "#96AB9D",
-          "#BED0C4",
-          "#E4F3E9"
+          "#020E0C",
+          "#142925",
+          "#2B4641",
+          "#49645F",
+          "#6B8782",
+          "#8FACA6",
+          "#B8D1CC",
+          "#DFF4F0"
         ]
       },
       "ink-faint": {
         "role": "neutral",
         "displayName": "Ink Faint",
-        "canonical": "oklch(52.8% 0.026 159)",
+        "canonical": "oklch(53.0% 0.026 182)",
         "tonalRamp": [
-          "#050D09",
-          "#1B2720",
-          "#34443B",
-          "#526259",
-          "#74857B",
-          "#98AA9F",
-          "#BFCFC6",
-          "#E5F2EA"
+          "#040E0C",
+          "#182825",
+          "#314441",
+          "#4E635F",
+          "#708681",
+          "#94AAA6",
+          "#BCCFCC",
+          "#E2F3EF"
         ]
       },
       "page-mist": {
         "role": "neutral",
         "displayName": "Page Mist",
-        "canonical": "oklch(98.1% 0.006 153)",
+        "canonical": "oklch(98.1% 0.005 183)",
         "tonalRamp": [
-          "#0A0C0A",
-          "#222523",
-          "#3D413E",
-          "#5B5F5C",
-          "#7E817F",
-          "#A2A6A3",
-          "#C8CBC9",
-          "#ECEFED"
+          "#090C0B",
+          "#222524",
+          "#3D4140",
+          "#5A5F5E",
+          "#7D8180",
+          "#A1A6A5",
+          "#C7CBCB",
+          "#ECEFEF"
         ]
       },
       "surface-sunken": {
         "role": "neutral",
         "displayName": "Surface Sunken",
-        "canonical": "oklch(95.5% 0.013 152)",
+        "canonical": "oklch(95.5% 0.012 184)",
         "tonalRamp": [
-          "#080C09",
-          "#202621",
-          "#3B423C",
-          "#58605A",
-          "#7B837C",
-          "#9FA7A1",
-          "#C5CDC7",
-          "#EAF0EB"
+          "#080C0B",
+          "#1F2624",
+          "#394240",
+          "#57605E",
+          "#798381",
+          "#9DA7A5",
+          "#C4CDCB",
+          "#E9F0EF"
         ]
       },
       "border-hairline": {
         "role": "neutral",
         "displayName": "Hairline",
-        "canonical": "oklch(89.8% 0.022 154)",
+        "canonical": "oklch(90.2% 0.019 184)",
         "tonalRamp": [
-          "#070D08",
-          "#1D2720",
-          "#37433B",
-          "#546158",
-          "#77847A",
-          "#9BA99E",
-          "#C2CEC5",
-          "#E7F2EA"
+          "#060D0C",
+          "#1C2725",
+          "#354341",
+          "#52615F",
+          "#758481",
+          "#98A9A6",
+          "#C0CECC",
+          "#E6F1EF"
         ]
       }
     },
@@ -203,12 +203,12 @@
     "shadows": [
       {
         "name": "float",
-        "value": "0 12px 28px -12px rgba(14,58,36,.28)",
+        "value": "0 12px 28px -12px rgba(10,59,55,.28)",
         "purpose": "Floating contact buttons, cookie notice, modal, link-card hover."
       },
       {
         "name": "hairline-lift",
-        "value": "0 1px 2px rgba(14,58,36,.09)",
+        "value": "0 1px 2px rgba(10,59,55,.09)",
         "purpose": "Back-to-top button."
       }
     ],
@@ -259,7 +259,7 @@
       "refersTo": "button-primary",
       "description": "Every main action, e.g. ติดต่อฝ่ายขาย.",
       "html": "<button class=\"ds-btn-primary\">ติดต่อฝ่ายขาย</button>",
-      "css": ".ds-btn-primary{background:var(--green,#53E177);color:var(--green-ink-on,#062B14);font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-weight:600;font-size:16px;padding:13px 22px;min-height:44px;border:0;border-radius:8px;cursor:pointer;transition:background .2s cubic-bezier(.2,.7,.3,1)}.ds-btn-primary:hover{background:var(--green-hover,#46D36A)}.ds-btn-primary:focus-visible{outline:2px solid #13753D;outline-offset:2px}"
+      "css": ".ds-btn-primary{background:var(--teal,#21ACA0);color:var(--teal-ink-on,#03201D);font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-weight:600;font-size:16px;padding:13px 22px;min-height:44px;border:0;border-radius:8px;cursor:pointer;transition:background .2s cubic-bezier(.2,.7,.3,1)}.ds-btn-primary:hover{background:var(--teal-hover,#1B9E92)}.ds-btn-primary:focus-visible{outline:2px solid #0B6E65;outline-offset:2px}"
     },
     {
       "name": "Secondary Button",
@@ -267,7 +267,7 @@
       "refersTo": "button-secondary",
       "description": "Second action beside a primary.",
       "html": "<button class=\"ds-btn-secondary\">ดูรายละเอียด</button>",
-      "css": ".ds-btn-secondary{background:transparent;color:#0E3A24;border:1.5px solid #0E3A24;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-weight:600;font-size:16px;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,color .2s}.ds-btn-secondary:hover{background:#0E3A24;color:#fff}.ds-btn-secondary:focus-visible{outline:2px solid #13753D;outline-offset:2px}"
+      "css": ".ds-btn-secondary{background:transparent;color:#0A3B37;border:1.5px solid #0A3B37;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-weight:600;font-size:16px;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,color .2s}.ds-btn-secondary:hover{background:#0A3B37;color:#fff}.ds-btn-secondary:focus-visible{outline:2px solid #0B6E65;outline-offset:2px}"
     },
     {
       "name": "Text Field",
@@ -275,7 +275,7 @@
       "refersTo": "input",
       "description": "Form input with label above.",
       "html": "<label class=\"ds-field\"><span>เบอร์โทรศัพท์</span><input placeholder=\"02-xxx-xxxx\"></label>",
-      "css": ".ds-field{display:block;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;}.ds-field span{display:block;font-size:15px;font-weight:500;color:#13241A;margin-bottom:6px}.ds-field input{width:100%;box-sizing:border-box;min-height:48px;padding:12px 14px;border:1px solid #B9CCBF;border-radius:8px;font:inherit;font-size:16px;color:#13241A;background:#fff}.ds-field input:focus{outline:2px solid #13753D;outline-offset:0;border-color:#13753D}"
+      "css": ".ds-field{display:block;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;}.ds-field span{display:block;font-size:15px;font-weight:500;color:#12302C;margin-bottom:6px}.ds-field input{width:100%;box-sizing:border-box;min-height:48px;padding:12px 14px;border:1px solid #B4CDC9;border-radius:8px;font:inherit;font-size:16px;color:#12302C;background:#fff}.ds-field input:focus{outline:2px solid #0B6E65;outline-offset:0;border-color:#0B6E65}"
     },
     {
       "name": "Filter Chip",
@@ -283,7 +283,7 @@
       "refersTo": "chip-filter",
       "description": "Category or region filter; pressed state is solid forest.",
       "html": "<button class=\"ds-chip\" aria-pressed=\"true\">ทั้งหมด</button><button class=\"ds-chip\">CT</button>",
-      "css": ".ds-chip{min-height:36px;padding:6px 15px;margin-right:8px;border-radius:999px;border:1px solid transparent;background:#E4EFE7;color:#0E3A24;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-size:14px;font-weight:500;cursor:pointer}.ds-chip:hover{border-color:#0E3A24}.ds-chip[aria-pressed=true]{background:#0E3A24;color:#fff}"
+      "css": ".ds-chip{min-height:36px;padding:6px 15px;margin-right:8px;border-radius:999px;border:1px solid transparent;background:#E3EFED;color:#0A3B37;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-size:14px;font-weight:500;cursor:pointer}.ds-chip:hover{border-color:#0A3B37}.ds-chip[aria-pressed=true]{background:#0A3B37;color:#fff}"
     },
     {
       "name": "Pending Marker",
@@ -299,7 +299,7 @@
       "refersTo": "card",
       "description": "White bordered container with an inline icon heading.",
       "html": "<div class=\"ds-card\"><div class=\"ds-card-head\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a4 4 0 1 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2.5-2.5z\"/></svg><h3>Maintenance (PM/CM)</h3></div><p>บำรุงรักษาเชิงป้องกันและซ่อมบำรุงโดยทีมวิศวกรบริการทั่วประเทศ</p></div>",
-      "css": ".ds-card{background:#fff;border:1px solid #D3E2D7;border-radius:12px;padding:24px;max-width:340px;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;transition:border-color .2s,box-shadow .2s}.ds-card:hover{border-color:#13753D;box-shadow:0 12px 28px -12px rgba(14,58,36,.28)}.ds-card-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;color:#13753D}.ds-card h3{margin:0;font-size:19px;font-weight:600;color:#13241A}.ds-card p{margin:0;font-size:15px;line-height:1.65;color:#46594D}"
+      "css": ".ds-card{background:#fff;border:1px solid #D2E3E0;border-radius:12px;padding:24px;max-width:340px;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;transition:border-color .2s,box-shadow .2s}.ds-card:hover{border-color:#0B6E65;box-shadow:0 12px 28px -12px rgba(10,59,55,.28)}.ds-card-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;color:#0B6E65}.ds-card h3{margin:0;font-size:19px;font-weight:600;color:#12302C}.ds-card p{margin:0;font-size:15px;line-height:1.65;color:#45605B}"
     },
     {
       "name": "Navigation",
@@ -307,7 +307,7 @@
       "refersTo": "nav",
       "description": "White bar; active link underlined in Srima Green.",
       "html": "<nav class=\"ds-nav\"><a>หน้าหลัก</a><a aria-current=\"page\">ผลิตภัณฑ์</a><a>บริการ</a><span class=\"ds-lang\"><b>TH</b><i>EN</i></span></nav>",
-      "css": ".ds-nav{display:flex;align-items:center;gap:22px;height:72px;padding:0 20px;background:#fff;border-bottom:1px solid #D3E2D7;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-size:15px}.ds-nav a{color:#46594D;cursor:pointer;padding:24px 0;border-bottom:2px solid transparent}.ds-nav a:hover{color:#0E3A24}.ds-nav a[aria-current=page]{color:#0E3A24;font-weight:600;border-bottom-color:#53E177}.ds-lang{margin-left:auto;display:flex;border:1px solid #D3E2D7;border-radius:999px;overflow:hidden;font-size:14px}.ds-lang b,.ds-lang i{font-style:normal;padding:5px 12px}.ds-lang b{background:#0E3A24;color:#fff;font-weight:500}.ds-lang i{color:#46594D}"
+      "css": ".ds-nav{display:flex;align-items:center;gap:22px;height:72px;padding:0 20px;background:#fff;border-bottom:1px solid #D2E3E0;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;font-size:15px}.ds-nav a{color:#45605B;cursor:pointer;padding:24px 0;border-bottom:2px solid transparent}.ds-nav a:hover{color:#0A3B37}.ds-nav a[aria-current=page]{color:#0A3B37;font-weight:600;border-bottom-color:#21ACA0}.ds-lang{margin-left:auto;display:flex;border:1px solid #D2E3E0;border-radius:999px;overflow:hidden;font-size:14px}.ds-lang b,.ds-lang i{font-style:normal;padding:5px 12px}.ds-lang b{background:#0A3B37;color:#fff;font-weight:500}.ds-lang i{color:#45605B}"
     },
     {
       "name": "Modality Index Column",
@@ -315,15 +315,15 @@
       "refersTo": "card",
       "description": "Signature: one column of the CT / MRI / IGT / X-ray ruled index.",
       "html": "<a class=\"ds-mod\"><span class=\"ds-mod-code\">MRI</span><h3>Magnetic Resonance Imaging</h3><p>สร้างภาพภายในร่างกายด้วยสนามแม่เหล็ก</p><span class=\"ds-mod-count\"><span><strong>40+</strong> ระบบที่ติดตั้งแล้ว</span><span>→</span></span></a>",
-      "css": ".ds-mod{display:flex;flex-direction:column;gap:10px;max-width:260px;padding:24px 0 26px;border-top:2px solid #0E3A24;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;color:#13241A;cursor:pointer}.ds-mod-code{font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;line-height:1;color:#13753D}.ds-mod h3{margin:0;font-size:18px;font-weight:600}.ds-mod p{margin:0;font-size:15px;line-height:1.65;color:#46594D}.ds-mod-count{display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid #D3E2D7;font-size:14px;color:#46594D}.ds-mod-count strong{font-family:'IBM Plex Mono',monospace;font-size:20px;color:#0E3A24}.ds-mod:hover .ds-mod-count{color:#13753D}"
+      "css": ".ds-mod{display:flex;flex-direction:column;gap:10px;max-width:260px;padding:24px 0 26px;border-top:2px solid #0A3B37;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;color:#12302C;cursor:pointer}.ds-mod-code{font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;line-height:1;color:#0B6E65}.ds-mod h3{margin:0;font-size:18px;font-weight:600}.ds-mod p{margin:0;font-size:15px;line-height:1.65;color:#45605B}.ds-mod-count{display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid #D2E3E0;font-size:14px;color:#45605B}.ds-mod-count strong{font-family:'IBM Plex Mono',monospace;font-size:20px;color:#0A3B37}.ds-mod:hover .ds-mod-count{color:#0B6E65}"
     }
   ],
   "narrative": {
     "northStar": "The Clean Room",
-    "overview": "The site should feel like a bright, orderly imaging suite. Surfaces are mostly white and a faint green-tinged mist, with hairline borders. Colour works the way indicator lights do on a scanner console: the logo green marks the action and the live figures, and almost nothing else. The audience is hospital buyers and clinicians, so density is moderate and the tone is calm. Credibility comes from facts set cleanly, not from decoration.\n\nThree dark surfaces give the page structure: the forest hero band on every page, the contact panel on the Contact page, and the footer. Everything else stays light. The brand mark is the logo's own rounded cross. It appears as a hairline outline cropped by the hero band, and it stands in for room photography until real photos arrive.\n\nThis system replaced a Draft 1 palette of navy, teal and an amber CTA. Hold to the replacement. Don't bring back teal accents, gradient glows, icon tiles stacked above headings, or rows of stat cards.",
+    "overview": "The site should feel like a bright, orderly imaging suite. Surfaces are mostly white and a faint teal-tinged mist, with hairline borders. Colour works the way indicator lights do on a scanner console: the brand teal (client-specified, 2026-10-29) marks the action and the live figures, and almost nothing else. The audience is hospital buyers and clinicians, so density is moderate and the tone is calm. Credibility comes from facts set cleanly, not from decoration.\n\nThree dark surfaces give the page structure: the marine hero band on every page, the contact panel on the Contact page, and the footer. Everything else stays light. The brand mark is the logo's own rounded cross. It appears as a hairline outline cropped by the hero band, and it stands in for room photography until real photos arrive.\n\nThis system replaced a Draft 1 palette of navy, teal and an amber CTA. Hold to the replacement. Don't bring back teal accents, gradient glows, icon tiles stacked above headings, or rows of stat cards.",
     "keyCharacteristics": [
-      "White and mist surfaces, hairline borders, one green for action.",
-      "Forest hero band with the cropped cross outline; a white nav bar carrying the full-colour logo.",
+      "White and mist surfaces, hairline borders, one teal for action.",
+      "Marine hero band with the cropped cross outline; a white nav bar carrying the full-colour logo.",
       "IBM Plex Sans + Plex Sans Thai throughout. Plex Mono is used only for figures, modality codes, licence numbers and phone numbers.",
       "Proof is set as inline figures with hairline dividers, never as tiles.",
       "Pending client data is always visible, as a dashed amber chip."
@@ -331,12 +331,12 @@
     "rules": [
       {
         "name": "The Indicator Light Rule",
-        "body": "Srima Green marks action and live figures only. If something green is not clickable and is not a number, question it.",
+        "body": "Srima Teal marks action and live figures only. If something teal is not clickable and is not a number, question it.",
         "section": "colors"
       },
       {
-        "name": "The Two Greens Rule",
-        "body": "Light green fills, dark green writes. Never set #53E177 as text on white. Never use #13753D as a large fill.",
+        "name": "The Two Teals Rule",
+        "body": "Light teal fills, dark teal writes. Never set #21ACA0 as text on white. Never use #0B6E65 as a large fill.",
         "section": "colors"
       },
       {
@@ -361,11 +361,11 @@
       }
     ],
     "dos": [
-      "**Do** set every primary action in Srima Green with dark ink (#062B14), and every text link in Green Ink (#13753D).",
+      "**Do** set every primary action in Srima Teal with dark ink (#03201D), and every text link in Teal Ink (#0B6E65).",
       "**Do** show proof as inline mono figures with hairline dividers.",
       "**Do** put icons inline beside their heading.",
       "**Do** keep pending markers visible as the dashed amber chip until real client data replaces them.",
-      "**Do** keep the disclaimer above the footer on every page, within a 64ch measure."
+      "**Do** keep the disclaimer above the footer on every page. Its text spans the full row beside the heading (client preference over a narrow measure)."
     ],
     "donts": [
       "**Don't** use teal, navy-blue, sky blue or amber for anything except pending data.",

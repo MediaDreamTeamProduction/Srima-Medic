@@ -1,55 +1,57 @@
 :root{
-  /* Neutral — white rooms with a faint green cast taken from the logo */
-  --bg:#F6FAF7;
+  /* Neutral — clean white rooms with a faint teal cast */
+  --bg:#F5FAF9;
   --surface:#FFFFFF;
-  --surface-alt:#EAF3EC;
-  --border:#D3E2D7;
-  --text:#13241A;
-  --text-soft:#46594D;
-  --text-faint:#5F7066;
+  --surface-alt:#E8F3F1;
+  --border:#D2E3E0;
+  --border-field:#B4CDC9;
+  --text:#12302C;
+  --text-soft:#45605B;
+  --text-faint:#5C716D;
 
-  /* Forest — structural (header / hero band / footer / quote panels) */
-  --forest:#0E3A24;
-  --forest-deep:#092818;
-  --forest-tint:#E4EFE7;
-  --forest-ink-on:#FFFFFF;
+  /* Marine — structural (hero band / footer / dark panels) */
+  --marine:#0A3B37;
+  --marine-deep:#072B28;
+  --marine-tint:#E3EFED;
+  --marine-ink-on:#FFFFFF;
 
-  /* Srima Green — the logo green. Fills, marks and focus only; never text on light */
-  --green:#53E177;
-  --green-hover:#46D36A;
-  --green-tint:#E3F6E8;
-  --green-ink-on:#062B14;
+  /* Srima Teal — brand colour #21ACA0. Fills, marks and focus only; never small text on light */
+  --teal:#21ACA0;
+  --teal-hover:#1B9E92;
+  --teal-tint:#DFF4F1;
+  --teal-ink-on:#03201D;
 
-  /* Green Ink — the brand green darkened until it reads as text (≥5:1 on every light surface) */
-  --green-ink:#13753D;
-  --green-ink-hover:#0E5A2F;
+  /* Teal Ink — the brand teal darkened until it reads as text (≥5.3:1 on every light surface) */
+  --teal-ink:#0B6E65;
+  --teal-ink-hover:#08544D;
 
   /* Semantic */
-  --success:#17703B;
+  --success:#0B6E65;
   --warning:#8A5700;
   --warning-on-dark:#F2C46D;
   --danger:#B23A36;
 
   /* Third-party brand colors (not brand tokens, fixed by owner) */
   --line-green:#06C755;
+  --philips-blue:#0B5ED7;
 
   /* Semantic aliases */
   --text-heading:var(--text);
   --text-body:var(--text);
   --text-muted:var(--text-soft);
   --text-caption:var(--text-faint);
-  --text-link:var(--green-ink);
-  --text-link-hover:var(--green-ink-hover);
+  --text-link:var(--teal-ink);
+  --text-link-hover:var(--teal-ink-hover);
   --surface-page:var(--bg);
   --surface-card:var(--surface);
   --surface-sunken:var(--surface-alt);
-  --surface-structural:var(--forest);
+  --surface-structural:var(--marine);
   --border-card:var(--border);
-  --border-strong:var(--forest);
-  --action-cta:var(--green);
-  --action-cta-ink:var(--green-ink-on);
-  --action-secondary-ink:var(--forest);
-  --focus-ring:var(--green-ink);
+  --border-strong:var(--marine);
+  --action-cta:var(--teal);
+  --action-cta-ink:var(--teal-ink-on);
+  --action-secondary-ink:var(--marine);
+  --focus-ring:var(--teal-ink);
 }
 
 /* Dark theme.
@@ -59,28 +61,29 @@
    automatic); a prefers-color-scheme block here would leave the tokens
    unregistered for consumers. */
 :root[data-theme="dark"]{
-    --bg:#08150D;
-    --surface:#0E2016;
-    --surface-alt:#14301F;
-    --border:#254831;
-    --text:#E6F4EA;
-    --text-soft:#A3C2AD;
-    --text-faint:#8AA894;
+    --bg:#071514;
+    --surface:#0D211F;
+    --surface-alt:#132F2C;
+    --border:#244A46;
+    --border-field:#2F5C57;
+    --text:#E4F4F1;
+    --text-soft:#A0C2BC;
+    --text-faint:#87A8A2;
 
-    --forest:#0A1F13;
-    --forest-deep:#061409;
-    --forest-tint:#14301F;
-    --forest-ink-on:#FFFFFF;
+    --marine:#081F1D;
+    --marine-deep:#051412;
+    --marine-tint:#132F2C;
+    --marine-ink-on:#FFFFFF;
 
-    --green:#53E177;
-    --green-hover:#6BE88B;
-    --green-tint:#123A20;
-    --green-ink-on:#062B14;
+    --teal:#3FCFC0;
+    --teal-hover:#5BD9CC;
+    --teal-tint:#103532;
+    --teal-ink-on:#03201D;
 
-    --green-ink:#6BE88B;
-    --green-ink-hover:#9AF0AF;
+    --teal-ink:#5BD9CC;
+    --teal-ink-hover:#8DE6DC;
 
-    --success:#5FD98A;
+    --success:#5BD9CC;
     --warning:#F2C46D;
     --warning-on-dark:#F2C46D;
     --danger:#E5726E;

@@ -42,13 +42,13 @@ export function ProductGrid({ lang, products }: { lang: Lang; products: Product[
                 </div>
               </div>
               <p>{p.summary[lang]}</p>
-              <div className="row" style={{ marginTop: "auto", justifyContent: "space-between", paddingTop: 8 }}>
-                <Link href={href(lang, `/products/${p.slug}`)} className="btn btn--ghost">
+              <div className="stack" style={{ marginTop: "auto", paddingTop: 8, "--gap": "14px" } as CSSProperties}>
+                <a href={p.philipsUrl} target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--full">
+                  {ui.viewOnPhilips[lang]} <Icon name="external" size={16} />
+                </a>
+                <Link href={href(lang, `/products/${p.slug}`)} className="btn btn--ghost" style={{ alignSelf: "flex-start" }}>
                   {ui.viewDetails[lang]} <Icon name="arrow-right" size={18} />
                 </Link>
-                <a href={p.philipsUrl} target="_blank" rel="noopener noreferrer" className="btn btn--ghost" style={{ fontSize: 15, color: "var(--text-soft)" }}>
-                  Philips <Icon name="external" size={15} />
-                </a>
               </div>
             </div>
           </article>

@@ -1,17 +1,28 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState, type ReactNode } from "react";
+import { withBase } from "@/lib/i18n";
 import { Icon } from "./Icon";
-import { HeroArt } from "./ui";
 
 const INTERVAL = 7000;
 
+export type HeroSlide = {
+  title: string;
+  /** Background photo. */
+  image: string;
+  /** Pending-photo chip text for AI stand-ins; omit for real photos. */
+  note?: string;
+  /** Optional mark shown over the photo, e.g. the Philips logo on the partnership slide. */
+  badge?: ReactNode;
+};
+
 /**
- * Home hero: rotating headline over the forest band. Only the visible slide is the h1;
+ * Home hero: rotating headline over a full-bleed photo per slide. Only the visible slide is the h1;
  * the others keep their space (no layout jump) but are hidden from people and crawlers.
  * Rotation pauses on hover/focus, on the pause button, and under prefers-reduced-motion.
  */
-export function HeroCarousel({ slides, labels, children, proof }: { slides: { title: string }[]; labels: { pause: string; play: string }; children: ReactNode; proof?: ReactNode }) {
+export function HeroCarousel({ slides, labels, children, proof }: { slides: HeroSlide[]; labels: { pause: string; play: string }; children: ReactNode; proof?: ReactNode }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -22,6 +33,8 @@ export function HeroCarousel({ slides, labels, children, proof }: { slides: { ti
     return () => clearInterval(id);
   }, [slides.length, i, paused, hovered]);
 
+  const active = slides[i];
+
   return (
     <section
       className="hero hero-home"
@@ -31,6 +44,16 @@ export function HeroCarousel({ slides, labels, children, proof }: { slides: { ti
       onFocus={() => setHovered(true)}
       onBlur={() => setHovered(false)}
     >
+      <div className="hero-bg" aria-hidden="true">
+        {slides.map((s, si) => (
+          <div key={si} className={`hero-bg__slide${si === i ? " is-active" : ""}`}>
+            <Image src={withBase(s.image)} alt="" fill sizes="100vw" priority={si === 0} />
+          </div>
+        ))}
+      </div>
+      {active.badge ? <div className="hero-badge">{active.badge}</div> : null}
+      {active.note ? <span className="photo__note hero-note">{active.note}</span> : null}
+
       <div className="hero__inner">
         <div className="hero-slides" aria-live={paused ? "polite" : "off"}>
           {slides.map((s, si) =>
@@ -56,7 +79,6 @@ export function HeroCarousel({ slides, labels, children, proof }: { slides: { ti
         </div>
         {proof ? <div className="hero-proof">{proof}</div> : null}
       </div>
-      <HeroArt />
     </section>
   );
 }
