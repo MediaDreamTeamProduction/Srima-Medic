@@ -26,7 +26,7 @@ export function Badge({ tone = "region", children }: { tone?: BadgeTone; childre
   return <span className={`badge badge--${tone}`}>{children}</span>;
 }
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "on-dark";
+type ButtonVariant = "primary" | "secondary" | "ghost";
 export function ButtonLink({
   href,
   variant = "primary",
@@ -175,7 +175,7 @@ export function HeroArt() {
         stroke="rgba(33,172,160,.6)"
         strokeWidth="1"
       />
-      <path d="M88 40h24v48h48v24h-48v48H88v-48H40V88h48z" fill="none" stroke="rgba(255,255,255,.16)" strokeWidth="1" />
+      <path d="M88 40h24v48h48v24h-48v48H88v-48H40V88h48z" fill="none" stroke="rgba(11,110,101,.22)" strokeWidth="1" />
     </svg>
   );
 }

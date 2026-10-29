@@ -75,7 +75,7 @@ export default async function ContactPage({ params }: PageParams) {
               <div style={{ fontWeight: 600, fontSize: 18 }}>
                 {company.name[lang]}
               </div>
-              <div className="stack" style={{ marginTop: 18, fontSize: 16, color: "rgba(255,255,255,.9)", gap: 14 }}>
+              <div className="stack" style={{ marginTop: 18, fontSize: 16, color: "var(--text-soft)", gap: 14 }}>
                 <span className="contact-line">
                   <Icon name="map-pin" size={16} />
                   {company.address[lang]}

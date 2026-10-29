@@ -94,7 +94,7 @@ export default async function HomePage({ params }: PageParams) {
           <ButtonLink href={href(lang, "/contact")} size="lg">
             {ui.contactSales[lang]}
           </ButtonLink>
-          <ButtonLink href={href(lang, "/products")} variant="on-dark" size="lg" iconAfter="arrow-right">
+          <ButtonLink href={href(lang, "/products")} variant="secondary" size="lg" iconAfter="arrow-right">
             {ui.viewProducts[lang]}
           </ButtonLink>
         </div>

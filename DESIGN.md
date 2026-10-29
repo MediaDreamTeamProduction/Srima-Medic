@@ -135,13 +135,13 @@ components:
 
 The site should feel like a bright, orderly imaging suite. Surfaces are mostly white and a faint teal-tinged mist, with hairline borders. Colour works the way indicator lights do on a scanner console: the brand teal (client-specified, 2026-10-29) marks the action and the live figures, and almost nothing else. The audience is hospital buyers and clinicians, so density is moderate and the tone is calm. Credibility comes from facts set cleanly, not from decoration.
 
-Three dark surfaces give the page structure: the marine hero band on every page, the contact panel on the Contact page, and the footer. Everything else stays light. The brand mark is the logo's own rounded cross. It appears as a hairline outline cropped by the hero band, and it stands in for room photography until real photos arrive.
+There are no dark slabs (client direction, 2026-10-30: bright white and mint, like a hospital). Structure comes from light mint bands: the page-header band on every page (#E6F6F3), the contact panel, and the footer (#EAF6F4). The home hero is a full-bleed photo under a white wash, with dark text. The brand mark is the logo's own rounded cross, drawn as a hairline teal outline in the page-header band until room photography arrives.
 
 This system replaced a Draft 1 palette of navy, teal and an amber CTA. Hold to the replacement. Don't bring back teal accents, gradient glows, icon tiles stacked above headings, or rows of stat cards.
 
 **Key Characteristics:**
 - White and mist surfaces, hairline borders, one teal for action.
-- Marine hero band with the cropped cross outline; a white nav bar carrying the full-colour logo.
+- Light mint page-header band with the cropped cross outline; a white nav bar carrying the full-colour logo.
 - IBM Plex Sans + Plex Sans Thai throughout. Plex Mono is used only for figures, modality codes, licence numbers and phone numbers.
 - Proof is set as inline figures with hairline dividers, never as tiles.
 - Pending client data is always visible, as a dashed amber chip.
@@ -155,7 +155,7 @@ The palette is teal (#21ACA0, set by the client on 2026-10-29) and white, and ev
 - **Teal Ink** (#0B6E65): the same hue darkened for type. Use it for links, ghost buttons, modality codes, inline icons and the focus ring. It reaches at least 5:1 on every light surface.
 
 ### Secondary
-- **Marine** (#0A3B37): the structural colour. Use it for the hero band, footer, dark panels, the secondary button outline, active filter chips and the main figures on light surfaces. **Marine Deep** (#072B28) is the darker right-hand panel of the hero, where photography will sit.
+- **Marine** (#0A3B37): text only: headings, figures and the darkest labels. Never a background.
 
 ### Tertiary
 - **Pending Amber** (#8A5700, or #F2C46D on marine): reserved for the "(ข้อมูลตัวอย่าง)" / "(รอข้อมูลจากลูกค้า)" markers. It never means action.
@@ -165,6 +165,8 @@ The palette is teal (#21ACA0, set by the client on 2026-10-29) and white, and ev
 - **Page Mist** (#F5FAF9), **Surface White**, and **Surface Sunken** (#E8F3F1) for alternating sections. **Hairline** (#D2E3E0) for dividers and card borders. **Field Border** (#B4CDC9) for inputs, which need a firmer edge than cards.
 
 ### Named Rules
+**The No Dark Slab Rule.** Backgrounds are white, mist or mint. White text appears only on Teal Ink (#0B6E65, 6.1:1); text on Srima Teal (#21ACA0) is near-black #03201D (6.1:1), because white on #21ACA0 is only 2.8:1.
+
 **The Indicator Light Rule.** Srima Teal marks action and live figures only. If something teal is not clickable and is not a number, question it.
 
 **The Two Teals Rule.** Light teal fills, dark teal writes. Never set #21ACA0 as text on white. Never use #0B6E65 as a large fill.
@@ -251,7 +253,7 @@ CT, MRI, IGT and X-ray sit in one ruled grid with a 2px marine top rule. Each co
 Five numbered steps on one hairline rail. Each step has an inline icon, a mono step number, a title and a line of copy. After-sales (the wrench step) is the anchor and is set in marine.
 
 ### Hero Band (signature)
-A solid marine band with a deeper right-hand panel and the cropped cross outline. The home hero rotates its headline with a pause button and pauses on hover, focus and reduced motion. It ends in a row of proof figures under a hairline.
+A full-bleed photo per slide under a white wash from the left (top-to-bottom on mobile), with marine headline and soft-ink copy. The Philips slide adds the Philips shield on a white card. The rotating headline has a pause button and pauses on hover, focus and reduced motion. It ends in a row of teal-ink proof figures under a hairline.
 
 ## Do's and Don'ts
 
