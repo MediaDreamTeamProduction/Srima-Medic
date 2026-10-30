@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
+import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Figures, MockHospitalLogo, Photo, Sample, Section } from "@/components/ui";
 import { IMG, IMG_BY_CATEGORY, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
@@ -152,31 +153,34 @@ export default async function HomePage({ params }: PageParams) {
         </p>
       </Section>
 
-      {/* Services: the lifecycle, with after-sales as the anchor */}
-      <Section>
-        <h2 className="h2 h2--sm">{copy.servicesTitle[lang]}</h2>
-        <p className="section-intro" style={{ marginBottom: 40 }}>
-          {copy.servicesIntro[lang]}
-        </p>
-        <ol className="lifecycle">
-          {SERVICES.map((s, i) => (
-            <li key={s.icon + s.title.en} className={s.icon === "wrench" ? "is-anchor" : undefined}>
-              <span className="lifecycle__mark">
-                <Icon name={s.icon} size={28} />
-              </span>
-              <span className="step-num">{String(i + 1).padStart(2, "0")}</span>
-              <h3>{s.title[lang]}</h3>
-              <p>{s.body[lang]}</p>
-            </li>
-          ))}
-        </ol>
-        <blockquote className="quote" style={{ margin: "56px 0 0" }}>
-          <svg className="quote__mark" viewBox="0 0 24 24" aria-hidden>
-            <path d="M10 7H6a2 2 0 0 0-2 2v4h4v4H4M20 7h-4a2 2 0 0 0-2 2v4h4v4h-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <p>{copy.quote[lang]}</p>
-        </blockquote>
-      </Section>
+      {/* Services (Figma: home_section_service): blurred photo backdrop, five services, revealed quote */}
+      <section className="section services-home">
+        <div className="services-home__bg" aria-hidden="true">
+          <Image src={withBase(IMG.ct)} alt="" fill sizes="100vw" />
+        </div>
+        <div className="container">
+          <h2 className="h2 h2--sm">{copy.servicesTitle[lang]}</h2>
+          <p className="section-intro">{copy.servicesIntro[lang]}</p>
+          <ul className="service-row">
+            {SERVICES.map((s) => (
+              <li key={s.icon + s.title.en} className="service-item">
+                <span className="service-item__icon">
+                  <Icon name={s.icon} size={44} />
+                </span>
+                <h3>{s.title[lang]}</h3>
+                <p>{s.body[lang]}</p>
+              </li>
+            ))}
+          </ul>
+          <Reveal className="services-quote">
+            <blockquote>
+              <Image className="services-quote__open" src={withBase("/figma/quote-open.svg")} alt="" width={31} height={24} />
+              <p>{copy.quote[lang]}</p>
+              <Image className="services-quote__close" src={withBase("/figma/quote-close.svg")} alt="" width={31} height={24} />
+            </blockquote>
+          </Reveal>
+        </div>
+      </section>
 
       {/* Strategic partnership: Philips awards, photo frames waiting for the client's pictures */}
       <Section alt>

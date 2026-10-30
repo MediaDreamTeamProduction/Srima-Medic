@@ -436,3 +436,36 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
 .award-list h3 { font-size: 17px; }
 .award-list p { font-size: 14px; color: var(--text-soft); margin-top: 2px; }
 .award-list svg { color: var(--teal-ink); }
+
+/* ---------- Home: services (Figma home_section_service) ---------- */
+.services-home { position: relative; overflow: hidden; isolation: isolate; }
+.services-home__bg { position: absolute; inset: -24px; z-index: -2; }
+.services-home__bg img { object-fit: cover; filter: blur(14px) saturate(.9); transform: scale(1.08); }
+/* Light wash keeps the text dark-on-light; deepens to mint behind the quote */
+.services-home::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(255,255,255,.8) 0%, rgba(255,255,255,.72) 52%, rgba(223,244,241,.86) 100%); }
+.services-home .h2 { font-size: clamp(28px, 3.2vw, 40px); }
+.service-row { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px 24px; }
+.service-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; transition: transform 300ms var(--ease); }
+.service-item__icon { width: 112px; height: 112px; margin-bottom: 14px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-lg); background: rgba(255,255,255,.88); border: 1px solid var(--border); color: var(--teal-ink); box-shadow: var(--shadow-sm); transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), background 300ms var(--ease); }
+.service-item__icon svg { transition: transform 300ms var(--ease); }
+.service-item h3 { font-size: 16px; line-height: 1.4; font-weight: 600; }
+.service-item p { font-size: 14px; line-height: 1.6; color: var(--text-soft); max-width: 24ch; }
+@media (hover: hover) {
+  .service-item:hover { transform: translateY(-6px); }
+  .service-item:hover .service-item__icon { box-shadow: var(--shadow-md); background: #fff; }
+  .service-item:hover .service-item__icon svg { transform: scale(1.12) rotate(-4deg); }
+}
+.services-quote { margin: clamp(64px, 9vw, 112px) auto 0; max-width: 752px; }
+.services-quote blockquote { position: relative; margin: 0; padding: 12px 48px; }
+.services-quote p { font-size: clamp(19px, 2vw, 24px); font-weight: 600; line-height: 1.6; text-align: center; color: var(--text); }
+.services-quote__open { position: absolute; left: 0; top: 0; }
+.services-quote__close { position: absolute; right: 0; bottom: 0; transform: rotate(180deg); }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 800ms var(--ease), transform 800ms var(--ease); }
+.reveal.is-shown { opacity: 1; transform: none; }
+@media (max-width: 1023px) { .service-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .service-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
+  .service-item__icon { width: 88px; height: 88px; }
+  .services-quote blockquote { padding: 12px 36px; }
+}
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
