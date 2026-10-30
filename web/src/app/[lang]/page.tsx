@@ -156,7 +156,7 @@ export default async function HomePage({ params }: PageParams) {
       {/* Services (Figma: home_section_service): blurred photo backdrop, five services, revealed quote */}
       <section className="section services-home">
         <div className="services-home__bg" aria-hidden="true">
-          <Image src={withBase(IMG.ct)} alt="" fill sizes="100vw" />
+          <Image src={withBase(REAL.building)} alt="" fill sizes="100vw" />
         </div>
         <div className="container">
           <h2 className="h2 h2--sm">{copy.servicesTitle[lang]}</h2>
