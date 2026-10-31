@@ -6,7 +6,7 @@ import { useRef, useState, type CSSProperties } from "react";
 import type { Product } from "@/content/products";
 import { REGIONS, ui } from "@/content/site";
 import { href, withBase, type L, type Lang } from "@/lib/i18n";
-import { IMG, IMG_BY_CATEGORY } from "@/content/images";
+import { IMG_BY_CATEGORY, IMG_REGIONS } from "@/content/images";
 import { Icon } from "./Icon";
 import { Photo } from "./ui";
 
@@ -61,8 +61,6 @@ export function ProductGrid({ lang, products }: { lang: Lang; products: Product[
 
 type Site = { region: number; name: L; equipment: string };
 
-const REGION_IMG = [IMG.hospital, IMG.mri, IMG.ct, IMG.igt, IMG.xray];
-
 /**
  * Region showcase (intro + photo cards, after the client's "image 1" reference) above the
  * filterable reference list. Picking a card filters the list and scrolls to it.
@@ -87,7 +85,7 @@ export function SiteList({ lang, sites, title, intro, allLabel, viewListLabel }:
         </div>
         {REGIONS.map((r, i) => (
           <button key={r.en} type="button" className="region-card" onClick={() => pick(i)} aria-label={`${r[lang]}: ${viewListLabel}`}>
-            <Image src={withBase(REGION_IMG[i])} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
+            <Image src={withBase(IMG_REGIONS[i])} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
             <span className="photo__note">{ui.aiSample[lang]}</span>
             <span className="region-card__text">
               <span className="region-card__title">

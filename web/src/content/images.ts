@@ -13,6 +13,9 @@ export const IMG = {
   renovation: "/images/renovation.webp",
 };
 
+/** Regional hospital exteriors for the installations region cards, in REGIONS order (North, Northeast, Central, South, Bangkok). */
+export const IMG_REGIONS = ["/images/region-north.webp", "/images/region-northeast.webp", IMG.hospital, "/images/region-south.webp", "/images/region-bangkok.webp"];
+
 /** Real photos supplied by the client (no AI chip). */
 export const REAL = {
   /** Srima-Medic office building, from the cover of the Company Profile 2026. */
