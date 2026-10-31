@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Icon } from "@/components/Icon";
 import { Figures, Grid, PageHero, Photo, Placeholder, Sample, Section, Timeline } from "@/components/ui";
 import { IMG } from "@/content/images";
 import { AWARDS } from "@/content/recognition";
 import { ui } from "@/content/site";
-import type { Lang, PageParams } from "@/lib/i18n";
+import { withBase, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
   title: { th: "เกี่ยวกับ Srima-Medic", en: "About Srima-Medic" },
@@ -33,7 +34,12 @@ const copy = {
   },
   group: [
     {
-      icon: "building" as const,
+      image: IMG.hospital,
+      logos: [
+        { src: "/logos/tomograph.png", alt: "Tomograph" },
+        { src: "/logos/sima-mri.png", alt: "Sima MRI" },
+        { src: "/logos/sima-healthcare.png", alt: "Sima Health Care" },
+      ],
       title: { th: "การลงทุนด้านสุขภาพและ PPP", en: "Healthcare investment & PPP" },
       body: {
         th: "จัดหาเครื่อง CT, MRI และระบบภาพทางการแพทย์ ผ่านรูปแบบการลงทุน การเช่า และการแบ่งปันผลประโยชน์ (PPP) สำหรับโรงพยาบาลภาครัฐและเอกชน",
@@ -41,7 +47,8 @@ const copy = {
       },
     },
     {
-      icon: "scan" as const,
+      image: IMG.ct,
+      logos: [{ src: "/brand/logo-srima.png", alt: "Srima-Medic" }],
       title: { th: "จัดจำหน่ายเครื่องมือแพทย์", en: "Medical equipment distribution" },
       body: {
         th: "Srima-Medic ตัวแทนจำหน่ายที่ได้รับอนุญาตจาก Philips ครอบคลุม CT, MRI, X-ray และระบบรังสีร่วมรักษา",
@@ -49,7 +56,11 @@ const copy = {
       },
     },
     {
-      icon: "wrench" as const,
+      image: IMG.renovation,
+      logos: [
+        { src: "/logos/sima-solutions.png", alt: "Sima Solutions" },
+        { src: "/logos/sima-renovation.png", alt: "Sima Renovation" },
+      ],
       title: { th: "ระบบสนับสนุนและโครงสร้างพื้นฐาน", en: "Supporting solutions & infrastructure" },
       body: {
         th: "Sima Solutions จัดหาระบบสนับสนุน เช่น UPS และ Injector · Sima Renovation งานก่อสร้าง ปรับปรุง และเตรียมพื้นที่สำหรับสถานพยาบาล",
@@ -128,17 +139,28 @@ export default async function AboutPage({ params }: PageParams) {
       <Section>
         <h2 className="h2 h2--sm">{copy.groupTitle[lang]}</h2>
         <p className="section-intro">{copy.groupIntro[lang]}</p>
-        <Grid min={260}>
+        {/* Figma: about us_section_Sima Group of Companies. Photo cards; title by default, details on hover/focus */}
+        <ul className="group-cards">
           {copy.group.map((g) => (
-            <div key={g.title.en} className="card">
-              <div className="icon-head">
-                <Icon name={g.icon} size={26} />
+            <li key={g.title.en} className="group-card" tabIndex={0}>
+              <Image src={withBase(g.image)} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" />
+              <span className="photo__note">{ui.aiSample[lang]}</span>
+              <div className="group-card__body">
                 <h3>{g.title[lang]}</h3>
+                <div className="group-card__detail">
+                  <p>{g.body[lang]}</p>
+                  <div className="group-card__logos">
+                    {g.logos.map((l) => (
+                      <span key={l.alt}>
+                        <Image src={withBase(l.src)} alt={l.alt} width={120} height={60} />
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <p>{g.body[lang]}</p>
-            </div>
+            </li>
           ))}
-        </Grid>
+        </ul>
       </Section>
 
       <Section alt>

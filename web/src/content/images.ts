@@ -10,6 +10,7 @@ export const IMG = {
   office: "/images/office.webp",
   seminar: "/images/seminar.webp",
   hospital: "/images/hospital.webp",
+  renovation: "/images/renovation.webp",
 };
 
 /** Real photos supplied by the client (no AI chip). */

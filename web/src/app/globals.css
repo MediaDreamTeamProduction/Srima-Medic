@@ -470,3 +470,28 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
   .services-quote blockquote { padding: 12px 36px; }
 }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+/* ---------- About: Sima Group photo cards (Figma about us_section_Sima Group of Companies) ---------- */
+.group-cards { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.group-card { position: relative; isolation: isolate; overflow: hidden; height: clamp(340px, 30vw, 420px); border-radius: var(--radius-md); display: flex; align-items: flex-end; outline-offset: 3px; }
+.group-card > img { object-fit: cover; z-index: -2; transition: transform 600ms var(--ease); }
+/* Bottom scrim only where the text sits, so white type stays above 4.5:1 */
+.group-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(4,30,28,.88) 0%, rgba(4,30,28,.62) 38%, rgba(4,30,28,0) 68%); transition: background 400ms var(--ease); }
+.group-card .photo__note { left: 12px; top: 12px; bottom: auto; }
+.group-card__body { width: 100%; padding: 22px 22px 24px; color: #fff; }
+.group-card h3 { color: #fff; font-size: 19px; line-height: 1.35; }
+.group-card__detail { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 400ms var(--ease), opacity 300ms var(--ease); }
+.group-card__detail > * { min-height: 0; }
+.group-card__detail p { overflow: hidden; margin-top: 10px; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); }
+.group-card__logos { overflow: hidden; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.group-card__logos span { display: inline-flex; align-items: center; height: 40px; padding: 4px 8px; background: #fff; border-radius: 6px; }
+.group-card__logos img { width: auto; height: 100%; max-width: 96px; object-fit: contain; }
+.group-card:hover::after, .group-card:focus-within::after { background: linear-gradient(0deg, rgba(4,30,28,.92) 0%, rgba(4,30,28,.78) 55%, rgba(4,30,28,.25) 100%); }
+.group-card:hover > img, .group-card:focus-within > img { transform: scale(1.05); }
+.group-card:hover .group-card__detail, .group-card:focus-within .group-card__detail { grid-template-rows: 1fr; opacity: 1; }
+/* Touch screens have no hover: show the details from the start */
+@media (hover: none) {
+  .group-card__detail { grid-template-rows: 1fr; opacity: 1; }
+  .group-card::after { background: linear-gradient(0deg, rgba(4,30,28,.92) 0%, rgba(4,30,28,.75) 55%, rgba(4,30,28,.2) 100%); }
+}
+@media (max-width: 900px) { .group-cards { grid-template-columns: 1fr; } .group-card { height: 380px; } }
