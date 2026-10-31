@@ -12,7 +12,10 @@ const copy = {
     en: "More than 320 imaging systems installed and over 150 imaging centers developed across Thailand.",
   },
   mapTitle: { th: "จุดติดตั้งทั่วประเทศและเรื่องราวการส่งมอบเครื่อง", en: "Installations nationwide and delivery stories" },
-  listTitle: { th: "รายชื่อโรงพยาบาลและศูนย์ภาพวินิจฉัย แยกตามภูมิภาค", en: "Hospitals & imaging centers by region" },
+  listTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัย แยกตามภูมิภาค", en: "Hospitals & imaging centers by region" },
+  listIntro: { th: "ทีมขายและทีมบริการดูแลลูกค้าครอบคลุม 5 ภูมิภาค เลือกภูมิภาคเพื่อดูรายชื่อสถานพยาบาลที่ติดตั้งเครื่อง", en: "Our sales and service teams cover five regions. Choose a region to see the sites we have installed." },
+  allRegions: { th: "ดูทุกภูมิภาค", en: "See all regions" },
+  viewList: { th: "ดูรายชื่อสถานพยาบาล", en: "View installed sites" },
   storiesNote: { th: "ใช้ภาพบรรยากาศการส่งมอบและการใช้งานจริงที่ได้รับอนุญาต (ไม่เน้นภาพบุคคล)", en: "Approved photos of handovers and systems in use (no close-ups of people)" },
 };
 
@@ -68,8 +71,7 @@ export default async function InstallationsPage({ params }: PageParams) {
       </Section>
 
       <Section alt>
-        <h2 className="h2">{copy.listTitle[lang]}</h2>
-        <SiteList lang={lang} sites={SITES} />
+        <SiteList lang={lang} sites={SITES} title={copy.listTitle[lang]} intro={copy.listIntro[lang]} allLabel={copy.allRegions[lang]} viewListLabel={copy.viewList[lang]} />
       </Section>
     </>
   );

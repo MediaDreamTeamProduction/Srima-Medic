@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type CSSProperties } from "react";
+import Image from "next/image";
+import { useRef, useState, type CSSProperties } from "react";
 import type { Product } from "@/content/products";
 import { REGIONS, ui } from "@/content/site";
-import { href, type L, type Lang } from "@/lib/i18n";
-import { IMG_BY_CATEGORY } from "@/content/images";
+import { href, withBase, type L, type Lang } from "@/lib/i18n";
+import { IMG, IMG_BY_CATEGORY } from "@/content/images";
 import { Icon } from "./Icon";
 import { Photo } from "./ui";
 
@@ -60,13 +61,44 @@ export function ProductGrid({ lang, products }: { lang: Lang; products: Product[
 
 type Site = { region: number; name: L; equipment: string };
 
-/** Region badges filtering the installation reference list. */
-export function SiteList({ lang, sites }: { lang: Lang; sites: Site[] }) {
+const REGION_IMG = [IMG.hospital, IMG.mri, IMG.ct, IMG.igt, IMG.xray];
+
+/**
+ * Region showcase (intro + photo cards, after the client's "image 1" reference) above the
+ * filterable reference list. Picking a card filters the list and scrolls to it.
+ */
+export function SiteList({ lang, sites, title, intro, allLabel, viewListLabel }: { lang: Lang; sites: Site[]; title: string; intro: string; allLabel: string; viewListLabel: string }) {
   const [active, setActive] = useState<number | null>(null);
   const shown = active === null ? sites : sites.filter((s) => s.region === active);
+  const listRef = useRef<HTMLDivElement>(null);
+  const pick = (region: number | null) => {
+    setActive(region);
+    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   return (
     <>
-      <div className="row" style={{ gap: 8, marginBottom: 24 }} role="group" aria-label="Region">
+      <div className="region-grid">
+        <div className="region-grid__intro">
+          <h2 className="h2 h2--sm">{title}</h2>
+          <p className="section-intro">{intro}</p>
+          <button type="button" className="btn btn--secondary btn--pill" onClick={() => pick(null)}>
+            {allLabel}
+          </button>
+        </div>
+        {REGIONS.map((r, i) => (
+          <button key={r.en} type="button" className="region-card" onClick={() => pick(i)} aria-label={`${r[lang]}: ${viewListLabel}`}>
+            <Image src={withBase(REGION_IMG[i])} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
+            <span className="photo__note">{ui.aiSample[lang]}</span>
+            <span className="region-card__text">
+              <span className="region-card__title">
+                {r[lang]} <Icon name="arrow-right" size={18} />
+              </span>
+              <span className="region-card__sub">{viewListLabel}</span>
+            </span>
+          </button>
+        ))}
+      </div>
+      <div ref={listRef} className="row" style={{ gap: 8, margin: "48px 0 24px", scrollMarginTop: "calc(var(--nav-h) + 24px)" }} role="group" aria-label="Region">
         <button className={`badge ${active === null ? "badge--brand" : "badge--region"}`} aria-pressed={active === null} onClick={() => setActive(null)}>
           {ui.all[lang]}
         </button>
