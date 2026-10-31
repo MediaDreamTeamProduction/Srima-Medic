@@ -481,9 +481,9 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
 .group-card__body { width: 100%; padding: 22px 22px 24px; color: #fff; }
 .group-card h3 { color: #fff; font-size: 19px; line-height: 1.35; }
 .group-card__detail { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 400ms var(--ease), opacity 300ms var(--ease); }
-.group-card__detail > * { min-height: 0; }
-.group-card__detail p { overflow: hidden; margin-top: 10px; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); }
-.group-card__logos { overflow: hidden; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.group-card__detail > div { min-height: 0; overflow: hidden; }
+.group-card__detail p { margin-top: 10px; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); }
+.group-card__logos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .group-card__logos span { display: inline-flex; align-items: center; height: 40px; padding: 4px 8px; background: #fff; border-radius: 6px; }
 .group-card__logos img { width: auto; height: 100%; max-width: 96px; object-fit: contain; }
 .group-card:hover::after, .group-card:focus-within::after { background: linear-gradient(0deg, rgba(4,30,28,.92) 0%, rgba(4,30,28,.78) 55%, rgba(4,30,28,.25) 100%); }

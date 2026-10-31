@@ -148,13 +148,15 @@ export default async function AboutPage({ params }: PageParams) {
               <div className="group-card__body">
                 <h3>{g.title[lang]}</h3>
                 <div className="group-card__detail">
-                  <p>{g.body[lang]}</p>
-                  <div className="group-card__logos">
-                    {g.logos.map((l) => (
-                      <span key={l.alt}>
-                        <Image src={withBase(l.src)} alt={l.alt} width={120} height={60} />
-                      </span>
-                    ))}
+                  <div>
+                    <p>{g.body[lang]}</p>
+                    <div className="group-card__logos">
+                      {g.logos.map((l) => (
+                        <span key={l.alt}>
+                          <Image src={withBase(l.src)} alt={l.alt} width={120} height={60} />
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
