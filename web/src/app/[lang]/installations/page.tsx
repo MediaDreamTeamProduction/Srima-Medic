@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { SiteList } from "@/components/Filters";
+import Image from "next/image";
 import { Figures, Grid, PageHero, Photo, Section } from "@/components/ui";
-import { IMG } from "@/content/images";
-import { ui } from "@/content/site";
-import type { Lang, PageParams } from "@/lib/i18n";
+import { IMG, IMG_REGIONS } from "@/content/images";
+import { REGIONS, ui } from "@/content/site";
+import { withBase, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
   title: { th: "ผลงานการติดตั้ง", en: "Installations" },
@@ -13,20 +13,10 @@ const copy = {
   },
   mapTitle: { th: "จุดติดตั้งทั่วประเทศและเรื่องราวการส่งมอบเครื่อง", en: "Installations nationwide and delivery stories" },
   listTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัย แยกตามภูมิภาค", en: "Hospitals & imaging centers by region" },
-  listIntro: { th: "ทีมขายและทีมบริการดูแลลูกค้าครอบคลุม 5 ภูมิภาค เลือกภูมิภาคเพื่อดูรายชื่อสถานพยาบาลที่ติดตั้งเครื่อง", en: "Our sales and service teams cover five regions. Choose a region to see the sites we have installed." },
-  allRegions: { th: "ดูทุกภูมิภาค", en: "See all regions" },
-  viewList: { th: "ดูรายชื่อสถานพยาบาล", en: "View installed sites" },
+  listIntro: { th: "ทีมขายและทีมบริการดูแลลูกค้าครอบคลุม 5 ภูมิภาคทั่วประเทศ", en: "Our sales and service teams cover five regions across Thailand." },
   storiesNote: { th: "ใช้ภาพบรรยากาศการส่งมอบและการใช้งานจริงที่ได้รับอนุญาต (ไม่เน้นภาพบุคคล)", en: "Approved photos of handovers and systems in use (no close-ups of people)" },
 };
 
-const SITES = [
-  { region: 0, equipment: "CT", name: { th: "โรงพยาบาลในภาคเหนือ", en: "Hospital, Northern region" } },
-  { region: 1, equipment: "MRI", name: { th: "โรงพยาบาลในภาคอีสาน", en: "Hospital, Northeast region" } },
-  { region: 2, equipment: "X-ray", name: { th: "ศูนย์ภาพวินิจฉัยภาคกลาง", en: "Imaging center, Central region" } },
-  { region: 3, equipment: "IGT", name: { th: "โรงพยาบาลในภาคใต้", en: "Hospital, Southern region" } },
-  { region: 4, equipment: "CT", name: { th: "โรงพยาบาลในกรุงเทพฯ", en: "Hospital, Bangkok" } },
-  { region: 2, equipment: "MRI", name: { th: "ศูนย์ภาพวินิจฉัยภาคกลาง", en: "Imaging center, Central region" } },
-];
 
 const SYSTEMS = [
   { value: "200+", label: "CT" },
@@ -71,7 +61,23 @@ export default async function InstallationsPage({ params }: PageParams) {
       </Section>
 
       <Section alt>
-        <SiteList lang={lang} sites={SITES} title={copy.listTitle[lang]} intro={copy.listIntro[lang]} allLabel={copy.allRegions[lang]} viewListLabel={copy.viewList[lang]} />
+        {/* Region showcase after the client's "image 1" reference (Mayo Clinic Locations) */}
+        <div className="region-grid">
+          <div className="region-grid__intro">
+            <h2 className="h2 h2--sm">{copy.listTitle[lang]}</h2>
+            <p className="section-intro">{copy.listIntro[lang]}</p>
+          </div>
+          {REGIONS.map((r, i) => (
+            <div key={r.en} className="region-card">
+              <Image src={withBase(IMG_REGIONS[i])} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
+              <span className="photo__note">{ui.aiSample[lang]}</span>
+              <span className="region-card__text">
+                {/* Thai labels read "ภาค…" except Bangkok */}
+                <span className="region-card__title">{lang === "th" && r.en !== "Bangkok" ? `ภาค${r.th}` : r[lang]}</span>
+              </span>
+            </div>
+          ))}
+        </div>
       </Section>
     </>
   );

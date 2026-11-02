@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useRef, useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import type { Product } from "@/content/products";
 import { REGIONS, ui } from "@/content/site";
-import { href, withBase, type L, type Lang } from "@/lib/i18n";
-import { IMG_BY_CATEGORY, IMG_REGIONS } from "@/content/images";
+import { href, type Lang } from "@/lib/i18n";
+import { IMG_BY_CATEGORY } from "@/content/images";
 import { Icon } from "./Icon";
 import { Photo } from "./ui";
 
@@ -53,73 +52,6 @@ export function ProductGrid({ lang, products }: { lang: Lang; products: Product[
               </div>
             </div>
           </article>
-        ))}
-      </div>
-    </>
-  );
-}
-
-type Site = { region: number; name: L; equipment: string };
-
-/**
- * Region showcase (intro + photo cards, after the client's "image 1" reference) above the
- * filterable reference list. Picking a card filters the list and scrolls to it.
- */
-export function SiteList({ lang, sites, title, intro, allLabel, viewListLabel }: { lang: Lang; sites: Site[]; title: string; intro: string; allLabel: string; viewListLabel: string }) {
-  const [active, setActive] = useState<number | null>(null);
-  const shown = active === null ? sites : sites.filter((s) => s.region === active);
-  const listRef = useRef<HTMLDivElement>(null);
-  const pick = (region: number | null) => {
-    setActive(region);
-    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-  return (
-    <>
-      <div className="region-grid">
-        <div className="region-grid__intro">
-          <h2 className="h2 h2--sm">{title}</h2>
-          <p className="section-intro">{intro}</p>
-          <button type="button" className="btn btn--secondary btn--pill" onClick={() => pick(null)}>
-            {allLabel}
-          </button>
-        </div>
-        {REGIONS.map((r, i) => (
-          <button key={r.en} type="button" className="region-card" onClick={() => pick(i)} aria-label={`${r[lang]}: ${viewListLabel}`}>
-            <Image src={withBase(IMG_REGIONS[i])} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
-            <span className="photo__note">{ui.aiSample[lang]}</span>
-            <span className="region-card__text">
-              <span className="region-card__title">
-                {r[lang]} <Icon name="arrow-right" size={18} />
-              </span>
-              <span className="region-card__sub">{viewListLabel}</span>
-            </span>
-          </button>
-        ))}
-      </div>
-      <div ref={listRef} className="row" style={{ gap: 8, margin: "48px 0 24px", scrollMarginTop: "calc(var(--nav-h) + 24px)" }} role="group" aria-label="Region">
-        <button className={`badge ${active === null ? "badge--brand" : "badge--region"}`} aria-pressed={active === null} onClick={() => setActive(null)}>
-          {ui.all[lang]}
-        </button>
-        {REGIONS.map((r, i) => (
-          <button key={r.en} className={`badge ${active === i ? "badge--brand" : "badge--region"}`} aria-pressed={active === i} onClick={() => setActive(i)}>
-            {r[lang]}
-          </button>
-        ))}
-      </div>
-      <div className="grid" style={{ "--min": "260px" } as CSSProperties}>
-        {shown.map((s, i) => (
-          <div key={i} className="card card--flush">
-            <Photo variant="square" height={140} src={IMG_BY_CATEGORY[s.equipment]} alt="" sizes="(max-width: 768px) 100vw, 33vw" note={ui.aiSample[lang]} />
-            <div className="card__body">
-              <div className="row" style={{ gap: 6, marginBottom: 10 }}>
-                <span className="badge badge--region">{REGIONS[s.region][lang]}</span>
-                <span className="badge badge--success">{s.equipment}</span>
-              </div>
-              <div style={{ fontWeight: 600, fontSize: 16 }}>
-                {s.name[lang]} <span className="sample">{ui.sample[lang]}</span>
-              </div>
-            </div>
-          </div>
         ))}
       </div>
     </>
