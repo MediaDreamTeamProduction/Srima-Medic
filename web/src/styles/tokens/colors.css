@@ -20,6 +20,9 @@
   --teal-hover:#1B9E92;
   --teal-tint:#DFF4F1;
   --teal-ink-on:#03201D;
+  /* Primary button fill: the deepest step of the brand teal that carries white text at AA (4.7:1) */
+  --teal-cta:#118276;
+  --teal-cta-hover:#0B6E65;
 
   /* Teal Ink — the brand teal darkened until it reads as text (≥5.3:1 on every light surface) */
   --teal-ink:#0B6E65;

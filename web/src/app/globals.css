@@ -115,8 +115,8 @@ button.badge[aria-pressed="true"] { background: var(--teal-ink); color: #fff; bo
 .btn--lg { padding: 1rem 1.8rem; font-size: 1.0625rem; }
 .btn--sm { padding: .55rem 1rem; font-size: .9375rem; min-height: 40px; }
 .btn--full { width: 100%; }
-.btn--primary { background: var(--teal); color: var(--teal-ink-on); }
-.btn--primary:hover { background: #3CC0B3; color: var(--teal-ink-on); }
+.btn--primary { background: var(--teal-cta); color: #fff; }
+.btn--primary:hover { background: var(--teal-cta-hover); color: #fff; }
 .btn--secondary { background: var(--surface); border: 1.5px solid var(--teal-ink); color: var(--teal-ink); }
 .btn--secondary:hover { background: var(--teal-tint); color: var(--teal-ink-hover); }
 .btn--ghost { background: transparent; color: var(--teal-ink); padding: 0; min-height: 0; }
