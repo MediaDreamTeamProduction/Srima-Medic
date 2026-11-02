@@ -1,10 +1,10 @@
 :root{
-  /* Neutral — clean white rooms with a faint teal cast */
-  --bg:#F5FAF9;
+  /* Neutral: white first; light grey bands, no green tint (client, 2026-11-02) */
+  --bg:#FFFFFF;
   --surface:#FFFFFF;
-  --surface-alt:#E8F3F1;
-  --border:#D2E3E0;
-  --border-field:#B4CDC9;
+  --surface-alt:#F5F7F7;
+  --border:#E1E6E5;
+  --border-field:#C3CDCB;
   --text:#12302C;
   --text-soft:#45605B;
   --text-faint:#5C716D;
@@ -12,7 +12,7 @@
   /* Marine — structural (hero band / footer / dark panels) */
   --marine:#0A3B37;
   --marine-deep:#072B28;
-  --marine-tint:#E3EFED;
+  --marine-tint:#EEF2F1;
   --marine-ink-on:#FFFFFF;
 
   /* Srima Teal — brand colour #21ACA0. Fills, marks and focus only; never small text on light */

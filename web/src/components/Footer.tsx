@@ -26,15 +26,18 @@ const pendingValue = (lang: Lang) => <span className="sample">{ui.pending[lang]}
 export function Disclaimer({ lang }: { lang: Lang }) {
   return (
     <aside className="disclaimer" aria-label={copy.disclaimerTitle[lang]}>
-      <div className="container disclaimer__inner">
-        <strong>{copy.disclaimerTitle[lang]}</strong>
-        <p>
-          {copy.disclaimer[lang]}{" "}
-          <span className="mono">
-            {copy.adLicence[lang]} {company.adLicence ?? "ฆพ. XX/YYYY"}
-          </span>
-          {company.adLicence ? null : <span className="sample">{ui.pending[lang]}</span>}
-        </p>
+      {/* Figma: คำเตือนมาตรฐาน. Rounded panel, icon + heading on one line, text below */}
+      <div className="container">
+        <div className="disclaimer__panel">
+          <div className="disclaimer__head">
+            <Image src={withBase("/figma/info.svg")} alt="" width={35} height={35} />
+            <strong>{copy.disclaimerTitle[lang]}</strong>
+          </div>
+          <p>
+            {copy.disclaimer[lang]} {copy.adLicence[lang]} {company.adLicence ?? "ฆพ. XX/YYYY"}
+            {company.adLicence ? null : <span className="sample">{ui.pending[lang]}</span>}
+          </p>
+        </div>
       </div>
     </aside>
   );
