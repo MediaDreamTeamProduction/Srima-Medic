@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Figures, Grid, PageHero, Photo, Section } from "@/components/ui";
+import { Marquee, PageHero, Section } from "@/components/ui";
 import { IMG, IMG_REGIONS } from "@/content/images";
 import { REGIONS, ui } from "@/content/site";
 import { withBase, type Lang, type PageParams } from "@/lib/i18n";
@@ -14,9 +14,20 @@ const copy = {
   mapTitle: { th: "จุดติดตั้งทั่วประเทศและเรื่องราวการส่งมอบเครื่อง", en: "Installations nationwide and delivery stories" },
   listTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัย แยกตามภูมิภาค", en: "Hospitals & imaging centers by region" },
   listIntro: { th: "ทีมขายและทีมบริการดูแลลูกค้าครอบคลุม 5 ภูมิภาคทั่วประเทศ", en: "Our sales and service teams cover five regions across Thailand." },
-  storiesNote: { th: "ใช้ภาพบรรยากาศการส่งมอบและการใช้งานจริงที่ได้รับอนุญาต (ไม่เน้นภาพบุคคล)", en: "Approved photos of handovers and systems in use (no close-ups of people)" },
+  totalLabel: { th: "ระบบภาพวินิจฉัยที่ติดตั้งแล้วทั่วประเทศ", en: "imaging systems installed nationwide" },
+  galleryLabel: { th: "ภาพการติดตั้งและอุปกรณ์", en: "Installation and equipment photos" },
+  galleryNote: { th: "ภาพประกอบ รอภาพการติดตั้งจริงจากลูกค้า", en: "Illustrative photos — pending the client's installation photos" },
+  statement: {
+    th: "ทีมงาน Srima-Medic ดูแลตั้งแต่การติดตั้งจนถึงบำรุงรักษา ทำให้เครื่องพร้อมใช้งานอย่างต่อเนื่อง",
+    en: "The Srima-Medic team looks after every system from installation through maintenance, keeping it ready for use.",
+  },
+  reviewPending: { th: "พื้นที่สำหรับรีวิวจากโรงพยาบาลลูกค้า", en: "Space for a review from a customer hospital" },
+  reviewName: { th: "ชื่อโรงพยาบาล", en: "Hospital name" },
 };
 
+
+/** Stock photos (Magnific, no people) and existing room drafts, until the client sends installation photos. */
+const GALLERY = ["/gallery/stock-ct.webp", IMG.mri, "/gallery/stock-suite.webp", IMG.igt, "/gallery/stock-mri.webp", IMG.xray, "/gallery/stock-workstation.webp", IMG.renovation, "/gallery/stock-reading.webp", IMG.ct];
 
 const SYSTEMS = [
   { value: "200+", label: "CT" },
@@ -38,26 +49,62 @@ export default async function InstallationsPage({ params }: PageParams) {
 
       <Section>
         <h2 className="h2 h2--sm">{copy.mapTitle[lang]}</h2>
-        <p className="section-intro">{copy.storiesNote[lang]}</p>
-        <Figures small min={110} items={SYSTEMS.map((s) => ({ value: s.value, label: `${s.label} · ${ui.systems[lang]}` }))} />
-        <Grid min={240} style={{ margin: "40px 0 32px" }}>
-          {[IMG.hospital, IMG.seminar, IMG.ct].map((src) => (
-            <Photo key={src} variant="rounded" height={190} src={src} alt="" sizes="(max-width: 768px) 100vw, 33vw" note={ui.aiSample[lang]} />
+        {/* Installed base: the total leads, the four categories follow at a size that still reads as numbers first */}
+        <div className="counts">
+          <div className="counts__total">
+            <span className="counts__value">320+</span>
+            <span className="counts__label">{copy.totalLabel[lang]}</span>
+          </div>
+          <ul className="counts__list">
+            {SYSTEMS.map((s) => (
+              <li key={s.label}>
+                <span className="counts__value">{s.value}</span>
+                <span className="counts__label">
+                  {s.label} · {ui.systems[lang]}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+
+      {/* Installation and equipment photos drifting left; pauses on hover */}
+      <section className="gallery" aria-label={copy.galleryLabel[lang]}>
+        <Marquee label={copy.galleryLabel[lang]} seconds={70}>
+          {GALLERY.map((src) => (
+            <span key={src} className="marquee__photo">
+              <Image src={withBase(src)} alt="" fill sizes="360px" />
+            </span>
           ))}
-        </Grid>
-        <blockquote className="quote" style={{ margin: 0 }}>
-          <svg className="quote__mark" viewBox="0 0 24 24" aria-hidden>
-            <path d="M10 7H6a2 2 0 0 0-2 2v4h4v4H4M20 7h-4a2 2 0 0 0-2 2v4h4v4h-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <p>
-            {lang === "th"
-              ? "ทีมงาน Srima-Medic ดูแลตั้งแต่การติดตั้งจนถึงบำรุงรักษา ทำให้เครื่องพร้อมใช้งานอย่างต่อเนื่อง"
-              : "The Srima-Medic team supported us from installation through maintenance, keeping our system ready for use."}
-          </p>
-          <cite>
-            {lang === "th" ? "ความเห็นจากโรงพยาบาลลูกค้า" : "Customer hospital"} <span className="sample">{ui.sample[lang]}</span>
-          </cite>
-        </blockquote>
+        </Marquee>
+        <p className="caption container" style={{ marginTop: 12 }}>
+          <span className="sample">{copy.galleryNote[lang]}</span>
+        </p>
+      </section>
+
+      <Section>
+        <div className="testimonials">
+          <blockquote className="quote testimonials__lead">
+            <svg className="quote__mark" viewBox="0 0 24 24" aria-hidden>
+              <path d="M10 7H6a2 2 0 0 0-2 2v4h4v4H4M20 7h-4a2 2 0 0 0-2 2v4h4v4h-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <p>{copy.statement[lang]}</p>
+          </blockquote>
+          <ul className="testimonials__cards">
+            {[0, 1].map((n) => (
+              <li key={n} className="review">
+                <p className="review__text">{copy.reviewPending[lang]}</p>
+                <div className="review__who">
+                  <span className="review__avatar" aria-hidden="true" />
+                  <span>
+                    <strong>{copy.reviewName[lang]}</strong>
+                    <span className="sample">{ui.pending[lang]}</span>
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Section>
 
       <Section alt>

@@ -12,7 +12,12 @@ export function ProductCard({ product: p, lang, summary, as: H = "h3" }: { produ
   return (
     <li className="product-card">
       <Photo src={IMG_BY_CATEGORY[p.category]} alt={p.name} height={220} sizes="(max-width: 860px) 100vw, 50vw" note={ui.aiSample[lang]} />
-      <H className="product-card__code">{p.category}</H>
+      <div className="product-card__head">
+        <H className="product-card__code">{p.category}</H>
+        <span className="product-card__installed">
+          {ui.installed[lang]} <strong>{p.installed}</strong> {ui.systems[lang]}
+        </span>
+      </div>
       <p className="product-card__name">{p.name}</p>
       <p className="product-card__summary">{summary}</p>
       <div className="product-card__actions">

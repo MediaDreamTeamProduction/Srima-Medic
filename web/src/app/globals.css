@@ -617,3 +617,37 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
   .process__num { font-size: 20px; }
   .process__step h3, .process__step p { padding: 0; }
 }
+
+/* ---------- Product card: installed count ---------- */
+.product-card__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.product-card__installed { display: inline-flex; align-items: baseline; gap: 6px; padding: 4px 12px; border-radius: 999px; background: var(--teal-tint); color: var(--marine); font-size: 14px; font-weight: 500; }
+.product-card__installed strong { font-family: var(--font-mono); font-size: 18px; color: var(--teal-ink); }
+
+/* ---------- Installations: installed base ---------- */
+.counts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 16px; margin-top: 8px; }
+.counts__total { display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 32px; border-radius: var(--radius-lg); background: var(--teal-ink); color: #fff; min-height: 220px; }
+.counts__total .counts__value { font-size: clamp(64px, 7vw, 96px); color: #fff; }
+.counts__total .counts__label { color: #fff; font-size: 17px; }
+.counts__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.counts__list li { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 24px 28px; border-radius: var(--radius-lg); background: var(--surface-alt); border: 1px solid var(--border); }
+.counts__value { font-family: var(--font-mono); font-weight: 700; line-height: 1; font-size: clamp(40px, 4.4vw, 56px); color: var(--teal-ink); letter-spacing: -0.02em; }
+.counts__label { font-size: 16px; font-weight: 500; color: var(--text-soft); }
+@media (max-width: 860px) { .counts { grid-template-columns: 1fr; } .counts__total { min-height: 0; } }
+
+/* ---------- Installations: photo strip ---------- */
+.gallery { padding: 8px 0 24px; }
+.marquee__photo { position: relative; flex: 0 0 auto; width: 360px; height: 240px; overflow: hidden; border-radius: var(--radius-md); background: var(--surface-alt); }
+.marquee__photo img { object-fit: cover; }
+@media (max-width: 600px) { .marquee__photo { width: 260px; height: 175px; } }
+
+/* ---------- Installations: statement + review cards ---------- */
+.testimonials { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px 56px; align-items: center; }
+.testimonials__lead { max-width: none; }
+.testimonials__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.review { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 200px; padding: 24px; border-radius: var(--radius-lg); border: 1px dashed var(--border-field); background: var(--surface); }
+.review__text { font-size: 16px; line-height: 1.6; color: var(--text-soft); }
+.review__who { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.review__who strong { display: block; color: var(--text); }
+.review__avatar { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%; background: var(--teal-tint); }
+@media (max-width: 960px) { .testimonials { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .testimonials__cards { grid-template-columns: 1fr; } }
