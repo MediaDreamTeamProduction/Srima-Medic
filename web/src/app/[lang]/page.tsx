@@ -2,11 +2,11 @@ import Image from "next/image";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, Section } from "@/components/ui";
+import { AwardGrid, ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, Section } from "@/components/ui";
 import { IMG, IMG_BY_CATEGORY, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
 import { FAQ } from "@/content/faq";
-import { AWARDS, PARTNERS } from "@/content/recognition";
+import { PARTNERS } from "@/content/recognition";
 import { company, ui } from "@/content/site";
 import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
 import { SERVICES } from "@/content/services";
@@ -187,18 +187,7 @@ export default async function HomePage({ params }: PageParams) {
       <Section alt>
         <h2 className="h2 h2--sm">{copy.partnerTitle[lang]}</h2>
         <p className="section-intro section-intro--wide">{copy.partnerIntro[lang]}</p>
-        <ol className="awards">
-          {AWARDS.map((a) => (
-            <li key={a.name} className="award">
-              <div className="award__frame">
-                <Image src={withBase(a.photo)} alt={a.name} width={300} height={360} sizes="(max-width: 600px) 45vw, 220px" />
-              </div>
-              <span className="award__year">{a.year}</span>
-              <h3>{a.name}</h3>
-              <p>{a.detail[lang]}</p>
-            </li>
-          ))}
-        </ol>
+        <AwardGrid lang={lang} />
       </Section>
 
       {/* Group & business partners (real logos), then sample hospital logos */}

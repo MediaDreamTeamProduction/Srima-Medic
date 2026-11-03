@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { withBase } from "@/lib/i18n";
+import { AWARDS } from "@/content/recognition";
+import { withBase, type Lang } from "@/lib/i18n";
 import { Icon, type IconName } from "./Icon";
 
 export function Section({ alt, className = "", id, children, style }: { alt?: boolean; className?: string; id?: string; children: ReactNode; style?: CSSProperties }) {
@@ -151,6 +152,24 @@ export function MockHospitalLogo({ index }: { index: number }) {
         {mark}
       </svg>
     </span>
+  );
+}
+
+/** Philips award photos in equal frames; shared by the home and About pages. */
+export function AwardGrid({ lang }: { lang: Lang }) {
+  return (
+    <ol className="awards">
+      {AWARDS.map((a) => (
+        <li key={a.name} className="award">
+          <div className="award__frame">
+            <Image src={withBase(a.photo)} alt={a.name} width={300} height={360} sizes="(max-width: 600px) 45vw, 220px" />
+          </div>
+          <span className="award__year">{a.year}</span>
+          <h3>{a.name}</h3>
+          <p>{a.detail[lang]}</p>
+        </li>
+      ))}
+    </ol>
   );
 }
 

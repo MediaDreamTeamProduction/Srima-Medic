@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Icon } from "@/components/Icon";
-import { Figures, Grid, PageHero, Photo, Placeholder, Sample, Section, Timeline } from "@/components/ui";
-import { IMG } from "@/content/images";
-import { AWARDS } from "@/content/recognition";
+import { PhotoRotator } from "@/components/PhotoRotator";
+import { AwardGrid, ButtonLink, Figures, Grid, PageHero, Placeholder, Sample, Section } from "@/components/ui";
+import { IMG, REAL } from "@/content/images";
 import { ui } from "@/content/site";
-import { withBase, type Lang, type PageParams } from "@/lib/i18n";
+import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
   title: { th: "เกี่ยวกับ Srima-Medic", en: "About Srima-Medic" },
@@ -78,15 +77,29 @@ const copy = {
     en: "Supply and manage medical equipment for hospitals to ensure accessibility and utmost benefits to all.",
   },
   leadersTitle: { th: "ผู้บริหาร", en: "Leadership" },
-  leadersNote: { th: "รอรูปถ่ายที่อนุญาตให้เผยแพร่", en: "Approved photos pending" },
   teamTitle: { th: "ความแข็งแกร่งของทีม", en: "Team strength" },
   certsTitle: { th: "การรับรองและรางวัล", en: "Certifications & awards" },
+  certsIntro: {
+    th: "ได้รับการยกย่องจาก Philips ด้านผลการดำเนินงานและความเป็นพันธมิตรในภูมิภาคเอเชียแปซิฟิก",
+    en: "Recognised by Philips for performance and partnership across the Asia-Pacific region.",
+  },
+  partnershipTitle: { th: "พันธมิตรทางการค้ากับ Philips", en: "Trade partner of Philips" },
+  partnershipBody: {
+    th: "ตั้งแต่ปี พ.ศ. 2559 Srima-Medic เป็นพันธมิตรทางการค้าและตัวแทนจำหน่ายที่ได้รับอนุญาตจาก Philips ดูแลโรงพยาบาลภาครัฐและเอกชนทั่วประเทศ ตั้งแต่การเลือกระบบ ติดตั้ง ไปจนถึงบริการหลังการขาย",
+    en: "Since 2016 Srima-Medic has been a trade partner and authorised distributor of Philips, supporting public and private hospitals nationwide from system selection and installation to after-sales service.",
+  },
+  partnershipFacts: [
+    { value: "2016", label: { th: "เริ่มเป็นพันธมิตรกับ Philips", en: "Partner of Philips since" } },
+    { value: "4", label: { th: "กลุ่มผลิตภัณฑ์ CT · MRI · IGT · X-ray", en: "Product lines: CT · MRI · IGT · X-ray" } },
+    { value: "5", label: { th: "รางวัลจาก Philips (2021–2024)", en: "Philips awards (2021–2024)" } },
+  ],
+  partnershipCta: { th: "ดูผลิตภัณฑ์ Philips", en: "View Philips products" },
 };
 
 const LEADERS = [
-  { initials: "TT", name: { th: "คุณธนานันต์ เตชะธรรมนุกูล", en: "Thananan Taechadhumnukul" }, role: { th: "ประธานเจ้าหน้าที่บริหาร (CEO)", en: "Chief Executive Officer (CEO)" } },
-  { initials: "CN", name: { th: "Chatuphong Nudchanart", en: "Chatuphong Nudchanart" }, role: { th: "Chief Service Officer (CSO)", en: "Chief Service Officer (CSO)" } },
-  { initials: "NB", name: { th: "Natsanu Bamphenthamsakul", en: "Natsanu Bamphenthamsakul" }, role: { th: "Director of Project Operations", en: "Director of Project Operations" } },
+  { photo: "/leaders/thananan.webp", name: { th: "คุณธนานันต์ เตชะธรรมนุกูล", en: "Thananan Taechadhumnukul" }, role: { th: "ประธานเจ้าหน้าที่บริหาร (CEO)", en: "Chief Executive Officer (CEO)" } },
+  { photo: "/leaders/chatuphong.webp", name: { th: "Chatuphong Nudchanart", en: "Chatuphong Nudchanart" }, role: { th: "Chief Service Officer (CSO)", en: "Chief Service Officer (CSO)" } },
+  { photo: "/leaders/natsanu.webp", name: { th: "Natsanu Bamphenthamsakul", en: "Natsanu Bamphenthamsakul" }, role: { th: "Director of Project Operations", en: "Director of Project Operations" } },
 ];
 
 const TEAM = [
@@ -105,12 +118,27 @@ export default async function AboutPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
 
   const milestones = [
-    { year: "2001", title: "Tomograph Co., Ltd.", sub: lang === "th" ? "จุดเริ่มต้นของกลุ่ม" : "Where the group began", logos: ["LOGO"] },
-    { year: "2013", title: "Sima Health Care Co., Ltd. · Sima MRI Co., Ltd.", logos: ["LOGO", "LOGO"] },
-    { year: "2015", title: "Srima-Medic Co., Ltd.", sub: lang === "th" ? "ก่อตั้งบริษัท" : "Company founded", logos: ["LOGO"] },
-    { year: "2016", title: lang === "th" ? "พันธมิตรทางการค้ากับ Philips" : "Philips trade partnership" },
-    { year: "2017", title: "Sima Solutions Co., Ltd.", logos: ["LOGO"] },
-    { year: "2018", title: "Sima Renovation Co., Ltd.", logos: ["LOGO"] },
+    { year: "2001", title: "Tomograph Co., Ltd.", sub: lang === "th" ? "จุดเริ่มต้นของกลุ่ม" : "Where the group began", logos: [{ src: "/logos/tomograph.png", alt: "Tomograph" }] },
+    {
+      year: "2013",
+      title: "Sima Health Care · Sima MRI",
+      sub: lang === "th" ? "ลงทุนด้านสุขภาพและโครงการ PPP" : "Healthcare investment and PPP",
+      logos: [
+        { src: "/logos/sima-healthcare.png", alt: "Sima Health Care" },
+        { src: "/logos/sima-mri.png", alt: "Sima MRI" },
+      ],
+    },
+    { year: "2015", title: "Srima-Medic Co., Ltd.", sub: lang === "th" ? "ก่อตั้งบริษัท" : "Company founded", logos: [{ src: "/brand/logo-srima.png", alt: "Srima-Medic" }], highlight: true },
+    { year: "2016", title: lang === "th" ? "พันธมิตรทางการค้ากับ Philips" : "Philips trade partnership", logos: [{ src: "/logos/philips.png", alt: "Philips" }] },
+    { year: "2017", title: "Sima Solutions Co., Ltd.", sub: lang === "th" ? "ระบบสนับสนุน เช่น UPS และ Injector" : "Support systems such as UPS and injectors", logos: [{ src: "/logos/sima-solutions.png", alt: "Sima Solutions" }] },
+    { year: "2018", title: "Sima Renovation Co., Ltd.", sub: lang === "th" ? "ก่อสร้างและเตรียมพื้นที่ติดตั้ง" : "Construction and site preparation", logos: [{ src: "/logos/sima-renovation.png", alt: "Sima Renovation" }] },
+  ];
+
+  const historyPhotos = [
+    { src: REAL.building, alt: lang === "th" ? "อาคารสำนักงาน Srima-Medic" : "Srima-Medic office building" },
+    { src: IMG.office, alt: lang === "th" ? "สำนักงาน" : "Office", note: ui.aiSample[lang] },
+    { src: IMG.seminar, alt: lang === "th" ? "งานสัมมนา" : "Seminar", note: ui.aiSample[lang] },
+    { src: IMG.hospital, alt: lang === "th" ? "โรงพยาบาลที่ร่วมงาน" : "Partner hospital", note: ui.aiSample[lang] },
   ];
 
   return (
@@ -127,13 +155,30 @@ export default async function AboutPage({ params }: PageParams) {
               ))}
             </div>
           </div>
-          <Photo variant="rounded" height={340} src={IMG.office} alt={lang === "th" ? "สำนักงาน" : "Office"} note={ui.aiSample[lang]} />
+          <PhotoRotator photos={historyPhotos} height={380} label={copy.historyTitle[lang]} />
         </div>
       </Section>
 
+      {/* Group journey: one card per milestone on a rail, logos instead of placeholders */}
       <Section alt>
         <h2 className="h2">{copy.timelineTitle[lang]}</h2>
-        <Timeline items={milestones} />
+        <ol className="journey">
+          {milestones.map((m) => (
+            <li key={m.year} className={`journey__item${m.highlight ? " is-highlight" : ""}`}>
+              <span className="journey__year">{m.year}</span>
+              <span className="journey__dot" aria-hidden="true" />
+              <div className="journey__card">
+                <div className="journey__logos">
+                  {m.logos.map((l) => (
+                    <Image key={l.alt} src={withBase(l.src)} alt={l.alt} width={160} height={80} />
+                  ))}
+                </div>
+                <h3>{m.title}</h3>
+                {m.sub ? <p>{m.sub}</p> : null}
+              </div>
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section>
@@ -181,20 +226,17 @@ export default async function AboutPage({ params }: PageParams) {
 
       <Section>
         <h2 className="h2 h2--sm">{copy.leadersTitle[lang]}</h2>
-        <p className="section-intro">
-          <span className="sample">{copy.leadersNote[lang]}</span>
-        </p>
-        <Grid min={220}>
+        <ul className="leaders">
           {LEADERS.map((p) => (
-            <div key={p.initials} className="card person">
-              <div className="avatar">{p.initials}</div>
-              <div style={{ fontWeight: 600 }}>{p.name[lang]}</div>
-              <div className="caption" style={{ marginTop: 4, color: "var(--text-soft)" }}>
-                {p.role[lang]}
+            <li key={p.photo} className="leader">
+              <div className="leader__photo">
+                <Image src={withBase(p.photo)} alt={p.name[lang]} width={260} height={380} sizes="(max-width: 600px) 60vw, 260px" />
               </div>
-            </div>
+              <h3>{p.name[lang]}</h3>
+              <p>{p.role[lang]}</p>
+            </li>
           ))}
-        </Grid>
+        </ul>
 
         <h2 className="h2" style={{ marginTop: 56 }}>
           {copy.teamTitle[lang]}
@@ -202,21 +244,38 @@ export default async function AboutPage({ params }: PageParams) {
         <Figures items={TEAM.map((t) => ({ value: t.value, label: t.label[lang] }))} min={180} />
       </Section>
 
+      {/* Strategic partnership: sits right before the awards, so the partnership leads into the recognition it earned */}
       <Section alt>
-        <h2 className="h2">{copy.certsTitle[lang]}</h2>
-        <ol className="award-list">
-          {AWARDS.map((a) => (
-            <li key={a.name}>
-              <span className="award__year">{a.year}</span>
-              <div>
-                <h3>{a.name}</h3>
-                <p>{a.detail[lang]}</p>
-              </div>
-              <Icon name="badge-check" size={22} />
-            </li>
-          ))}
-        </ol>
-        <Grid min={240} style={{ marginTop: 24 }}>
+        <div className="partnership">
+          <div className="partnership__marks" aria-hidden="true">
+            <Image src={withBase("/brand/logo-srima.png")} alt="" width={200} height={80} />
+            <span className="partnership__x">×</span>
+            <Image src={withBase("/logos/philips.png")} alt="" width={84} height={106} />
+          </div>
+          <div>
+            <p className="eyebrow">Strategic Partnership</p>
+            <h2 className="h2 h2--sm">{copy.partnershipTitle[lang]}</h2>
+            <p className="lead">{copy.partnershipBody[lang]}</p>
+            <ul className="partnership__facts">
+              {copy.partnershipFacts.map((f) => (
+                <li key={f.value}>
+                  <span className="figure__value">{f.value}</span>
+                  <span className="figure__label">{f.label[lang]}</span>
+                </li>
+              ))}
+            </ul>
+            <ButtonLink href={href(lang, "/products")} variant="secondary" iconAfter="arrow-right">
+              {copy.partnershipCta[lang]}
+            </ButtonLink>
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <h2 className="h2 h2--sm">{copy.certsTitle[lang]}</h2>
+        <p className="section-intro section-intro--wide">{copy.certsIntro[lang]}</p>
+        <AwardGrid lang={lang} />
+        <Grid min={240} style={{ marginTop: 40 }}>
           {[
             { tag: "LICENCE", label: lang === "th" ? "ใบอนุญาตขายเครื่องมือแพทย์" : "Medical device sales licence" },
             { tag: "DBD", label: "DBD Registered" },
