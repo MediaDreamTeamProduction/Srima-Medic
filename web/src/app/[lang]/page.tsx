@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
+import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { AwardGrid, ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, Section } from "@/components/ui";
-import { IMG, IMG_BY_CATEGORY, REAL } from "@/content/images";
+import { IMG, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
 import { FAQ } from "@/content/faq";
 import { PARTNERS } from "@/content/recognition";
@@ -133,20 +134,7 @@ export default async function HomePage({ params }: PageParams) {
         </div>
         <ul className="product-cards">
           {PRODUCTS.map((p) => (
-            <li key={p.slug} className="product-card">
-              <Photo src={IMG_BY_CATEGORY[p.category]} alt={p.name} height={220} sizes="(max-width: 860px) 100vw, 50vw" note={ui.aiSample[lang]} />
-              <h3 className="product-card__code">{p.category}</h3>
-              <p className="product-card__name">{p.name}</p>
-              <p className="product-card__summary">{p.philipsSummary[lang]}</p>
-              <div className="product-card__actions">
-                <ButtonLink href={p.philipsUrl} iconAfter="external" external>
-                  {ui.viewOnPhilips[lang]}
-                </ButtonLink>
-                <ButtonLink href={href(lang, `/products/${p.slug}`)} variant="secondary">
-                  {ui.viewDetails[lang]}
-                </ButtonLink>
-              </div>
-            </li>
+            <ProductCard key={p.slug} product={p} lang={lang} summary={p.philipsSummary[lang]} />
           ))}
         </ul>
         <p className="caption" style={{ marginTop: 24 }}>

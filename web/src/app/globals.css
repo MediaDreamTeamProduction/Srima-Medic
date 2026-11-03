@@ -526,10 +526,10 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
 .product-card__code { font-family: var(--font-body); font-size: clamp(28px, 2.6vw, 34px); font-weight: 700; line-height: 1.15; color: var(--marine); }
 .product-card__name { margin-top: 6px; font-size: 18px; color: var(--text); }
 .product-card__summary { margin-top: 6px; font-size: 16px; line-height: 1.7; color: var(--text-soft); max-width: 60ch; }
-.product-card__actions { margin-top: auto; padding-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.product-card__actions .btn { width: 100%; }
+/* Figma: outline Philips link, then a ghost details link beside it */
+.product-card__actions { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
 @media (max-width: 860px) { .product-cards { grid-template-columns: 1fr; gap: 40px; } }
-@media (max-width: 480px) { .product-card__actions { grid-template-columns: 1fr; gap: 10px; } }
+@media (max-width: 480px) { .product-card__actions .btn--secondary { width: 100%; } }
 
 /* ---------- Logo marquee (partners, client hospitals) ---------- */
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
