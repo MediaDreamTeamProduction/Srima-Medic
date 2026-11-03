@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { AWARDS } from "@/content/recognition";
+import { REGIONS, ui } from "@/content/site";
 import { withBase, type Lang } from "@/lib/i18n";
 import { Icon, type IconName } from "./Icon";
 
@@ -170,6 +171,23 @@ export function AwardGrid({ lang }: { lang: Lang }) {
         </li>
       ))}
     </ol>
+  );
+}
+
+/** One card per region with a pending phone line; the contact page lists sales reps, the services page service engineers. */
+export function RegionCards({ lang, role }: { lang: Lang; role: string }) {
+  return (
+    <Grid min={200} gap={16}>
+      {REGIONS.map((r) => (
+        <div key={r.en} className="card" style={{ padding: 18 }}>
+          <span className="badge badge--region">{r[lang]}</span>
+          <div style={{ marginTop: 12, fontWeight: 600, fontSize: 16 }}>{role}</div>
+          <div className="caption mono" style={{ marginTop: 4, color: "var(--text-soft)" }}>
+            0X-XXX-XXXX <span className="sample">{ui.pending[lang]}</span>
+          </div>
+        </div>
+      ))}
+    </Grid>
   );
 }
 

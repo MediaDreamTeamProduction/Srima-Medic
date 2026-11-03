@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/Forms";
 import { Icon } from "@/components/Icon";
-import { Grid, PageHero, Section } from "@/components/ui";
+import { PageHero, RegionCards, Section } from "@/components/ui";
 import { FAQ } from "@/content/faq";
-import { company, REGIONS, ui } from "@/content/site";
+import { company, ui } from "@/content/site";
 import type { Lang, PageParams } from "@/lib/i18n";
 
 const copy = {
@@ -80,17 +80,7 @@ export default async function ContactPage({ params }: PageParams) {
         <h2 className="h2" style={{ fontSize: 22, marginBottom: 20 }}>
           {copy.regional[lang]}
         </h2>
-        <Grid min={200} gap={16}>
-          {REGIONS.map((r) => (
-            <div key={r.en} className="card" style={{ padding: 18 }}>
-              <span className="badge badge--region">{r[lang]}</span>
-              <div style={{ marginTop: 12, fontWeight: 600, fontSize: 16 }}>{lang === "th" ? "ผู้แทนขายประจำภาค" : "Regional sales rep"}</div>
-              <div className="caption mono" style={{ marginTop: 4, color: "var(--text-soft)" }}>
-                0X-XXX-XXXX <span className="sample">{ui.pending[lang]}</span>
-              </div>
-            </div>
-          ))}
-        </Grid>
+        <RegionCards lang={lang} role={lang === "th" ? "ผู้แทนขายประจำภาค" : "Regional sales rep"} />
       </Section>
 
       {/* Contact form */}
