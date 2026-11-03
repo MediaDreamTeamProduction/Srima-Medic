@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, Section } from "@/components/ui";
 import { IMG, IMG_BY_CATEGORY, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
+import { FAQ } from "@/content/faq";
 import { AWARDS, PARTNERS } from "@/content/recognition";
 import { company, ui } from "@/content/site";
 import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
@@ -56,9 +57,10 @@ const copy = {
   groupTitle: { th: "พันธมิตรทางธุรกิจ", en: "Business partners" },
   clientsTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัยที่ไว้วางใจ", en: "Trusted by hospitals and imaging centers" },
   installedLabel: { th: "ระบบที่ติดตั้งแล้ว", en: "systems installed" },
-  contactTitle: { th: "ติดต่อเรา", en: "Contact us" },
-  contactBody: { th: "สอบถามข้อมูลผลิตภัณฑ์ ขอใบเสนอราคา หรือนัดหมายให้ทีมงานติดต่อกลับ", en: "Ask about products, request a quotation, or book a call back from our team." },
-  contactCta: { th: "ไปที่หน้าติดต่อเรา", en: "Go to the contact page" },
+  faqTitle: { th: "คำถามที่พบบ่อย", en: "Frequently asked questions" },
+  faqIntro: { th: "คำตอบสั้น ๆ สำหรับคำถามที่โรงพยาบาลสอบถามบ่อย หากต้องการข้อมูลเพิ่มเติม ทีมงานพร้อมติดต่อกลับ", en: "Short answers to what hospitals ask us most. For anything else, our team will call you back." },
+  faqNote: { th: "คำถามตัวอย่าง — รอรายการคำถามจริงจากลูกค้า", en: "Sample questions — pending the client's list" },
+  faqCta: { th: "สอบถามเพิ่มเติม", en: "Ask us something else" },
 };
 
 export default async function HomePage({ params }: PageParams) {
@@ -164,7 +166,7 @@ export default async function HomePage({ params }: PageParams) {
             {SERVICES.map((s) => (
               <li key={s.icon + s.title.en} className="service-item">
                 <span className="service-item__icon">
-                  <Icon name={s.icon} size={44} />
+                  <Image src={withBase(s.art)} alt="" width={160} height={160} sizes="160px" />
                 </span>
                 <h3>{s.title[lang]}</h3>
                 <p>{s.body[lang]}</p>
@@ -217,43 +219,32 @@ export default async function HomePage({ params }: PageParams) {
         <Marquee label={copy.clientsTitle[lang]} seconds={68}>
           {[0, 1, 2, 3, 4, 5].map((n) => (
             <span key={n} className="marquee__logo">
-              <MockHospitalLogo index={n} lang={lang} />
+              <MockHospitalLogo index={n} />
             </span>
           ))}
         </Marquee>
       </Section>
 
-      {/* Contact summary */}
+      {/* FAQ (replaces the contact brief; the contact page keeps the full details) */}
       <section className="section closing">
-        <div className="container contact-brief">
+        <div className="container faq-home">
           <div>
-            <h2 className="h2 h2--sm">{copy.contactTitle[lang]}</h2>
-            <p className="section-intro" style={{ marginBottom: 0 }}>
-              {copy.contactBody[lang]}
+            <h2 className="h2 h2--sm">{copy.faqTitle[lang]}</h2>
+            <p className="section-intro">{copy.faqIntro[lang]}</p>
+            <p className="caption" style={{ marginBottom: 20 }}>
+              <span className="sample">{copy.faqNote[lang]}</span>
             </p>
-          </div>
-          <ul className="contact-brief__list">
-            <li className="contact-line">
-              <Icon name="map-pin" size={18} />
-              <span>{company.address[lang]}</span>
-            </li>
-            <li className="contact-line">
-              <Icon name="phone" size={18} />
-              <a href={company.phoneHref}>{company.phone}</a>
-            </li>
-            <li className="contact-line">
-              <Icon name="mail" size={18} />
-              <a href={`mailto:${company.email}`}>{company.email}</a>
-            </li>
-            <li className="contact-line">
-              <Icon name="clock" size={18} />
-              <span>{company.hours[lang]}</span>
-            </li>
-          </ul>
-          <div className="contact-brief__cta">
-            <ButtonLink href={href(lang, "/contact")} size="lg" iconAfter="arrow-right">
-              {copy.contactCta[lang]}
+            <ButtonLink href={href(lang, "/contact")} variant="secondary" iconAfter="arrow-right">
+              {copy.faqCta[lang]}
             </ButtonLink>
+          </div>
+          <div className="faq">
+            {FAQ.map((f) => (
+              <details key={f.q.en}>
+                <summary>{f.q[lang]}</summary>
+                <p>{f.a[lang]}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

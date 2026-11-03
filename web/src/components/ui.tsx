@@ -128,16 +128,16 @@ export function Marquee({ label, seconds = 38, children }: { label: string; seco
 }
 
 const MOCK_HOSPITALS = [
-  { th: "โรงพยาบาลตัวอย่าง ก", en: "Sample Hospital A", shape: "cross", color: "#0B6E65" },
-  { th: "ศูนย์ภาพวินิจฉัยตัวอย่าง", en: "Sample Imaging Center", shape: "circle", color: "#2563A6" },
-  { th: "โรงพยาบาลตัวอย่าง ข", en: "Sample Hospital B", shape: "leaf", color: "#3E7D3A" },
-  { th: "โรงพยาบาลตัวอย่าง ค", en: "Sample Hospital C", shape: "shield", color: "#8A3B5C" },
-  { th: "ศูนย์การแพทย์ตัวอย่าง", en: "Sample Medical Center", shape: "cross", color: "#B05A1E" },
-  { th: "โรงพยาบาลตัวอย่าง ง", en: "Sample Hospital D", shape: "circle", color: "#4B4E9C" },
+  { shape: "cross", color: "#0B6E65" },
+  { shape: "circle", color: "#2563A6" },
+  { shape: "leaf", color: "#3E7D3A" },
+  { shape: "shield", color: "#8A3B5C" },
+  { shape: "cross", color: "#B05A1E" },
+  { shape: "circle", color: "#4B4E9C" },
 ] as const;
 
-/** Fictional hospital marks standing in for client logos until real ones are cleared for publication. */
-export function MockHospitalLogo({ index, lang }: { index: number; lang: "th" | "en" }) {
+/** Fictional, nameless hospital marks standing in for client logos until real ones are cleared for publication. */
+export function MockHospitalLogo({ index }: { index: number }) {
   const h = MOCK_HOSPITALS[index % MOCK_HOSPITALS.length];
   const mark = {
     cross: <path d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z" />,
@@ -150,7 +150,6 @@ export function MockHospitalLogo({ index, lang }: { index: number; lang: "th" | 
       <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden>
         {mark}
       </svg>
-      <span>{h[lang]}</span>
     </span>
   );
 }
