@@ -53,7 +53,6 @@ const copy = {
     th: "ได้รับการยกย่องจาก Philips ด้านผลการดำเนินงานและความเป็นพันธมิตรในภูมิภาคเอเชียแปซิฟิก",
     en: "Recognised by Philips for performance and partnership across the Asia-Pacific region.",
   },
-  awardPhoto: { th: "รอรูปรางวัล", en: "Award photo pending" },
   groupTitle: { th: "พันธมิตรทางธุรกิจ", en: "Business partners" },
   clientsTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัยที่ไว้วางใจ", en: "Trusted by hospitals and imaging centers" },
   clientsNote: { th: "โลโก้ตัวอย่าง รอโลโก้โรงพยาบาลคู่ค้าที่ได้รับอนุญาตให้เผยแพร่", en: "Sample logos: waiting for client hospital logos cleared for publication" },
@@ -186,13 +185,12 @@ export default async function HomePage({ params }: PageParams) {
       {/* Strategic partnership: Philips awards, photo frames waiting for the client's pictures */}
       <Section alt>
         <h2 className="h2 h2--sm">{copy.partnerTitle[lang]}</h2>
-        <p className="section-intro">{copy.partnerIntro[lang]}</p>
+        <p className="section-intro section-intro--wide">{copy.partnerIntro[lang]}</p>
         <ol className="awards">
           {AWARDS.map((a) => (
             <li key={a.name} className="award">
               <div className="award__frame">
-                <Icon name="badge-check" size={28} />
-                <span className="sample">{copy.awardPhoto[lang]}</span>
+                <Image src={withBase(a.photo)} alt={a.name} width={300} height={360} sizes="(max-width: 600px) 45vw, 220px" />
               </div>
               <span className="award__year">{a.year}</span>
               <h3>{a.name}</h3>

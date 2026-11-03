@@ -8,3 +8,6 @@
 .claude/
 .impeccable/hook.cache.json
 .DS_Store
+
+# Client source images (web copies live in web/public)
+IMG/
