@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Reveal";
@@ -122,9 +121,9 @@ export default async function HomePage({ params }: PageParams) {
         </div>
       </Section>
 
-      {/* Products: a modality index; copy summarised from Philips */}
-      <Section alt>
-        <div className="row" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 28, gap: 16 }}>
+      {/* Products (Figma: home_section_product): 2×2 cards, Philips link first, details second */}
+      <Section>
+        <div className="row" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32, gap: 16 }}>
           <h2 className="h2" style={{ margin: 0 }}>
             {copy.productsTitle[lang]}
           </h2>
@@ -132,23 +131,25 @@ export default async function HomePage({ params }: PageParams) {
             {ui.viewAllProducts[lang]}
           </ButtonLink>
         </div>
-        <div className="modalities">
+        <ul className="product-cards">
           {PRODUCTS.map((p) => (
-            <Link key={p.slug} href={href(lang, `/products/${p.slug}`)} className="modality">
-              <Photo src={IMG_BY_CATEGORY[p.category]} alt={p.name} height={160} sizes="(max-width: 560px) 100vw, (max-width: 1023px) 50vw, 25vw" note={ui.aiSample[lang]} style={{ marginBottom: 8 }} />
-              <span className="modality__code">{p.category}</span>
-              <h3>{p.name}</h3>
-              <p>{p.philipsSummary[lang]}</p>
-              <span className="modality__count">
-                <span>
-                  <strong>{p.installed}</strong> {copy.installedLabel[lang]}
-                </span>
-                <Icon name="arrow-right" size={18} />
-              </span>
-            </Link>
+            <li key={p.slug} className="product-card">
+              <Photo src={IMG_BY_CATEGORY[p.category]} alt={p.name} height={220} sizes="(max-width: 860px) 100vw, 50vw" note={ui.aiSample[lang]} />
+              <h3 className="product-card__code">{p.category}</h3>
+              <p className="product-card__name">{p.name}</p>
+              <p className="product-card__summary">{p.philipsSummary[lang]}</p>
+              <div className="product-card__actions">
+                <ButtonLink href={p.philipsUrl} iconAfter="external" external>
+                  {ui.viewOnPhilips[lang]}
+                </ButtonLink>
+                <ButtonLink href={href(lang, `/products/${p.slug}`)} variant="secondary">
+                  {ui.viewDetails[lang]}
+                </ButtonLink>
+              </div>
+            </li>
           ))}
-        </div>
-        <p className="caption" style={{ marginTop: 16 }}>
+        </ul>
+        <p className="caption" style={{ marginTop: 24 }}>
           {copy.productsSource[lang]}
         </p>
       </Section>
