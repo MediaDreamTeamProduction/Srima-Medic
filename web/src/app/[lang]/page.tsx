@@ -2,7 +2,7 @@ import Image from "next/image";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Figures, MockHospitalLogo, Photo, Sample, Section } from "@/components/ui";
+import { ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, Section } from "@/components/ui";
 import { IMG, IMG_BY_CATEGORY, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
 import { AWARDS, PARTNERS } from "@/content/recognition";
@@ -55,7 +55,6 @@ const copy = {
   },
   groupTitle: { th: "พันธมิตรทางธุรกิจ", en: "Business partners" },
   clientsTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัยที่ไว้วางใจ", en: "Trusted by hospitals and imaging centers" },
-  clientsNote: { th: "โลโก้ตัวอย่าง รอโลโก้โรงพยาบาลคู่ค้าที่ได้รับอนุญาตให้เผยแพร่", en: "Sample logos: waiting for client hospital logos cleared for publication" },
   installedLabel: { th: "ระบบที่ติดตั้งแล้ว", en: "systems installed" },
   contactTitle: { th: "ติดต่อเรา", en: "Contact us" },
   contactBody: { th: "สอบถามข้อมูลผลิตภัณฑ์ ขอใบเสนอราคา หรือนัดหมายให้ทีมงานติดต่อกลับ", en: "Ask about products, request a quotation, or book a call back from our team." },
@@ -205,26 +204,23 @@ export default async function HomePage({ params }: PageParams) {
         <h2 className="h2" style={{ marginBottom: 24 }}>
           {copy.groupTitle[lang]}
         </h2>
-        <div className="strip strip--logos">
+        <Marquee label={copy.groupTitle[lang]} seconds={46}>
           {PARTNERS.map((p) => (
-            <div key={p.name} title={p.name}>
+            <span key={p.name} className="marquee__logo" title={p.name}>
               {p.logo ? <Image src={withBase(p.logo)} alt={p.name} width={240} height={120} /> : p.name}
-            </div>
+            </span>
           ))}
-        </div>
+        </Marquee>
         <h2 className="h2" style={{ marginTop: 56, marginBottom: 24 }}>
           {copy.clientsTitle[lang]}
         </h2>
-        <div className="strip strip--logos">
+        <Marquee label={copy.clientsTitle[lang]} seconds={68}>
           {[0, 1, 2, 3, 4, 5].map((n) => (
-            <div key={n}>
+            <span key={n} className="marquee__logo">
               <MockHospitalLogo index={n} lang={lang} />
-            </div>
+            </span>
           ))}
-        </div>
-        <p className="caption" style={{ marginTop: 12 }}>
-          <Sample>{copy.clientsNote[lang]}</Sample>
-        </p>
+        </Marquee>
       </Section>
 
       {/* Contact summary */}

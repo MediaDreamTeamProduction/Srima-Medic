@@ -110,6 +110,23 @@ export function Photo({ src, alt, note, height = 160, variant, sizes = "(max-wid
   );
 }
 
+/**
+ * Logo strip that drifts slowly to the left, forever. The set renders twice so the loop is seamless;
+ * the copy is hidden from assistive tech. Pauses on hover/focus and stops under prefers-reduced-motion.
+ */
+export function Marquee({ label, seconds = 38, children }: { label: string; seconds?: number; children: ReactNode }) {
+  return (
+    <div className="marquee" role="group" aria-label={label} style={{ "--marquee-duration": `${seconds}s` } as CSSProperties}>
+      <div className="marquee__track">
+        <div className="marquee__set">{children}</div>
+        <div className="marquee__set" aria-hidden="true">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const MOCK_HOSPITALS = [
   { th: "โรงพยาบาลตัวอย่าง ก", en: "Sample Hospital A", shape: "cross", color: "#0B6E65" },
   { th: "ศูนย์ภาพวินิจฉัยตัวอย่าง", en: "Sample Imaging Center", shape: "circle", color: "#2563A6" },
