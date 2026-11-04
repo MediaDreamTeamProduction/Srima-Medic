@@ -56,7 +56,20 @@ button, input, select, textarea { font: inherit; }
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
 .container--narrow { max-width: 800px; }
 .section { padding: var(--section-y) 0; }
-.section--alt { background: var(--surface-alt); }
+/* Grey-green sections: a faint gradient with two CT-gantry rings at the side and one slow arc travelling the outer ring */
+.section--alt, .closing { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(110deg, #FFFFFF 0%, #F7FAF9 50%, #EEF6F4 100%); }
+.closing { background: linear-gradient(250deg, #FFFFFF 0%, #F7FAF9 50%, #EEF6F4 100%); }
+.section--alt::before, .closing::before, .section--alt::after, .closing::after { content: ""; position: absolute; top: 50%; right: -230px; width: 640px; height: 640px; margin-top: -320px; z-index: -1; pointer-events: none; }
+.closing::before, .closing::after { right: auto; left: -230px; }
+.section--alt::before, .closing::before { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Ccircle cx='320' cy='320' r='270' fill='none' stroke='%2321ACA0' stroke-opacity='.07' stroke-width='28'/%3E%3Ccircle cx='320' cy='320' r='170' fill='none' stroke='%2321ACA0' stroke-opacity='.05' stroke-width='12'/%3E%3C/svg%3E") center / contain no-repeat; }
+/* The arc: a 60° slice of the outer ring (r 270, 28 wide), masked to the ring's band */
+.section--alt::after, .closing::after { border-radius: 50%; background: conic-gradient(rgba(33,172,160,.18) 0deg 60deg, transparent 60deg); -webkit-mask: radial-gradient(circle, transparent 256px, #000 256.5px, #000 284px, transparent 284.5px); mask: radial-gradient(circle, transparent 256px, #000 256.5px, #000 284px, transparent 284.5px); animation: ring-scan 22s linear infinite; }
+@keyframes ring-scan { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .section--alt::after, .closing::after { animation: none; } }
+@media (max-width: 760px) {
+  .section--alt::before, .section--alt::after { right: -400px; }
+  .closing::before, .closing::after { left: -400px; }
+}
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 280px), 100%), 1fr)); gap: var(--gap, 20px); }
 .grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 56px; align-items: center; }
@@ -392,7 +405,7 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
 .checklist li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; font-weight: 500; color: var(--text); }
 .checklist svg { flex: 0 0 auto; margin-top: 3px; color: var(--teal-ink); }
 @media (max-width: 480px) { .checklist { grid-template-columns: 1fr; } }
-.closing { background: var(--surface-alt); border-top: 1px solid var(--border); }
+.closing { border-top: 1px solid var(--border); }
 .closing__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 .contact-brief { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) auto; gap: 32px 48px; align-items: center; }
 .contact-brief__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; font-size: 16px; }
