@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ParallaxBg } from "@/components/ParallaxBg";
 import { PhotoRotator } from "@/components/PhotoRotator";
 import { AwardGrid, ButtonLink, Figures, Grid, PageHero, Placeholder, Sample, Section } from "@/components/ui";
 import { IMG, REAL } from "@/content/images";
@@ -210,19 +211,23 @@ export default async function AboutPage({ params }: PageParams) {
         </ul>
       </Section>
 
-      <Section alt>
-        <h2 className="h2">{copy.visionTitle[lang]}</h2>
-        <Grid min={300} gap={24}>
-          <div className="card" style={{ padding: 28 }}>
-            <h3>Vision</h3>
-            <p style={{ fontSize: 17, color: "var(--text)" }}>{copy.vision[lang]}</p>
-          </div>
-          <div className="card" style={{ padding: 28 }}>
-            <h3>Mission</h3>
-            <p style={{ fontSize: 17, color: "var(--text)" }}>{copy.mission[lang]}</p>
-          </div>
-        </Grid>
-      </Section>
+      {/* Vision & mission over a parallax photo */}
+      <section className="section vision">
+        <ParallaxBg src={IMG.hospital} />
+        <div className="container">
+          <h2 className="h2">{copy.visionTitle[lang]}</h2>
+          <Grid min={300} gap={24}>
+            <div className="card" style={{ padding: 28 }}>
+              <h3>Vision</h3>
+              <p style={{ fontSize: 17, color: "var(--text)" }}>{copy.vision[lang]}</p>
+            </div>
+            <div className="card" style={{ padding: 28 }}>
+              <h3>Mission</h3>
+              <p style={{ fontSize: 17, color: "var(--text)" }}>{copy.mission[lang]}</p>
+            </div>
+          </Grid>
+        </div>
+      </section>
 
       <Section>
         <h2 className="h2 h2--sm">{copy.leadersTitle[lang]}</h2>

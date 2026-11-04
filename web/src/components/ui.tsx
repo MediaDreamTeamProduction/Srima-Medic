@@ -192,9 +192,9 @@ export function RegionCards({ lang, role }: { lang: Lang; role: string }) {
 }
 
 /** Line-drawn quotation mark set above a quote; shared by the home services quote and the Installations statement. */
-export function QuoteMark() {
+export function QuoteMark({ className = "" }: { className?: string }) {
   return (
-    <svg className="quote__mark" viewBox="0 0 24 24" aria-hidden>
+    <svg className={`quote__mark ${className}`} viewBox="0 0 24 24" aria-hidden>
       <path d="M10 7H6a2 2 0 0 0-2 2v4h4v4H4M20 7h-4a2 2 0 0 0-2 2v4h4v4h-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );

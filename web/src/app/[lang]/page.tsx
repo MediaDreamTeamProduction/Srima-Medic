@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
+import { ParallaxBg } from "@/components/ParallaxBg";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { AwardGrid, ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, QuoteMark, Section } from "@/components/ui";
@@ -144,9 +145,7 @@ export default async function HomePage({ params }: PageParams) {
 
       {/* Services (Figma: home_section_service): blurred photo backdrop, five services, revealed quote */}
       <section className="section services-home">
-        <div className="services-home__bg" aria-hidden="true">
-          <Image src={withBase(REAL.building)} alt="" fill sizes="100vw" />
-        </div>
+        <ParallaxBg src={REAL.building} className="services-home__bg" />
         <div className="container">
           <h2 className="h2 h2--sm">{copy.servicesTitle[lang]}</h2>
           <p className="section-intro">{copy.servicesIntro[lang]}</p>
@@ -163,8 +162,9 @@ export default async function HomePage({ params }: PageParams) {
           </ul>
           <Reveal className="services-quote">
             <blockquote>
-              <QuoteMark />
+              <QuoteMark className="services-quote__open" />
               <p>{copy.quote[lang]}</p>
+              <QuoteMark className="services-quote__close" />
             </blockquote>
           </Reveal>
         </div>

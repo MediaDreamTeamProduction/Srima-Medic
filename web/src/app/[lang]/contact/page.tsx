@@ -40,11 +40,10 @@ export default async function ContactPage({ params }: PageParams) {
     <>
       <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/contact")!.label[lang] }]} image={IMG.office} note={ui.aiSample[lang]} />
 
-      {/* Office: the map is the section; a card on it carries the address, the ways to reach us and directions */}
+      {/* Office: details card beside the map, stretched to the same height */}
       <Section style={{ paddingTop: 56, paddingBottom: 40 }}>
         <h2 className="h2 h2--sm">{copy.office[lang]}</h2>
         <div className="office">
-          <iframe className="office__map" title="Google Map" src={mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           <div className="office__card">
             <p className="office__name">{company.name[lang]}</p>
             <p className="office__address">
@@ -69,6 +68,7 @@ export default async function ContactPage({ params }: PageParams) {
               {copy.directions[lang]}
             </ButtonLink>
           </div>
+          <iframe className="office__map" title="Google Map" src={mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </div>
       </Section>
 
