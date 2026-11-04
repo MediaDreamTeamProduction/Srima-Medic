@@ -27,7 +27,7 @@ export default async function ProductsPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/products")!.label[lang] }]} image={IMG.ct} note={ui.aiSample[lang]} fact={{ value: "4", label: lang === "th" ? "กลุ่มผลิตภัณฑ์ Philips" : "Philips product lines" }} />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/products")!.label[lang] }]} image={IMG.ct} note={ui.aiSample[lang]} />
       <Section style={{ paddingTop: 40 }}>
         <ProductGrid lang={lang} products={PRODUCTS} />
         <p className="caption" style={{ marginTop: 24 }}>

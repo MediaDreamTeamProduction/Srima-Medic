@@ -70,7 +70,7 @@ export default async function ServicesPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/services")!.label[lang] }]} image={IMG.renovation} note={ui.aiSample[lang]} fact={{ value: "24/7", label: lang === "th" ? "ให้คำปรึกษาทุกวัน" : "consultation, every day" }} />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/services")!.label[lang] }]} image={IMG.renovation} note={ui.aiSample[lang]} />
 
       {/* Same pattern as the home services row: illustration tile, title, detail */}
       <Section style={{ paddingTop: 56 }}>

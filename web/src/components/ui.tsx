@@ -191,20 +191,28 @@ export function RegionCards({ lang, role }: { lang: Lang; role: string }) {
   );
 }
 
+/** Line-drawn quotation mark set above a quote; shared by the home services quote and the Installations statement. */
+export function QuoteMark() {
+  return (
+    <svg className="quote__mark" viewBox="0 0 24 24" aria-hidden>
+      <path d="M10 7H6a2 2 0 0 0-2 2v4h4v4H4M20 7h-4a2 2 0 0 0-2 2v4h4v4h-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 /** "(ข้อมูลตัวอย่าง)" marker: keep until real client content replaces the value. */
 export function Sample({ children }: { children: ReactNode }) {
   return <span className="sample">{children}</span>;
 }
 
-export type HeroFact = { value: string; label: string };
 export type Crumb = { label: string; href?: string };
 
 /**
  * Page header: the A text block (breadcrumb, title, accent rule, description) over a full-width photo
- * washed white from the left, with one fact chip at the right. Kept shorter than the home hero.
+ * washed white from the left. The title stays on one line on wide screens. Kept shorter than the home hero.
  * Without an image it is a plain grey band.
  */
-export function PageHero({ title, description, crumbs, image, imageAlt = "", note, fact }: { title: string; description?: ReactNode; crumbs?: Crumb[]; image?: string; imageAlt?: string; note?: string; fact?: HeroFact }) {
+export function PageHero({ title, description, crumbs, image, imageAlt = "", note }: { title: string; description?: ReactNode; crumbs?: Crumb[]; image?: string; imageAlt?: string; note?: string }) {
   return (
     <section className={`page-hero${image ? "" : " page-hero--text"}`}>
       {image ? (
@@ -229,12 +237,6 @@ export function PageHero({ title, description, crumbs, image, imageAlt = "", not
           <span className="page-hero__rule" aria-hidden="true" />
           {description ? <p className="page-hero__desc">{description}</p> : null}
         </div>
-        {fact ? (
-          <div className="page-hero__fact">
-            <strong>{fact.value}</strong>
-            <span>{fact.label}</span>
-          </div>
-        ) : null}
       </div>
     </section>
   );

@@ -32,7 +32,7 @@ export default async function ProductDetailPage({ params }: PageParams<{ slug: s
 
   return (
     <>
-      <PageHero title={p.name} description={p.localName[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: productsLabel, href: href(lang, "/products") }, { label: p.category }]} image={IMG_BY_CATEGORY[p.category]} imageAlt={p.name} note={ui.aiSample[lang]} fact={{ value: p.installed, label: lang === "th" ? "ระบบที่ติดตั้งแล้ว" : "systems installed" }} />
+      <PageHero title={p.name} description={p.localName[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: productsLabel, href: href(lang, "/products") }, { label: p.category }]} image={IMG_BY_CATEGORY[p.category]} imageAlt={p.name} note={ui.aiSample[lang]} />
 
       <Section>
         <div className="split" style={{ alignItems: "start", gap: 40 }}>

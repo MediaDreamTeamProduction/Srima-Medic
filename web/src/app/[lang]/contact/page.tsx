@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/Forms";
 import { Icon } from "@/components/Icon";
-import { PageHero, RegionCards, Section } from "@/components/ui";
+import { ButtonLink, PageHero, RegionCards, Section } from "@/components/ui";
 import { FAQ } from "@/content/faq";
 import { IMG } from "@/content/images";
 import { company, NAV, ui } from "@/content/site";
@@ -14,6 +14,10 @@ const copy = {
     en: "Ask about products, request a quotation or a maintenance (PM) plan, or report a breakdown using the form below.",
   },
   office: { th: "ที่ตั้งสำนักงาน", en: "Head office" },
+  phoneLabel: { th: "โทรศัพท์", en: "Phone" },
+  emailLabel: { th: "อีเมล", en: "Email" },
+  hoursLabel: { th: "เวลาทำการ", en: "Office hours" },
+  directions: { th: "เปิดเส้นทางใน Google Maps", en: "Get directions in Google Maps" },
   regional: { th: "ทีมขายประจำภูมิภาค", en: "Regional sales contacts" },
   formTitle: { th: "นัดหมายให้ทีมงานติดต่อกลับ", en: "Book a call back" },
   formIntro: { th: "กรอกข้อมูลด้านล่าง ทีมงานจะติดต่อกลับตามวันและเวลาที่ท่านสะดวก", en: "Fill in the form and our team will call you back at a time that suits you." },
@@ -29,50 +33,42 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
 export default async function ContactPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(company.mapQuery)}`;
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(company.mapQuery)}&output=embed`;
 
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/contact")!.label[lang] }]} image={IMG.office} note={ui.aiSample[lang]} fact={{ value: "5", label: lang === "th" ? "ภูมิภาคที่ทีมขายดูแล" : "regions covered by sales" }} />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/contact")!.label[lang] }]} image={IMG.office} note={ui.aiSample[lang]} />
 
-      {/* Office location */}
+      {/* Office: the map is the section; a card on it carries the address, the ways to reach us and directions */}
       <Section style={{ paddingTop: 56, paddingBottom: 40 }}>
-        <div className="split" style={{ alignItems: "stretch", gap: 32 }}>
-          <div>
-            <h2 className="h2" style={{ fontSize: 22, marginBottom: 14 }}>
-              {copy.office[lang]}
-            </h2>
-            <div className="panel-dark">
-              <div style={{ fontWeight: 600, fontSize: 18 }}>
-                {company.name[lang]}
-              </div>
-              <div className="stack" style={{ marginTop: 18, fontSize: 16, color: "var(--text-soft)", gap: 14 }}>
-                <span className="contact-line">
-                  <Icon name="map-pin" size={16} />
-                  {company.address[lang]}
-                </span>
-                <a className="contact-line" href={company.phoneHref} style={{ color: "inherit" }}>
-                  <Icon name="phone" size={16} />
-                  {company.phone}
-                </a>
-                <a className="contact-line" href={`mailto:${company.email}`} style={{ color: "inherit" }}>
-                  <Icon name="mail" size={16} />
-                  {company.email}
-                </a>
-                <span className="contact-line">
-                  <Icon name="clock" size={16} />
-                  {company.hours[lang]}
-                </span>
-              </div>
-            </div>
+        <h2 className="h2 h2--sm">{copy.office[lang]}</h2>
+        <div className="office">
+          <iframe className="office__map" title="Google Map" src={mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          <div className="office__card">
+            <p className="office__name">{company.name[lang]}</p>
+            <p className="office__address">
+              <Icon name="map-pin" size={18} />
+              <span>{company.address[lang]}</span>
+            </p>
+            <ul className="office__ways">
+              <li>
+                <span className="office__label">{copy.phoneLabel[lang]}</span>
+                <a href={company.phoneHref}>{company.phone}</a>
+              </li>
+              <li>
+                <span className="office__label">{copy.emailLabel[lang]}</span>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </li>
+              <li>
+                <span className="office__label">{copy.hoursLabel[lang]}</span>
+                <span>{company.hours[lang]}</span>
+              </li>
+            </ul>
+            <ButtonLink href={mapsLink} variant="secondary" iconAfter="external" external>
+              {copy.directions[lang]}
+            </ButtonLink>
           </div>
-          <iframe
-            title="Google Map"
-            src={mapSrc}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            style={{ width: "100%", minHeight: 300, border: "1px solid var(--border)", borderRadius: "var(--radius-lg)" }}
-          />
         </div>
       </Section>
 

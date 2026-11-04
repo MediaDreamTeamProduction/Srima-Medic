@@ -143,7 +143,7 @@ export default async function AboutPage({ params }: PageParams) {
 
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/about")!.label[lang] }]} image={REAL.building} imageAlt={lang === "th" ? "อาคารสำนักงาน Srima-Medic" : "Srima-Medic office building"} fact={{ value: "2015", label: lang === "th" ? "ก่อตั้งบริษัท" : "Founded" }} />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/about")!.label[lang] }]} image={REAL.building} imageAlt={lang === "th" ? "อาคารสำนักงาน Srima-Medic" : "Srima-Medic office building"} />
 
       <Section>
         <div className="split" style={{ alignItems: "start" }}>

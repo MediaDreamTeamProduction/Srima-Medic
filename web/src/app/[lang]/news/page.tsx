@@ -53,11 +53,10 @@ export default async function NewsPage({ params }: PageParams) {
                   </p>
                   <div className="article-card__foot">
                     <time dateTime={a.date}>{formatDate(a.date, lang)}</time>
-                    {a.body ? (
-                      <span className="article-card__more">
-                        {ui.readMore[lang]} <Icon name="arrow-right" size={18} />
-                      </span>
-                    ) : null}
+                    {/* Shown on every card; inactive until the article has content */}
+                    <span className={`article-card__more${a.body ? "" : " is-disabled"}`} aria-disabled={a.body ? undefined : true}>
+                      {ui.readMore[lang]} <Icon name="arrow-right" size={18} />
+                    </span>
                   </div>
                 </div>
               </>
@@ -79,7 +78,7 @@ export default async function NewsPage({ params }: PageParams) {
 
       {/* Events: photos cross-fade slowly; each card opens a page of photos and the title only */}
       <Section>
-        <p className="eyebrow">{copy.eventsEyebrow[lang]}</p>
+        <p className="events-eyebrow">{copy.eventsEyebrow[lang]}</p>
         <h2 className="h2 h2--sm">Events &amp; Seminars</h2>
         <ul className="event-cards">
           {EVENTS.map((e, i) => (

@@ -30,7 +30,7 @@ export function Disclaimer({ lang }: { lang: Lang }) {
       <div className="container">
         <div className="disclaimer__panel">
           <div className="disclaimer__head">
-            <Image src={withBase("/figma/info.svg")} alt="" width={35} height={35} />
+            <Image src={withBase("/figma/warning.svg")} alt="" width={24} height={24} />
             <strong>{copy.disclaimerTitle[lang]}</strong>
           </div>
           <p>

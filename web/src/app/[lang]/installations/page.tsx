@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import { CountUp } from "@/components/CountUp";
 import { Reveal } from "@/components/Reveal";
-import { Marquee, PageHero, Section } from "@/components/ui";
+import { Marquee, PageHero, QuoteMark, Section } from "@/components/ui";
 import { MAP_POINTS, THAILAND_PATH, THAILAND_VIEWBOX } from "@/content/thailand-map";
 import { IMG, IMG_REGIONS } from "@/content/images";
 import { NAV, REGIONS, ui } from "@/content/site";
@@ -52,7 +52,7 @@ export default async function InstallationsPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/installations")!.label[lang] }]} image={IMG.hospital} note={ui.aiSample[lang]} fact={{ value: "320+", label: lang === "th" ? "ระบบที่ติดตั้งแล้ว" : "systems installed" }} />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/installations")!.label[lang] }]} image={IMG.hospital} note={ui.aiSample[lang]} />
 
       {/* Installed base around a map of Thailand: the outline draws in, region markers pulse, figures count up */}
       <Section>
@@ -90,9 +90,7 @@ export default async function InstallationsPage({ params }: PageParams) {
       <Section>
         <div className="testimonials">
           <blockquote className="quote testimonials__lead">
-            <svg className="quote__mark" viewBox="0 0 24 24" aria-hidden>
-              <path d="M10 7H6a2 2 0 0 0-2 2v4h4v4H4M20 7h-4a2 2 0 0 0-2 2v4h4v4h-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <QuoteMark />
             <p>{copy.statement[lang]}</p>
           </blockquote>
           <ul className="testimonials__cards">

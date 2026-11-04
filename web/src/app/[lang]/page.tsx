@@ -3,7 +3,7 @@ import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
-import { AwardGrid, ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, Section } from "@/components/ui";
+import { AwardGrid, ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, QuoteMark, Section } from "@/components/ui";
 import { IMG, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
 import { FAQ } from "@/content/faq";
@@ -163,9 +163,8 @@ export default async function HomePage({ params }: PageParams) {
           </ul>
           <Reveal className="services-quote">
             <blockquote>
-              <Image className="services-quote__open" src={withBase("/figma/quote-open.svg")} alt="" width={31} height={24} />
+              <QuoteMark />
               <p>{copy.quote[lang]}</p>
-              <Image className="services-quote__close" src={withBase("/figma/quote-close.svg")} alt="" width={31} height={24} />
             </blockquote>
           </Reveal>
         </div>
