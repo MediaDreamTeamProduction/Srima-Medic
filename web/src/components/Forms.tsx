@@ -33,12 +33,10 @@ const INTERESTS = [
 ];
 
 /** Call-back slots, grouped by part of the day (e.g. ช่วงเช้า 08:00–09:00). */
+/** Two groups only (morning before noon, afternoon from noon); the hourly slots stay as they were. */
 const TIME_SLOTS = [
-  { period: { th: "ช่วงเช้า", en: "Early morning" }, slots: ["08:00–09:00", "09:00–10:00"] },
-  { period: { th: "ช่วงสาย", en: "Late morning" }, slots: ["10:00–11:00", "11:00–12:00"] },
-  { period: { th: "ช่วงเที่ยง", en: "Midday" }, slots: ["12:00–13:00"] },
-  { period: { th: "ช่วงบ่าย", en: "Afternoon" }, slots: ["13:00–14:00", "14:00–15:00", "15:00–16:00"] },
-  { period: { th: "ช่วงเย็น", en: "Evening" }, slots: ["16:00–17:00", "17:00–17:30"] },
+  { period: { th: "ช่วงเช้า", en: "Morning" }, slots: ["08:00–09:00", "09:00–10:00", "10:00–11:00", "11:00–12:00"] },
+  { period: { th: "ช่วงบ่าย", en: "Afternoon" }, slots: ["12:00–13:00", "13:00–14:00", "14:00–15:00", "15:00–16:00", "16:00–17:00", "17:00–17:30"] },
 ];
 
 function Consent({ lang }: { lang: Lang }) {
