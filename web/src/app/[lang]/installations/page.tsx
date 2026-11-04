@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import type { CSSProperties } from "react";
+import { CountUp } from "@/components/CountUp";
+import { Reveal } from "@/components/Reveal";
 import { Marquee, PageHero, Section } from "@/components/ui";
+import { MAP_POINTS, THAILAND_PATH, THAILAND_VIEWBOX } from "@/content/thailand-map";
 import { IMG, IMG_REGIONS } from "@/content/images";
 import { REGIONS, ui } from "@/content/site";
 import { withBase, type Lang, type PageParams } from "@/lib/i18n";
@@ -14,7 +18,7 @@ const copy = {
   mapTitle: { th: "จุดติดตั้งทั่วประเทศและเรื่องราวการส่งมอบเครื่อง", en: "Installations nationwide and delivery stories" },
   listTitle: { th: "โรงพยาบาลและศูนย์ภาพวินิจฉัย แยกตามภูมิภาค", en: "Hospitals & imaging centers by region" },
   listIntro: { th: "ทีมขายและทีมบริการดูแลลูกค้าครอบคลุม 5 ภูมิภาคทั่วประเทศ", en: "Our sales and service teams cover five regions across Thailand." },
-  totalLabel: { th: "ระบบภาพวินิจฉัยที่ติดตั้งแล้วทั่วประเทศ", en: "imaging systems installed nationwide" },
+  mapLabel: { th: "แผนที่ประเทศไทย แสดงพื้นที่ที่มีการติดตั้งใน 5 ภูมิภาค", en: "Map of Thailand showing installations across five regions" },
   galleryLabel: { th: "ภาพการติดตั้งและอุปกรณ์", en: "Installation and equipment photos" },
   galleryNote: { th: "ภาพประกอบ รอภาพการติดตั้งจริงจากลูกค้า", en: "Illustrative photos — pending the client's installation photos" },
   statement: {
@@ -29,11 +33,14 @@ const copy = {
 /** Stock photos (Magnific, no people) and existing room drafts, until the client sends installation photos. */
 const GALLERY = ["/gallery/stock-ct.webp", IMG.mri, "/gallery/stock-suite.webp", IMG.igt, "/gallery/stock-mri.webp", IMG.xray, "/gallery/stock-workstation.webp", IMG.renovation, "/gallery/stock-reading.webp", IMG.ct];
 
-const SYSTEMS = [
-  { value: "200+", label: "CT" },
-  { value: "60+", label: "IGT" },
-  { value: "40+", label: "MRI" },
-  { value: "20+", label: "X-ray" },
+/** Confirmed figures from the client (PRODUCT.md). The total leads; categories and centers surround the map. */
+const STATS = [
+  { value: "320+", label: { th: "ระบบที่ติดตั้งแล้วทั่วประเทศ", en: "systems installed nationwide" } },
+  { value: "200+", label: { th: "CT · ระบบ", en: "CT · systems" } },
+  { value: "60+", label: { th: "IGT · ระบบ", en: "IGT · systems" } },
+  { value: "150+", label: { th: "ศูนย์ภาพวินิจฉัย", en: "imaging centers" } },
+  { value: "40+", label: { th: "MRI · ระบบ", en: "MRI · systems" } },
+  { value: "20+", label: { th: "X-ray · ระบบ", en: "X-ray · systems" } },
 ];
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
@@ -47,40 +54,38 @@ export default async function InstallationsPage({ params }: PageParams) {
     <>
       <PageHero title={copy.title[lang]} description={copy.desc[lang]} art="map-pin" />
 
+      {/* Installed base around a map of Thailand: the outline draws in, region markers pulse, figures count up */}
       <Section>
-        <h2 className="h2 h2--sm">{copy.mapTitle[lang]}</h2>
-        {/* Installed base: the total leads, the four categories follow at a size that still reads as numbers first */}
-        <div className="counts">
-          <div className="counts__total">
-            <span className="counts__value">320+</span>
-            <span className="counts__label">{copy.totalLabel[lang]}</span>
-          </div>
-          <ul className="counts__list">
-            {SYSTEMS.map((s) => (
-              <li key={s.label}>
-                <span className="counts__value">{s.value}</span>
-                <span className="counts__label">
-                  {s.label} · {ui.systems[lang]}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
-
-      {/* Installation and equipment photos drifting left; pauses on hover */}
-      <section className="gallery" aria-label={copy.galleryLabel[lang]}>
-        <Marquee label={copy.galleryLabel[lang]} seconds={70}>
-          {GALLERY.map((src) => (
-            <span key={src} className="marquee__photo">
-              <Image src={withBase(src)} alt="" fill sizes="360px" />
-            </span>
+        <h2 className="h2 h2--sm" style={{ textAlign: "center", marginInline: "auto" }}>
+          {copy.mapTitle[lang]}
+        </h2>
+        <Reveal className="install-map">
+          {STATS.map((st, i) => (
+            <div key={st.label.en} className={`install-stat install-stat--${i + 1}${i === 0 ? " is-total" : ""}`}>
+              <span className="counts__value">
+                <CountUp value={st.value} />
+              </span>
+              <span className="counts__label">{st.label[lang]}</span>
+            </div>
           ))}
-        </Marquee>
-        <p className="caption container" style={{ marginTop: 12 }}>
-          <span className="sample">{copy.galleryNote[lang]}</span>
-        </p>
-      </section>
+          <figure className="install-map__figure">
+            <svg viewBox={THAILAND_VIEWBOX} role="img" aria-label={copy.mapLabel[lang]}>
+              <path className="install-map__land" d={THAILAND_PATH} pathLength={1} />
+              {MAP_POINTS.map((pt, i) => (
+                <g key={i} className="install-map__pin" style={{ "--i": i } as CSSProperties} transform={`translate(${pt.x} ${pt.y})`}>
+                  <circle className="install-map__pulse" r="12" />
+                  <circle className="install-map__dot" r="7" />
+                </g>
+              ))}
+            </svg>
+            <figcaption className="install-map__legend">
+              {REGIONS.map((r) => (
+                <span key={r.en}>{lang === "th" && r.en !== "Bangkok" ? `ภาค${r.th}` : r[lang]}</span>
+              ))}
+            </figcaption>
+          </figure>
+        </Reveal>
+      </Section>
 
       <Section>
         <div className="testimonials">
@@ -126,6 +131,20 @@ export default async function InstallationsPage({ params }: PageParams) {
           ))}
         </div>
       </Section>
+
+      {/* Installation and equipment photos drifting left; pauses on hover */}
+      <section className="gallery gallery--end" aria-label={copy.galleryLabel[lang]}>
+        <Marquee label={copy.galleryLabel[lang]} seconds={70}>
+          {GALLERY.map((src) => (
+            <span key={src} className="marquee__photo">
+              <Image src={withBase(src)} alt="" fill sizes="360px" />
+            </span>
+          ))}
+        </Marquee>
+        <p className="caption container" style={{ marginTop: 12 }}>
+          <span className="sample">{copy.galleryNote[lang]}</span>
+        </p>
+      </section>
     </>
   );
 }
