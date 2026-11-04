@@ -1,15 +1,16 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Icon } from "@/components/Icon";
 import { ParallaxBg } from "@/components/ParallaxBg";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
-import { AwardGrid, ButtonLink, Figures, Marquee, MockHospitalLogo, Photo, QuoteMark, Section } from "@/components/ui";
+import { AwardGrid, ButtonLink, Figures, Marquee, MockHospitalLogo, QuoteMark, Section } from "@/components/ui";
 import { IMG, REAL } from "@/content/images";
 import { PRODUCTS } from "@/content/products";
 import { FAQ } from "@/content/faq";
 import { PARTNERS } from "@/content/recognition";
-import { company, ui } from "@/content/site";
+import { ui } from "@/content/site";
 import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
 import { SERVICES } from "@/content/services";
 
@@ -25,8 +26,12 @@ const copy = {
     en: "Srima-Medic delivers medical imaging solutions — CT, MRI, X-ray and interventional systems — as an authorised partner of Philips.",
   },
   introTitle: {
-    th: "ผู้เชี่ยวชาญด้านเครื่องมือแพทย์ภาพวินิจฉัย ที่พร้อมดูแลโรงพยาบาลตลอดอายุการใช้งานเครื่อง",
-    en: "Medical imaging specialists who support hospitals throughout the life of every system",
+    th: ["ผู้เชี่ยวชาญด้านเครื่องมือแพทย์ภาพวินิจฉัย", "ที่พร้อมดูแลโรงพยาบาลตลอดอายุการใช้งานเครื่อง"],
+    en: ["Medical imaging specialists", "who support hospitals throughout the life of every system"],
+  },
+  introBody: {
+    th: "บริษัท สีมา‑เมดิก จำกัด ให้บริการโซลูชันด้านภาพวินิจฉัยทางการแพทย์ในประเทศไทย ครอบคลุม CT, MRI, X-ray และระบบรังสีร่วมรักษา ในฐานะพันธมิตรที่ได้รับอนุญาตจาก Philips เราพร้อมดูแลตั้งแต่ติดตั้งระบบจนถึงบริการหลังการขาย เพื่อสนับสนุนการวินิจฉัยที่แม่นยำ การทำงานที่มีประสิทธิภาพ และการดูแลผู้ป่วยอย่างต่อเนื่องทั่วประเทศ",
+    en: "Srima-Medic Co., Ltd. provides medical imaging solutions in Thailand, covering CT, MRI, X-ray and interventional systems, as an authorised partner of Philips. We support hospitals from installation through to after-sales service, helping them deliver accurate diagnosis, efficient workflows and continuous patient care nationwide.",
   },
   pillars: [
     { th: "Authorized Partner ของ Philips", en: "Authorised Philips partner" },
@@ -102,25 +107,33 @@ export default async function HomePage({ params }: PageParams) {
         </div>
       </HeroCarousel>
 
-      {/* Company overview */}
+      {/* Company overview (Figma: introduce): centred heading and text, wide photo, the four strengths on a bar over its lower edge */}
       <Section>
-        <div className="split">
-          <div>
-            <h2 className="h2 h2--sm">{copy.introTitle[lang]}</h2>
-            <p className="lead" style={{ marginTop: 16 }}>
-              {company.shortDescription[lang]}
-            </p>
-            <ul className="checklist">
-              {copy.pillars.map((p) => (
-                <li key={p.en}>
-                  <Icon name="check-circle" size={20} />
-                  {p[lang]}
+        <Reveal className="intro-b">
+          <div className="intro-b__head">
+            <h2 className="intro-b__title">
+              {copy.introTitle[lang].map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </h2>
+            <span className="intro-b__rule" aria-hidden="true" />
+            <p className="intro-b__body">{copy.introBody[lang]}</p>
+          </div>
+          <div className="intro-b__media">
+            <div className="intro-b__photo">
+              <Image src={withBase(IMG.mri)} alt={lang === "th" ? "ห้องตรวจ MRI" : "MRI suite"} fill sizes="(max-width: 1100px) 100vw, 1100px" />
+              <span className="photo__note">{ui.aiSample[lang]}</span>
+            </div>
+            <ul className="intro-b__bar">
+              {copy.pillars.map((pl, i) => (
+                <li key={pl.en} style={{ "--i": i } as CSSProperties}>
+                  <Icon name="check-circle" size={22} />
+                  <span>{pl[lang]}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <Photo variant="rounded" height={360} src={IMG.mri} alt={lang === "th" ? "ห้องตรวจ MRI" : "MRI suite"} note={ui.aiSample[lang]} />
-        </div>
+        </Reveal>
       </Section>
 
       {/* Products (Figma: home_section_product): 2×2 cards, Philips link first, details second */}

@@ -816,3 +816,38 @@ a.article-card__link:hover .article-card__photo img { transform: scale(1.04); }
 a.social-link:hover { border-color: var(--teal-ink); color: var(--text); box-shadow: var(--shadow-sm); }
 .social-link.is-pending { cursor: default; }
 .social-link svg { flex: 0 0 auto; display: block; }
+
+/* ---------- Home intro (Figma: introduce): centred text, wide photo, strengths bar over its edge ---------- */
+.intro-b.reveal { opacity: 1; transform: none; }
+.intro-b__head { max-width: 880px; margin: 0 auto; text-align: center; }
+.intro-b__title { font-size: clamp(24px, 2.8vw, 32px); font-weight: 600; line-height: 1.4; color: var(--marine); }
+.intro-b__title span { display: block; }
+.intro-b__rule { display: block; width: 56px; height: 4px; margin: 18px auto 0; border-radius: 2px; background: var(--teal); }
+.intro-b__body { margin-top: 18px; font-size: 18px; font-weight: 500; line-height: 1.75; color: var(--text-soft); }
+.intro-b__media { margin-top: 40px; }
+.intro-b__photo { position: relative; aspect-ratio: 21 / 9; overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-alt); }
+.intro-b__photo img { object-fit: cover; }
+.intro-b__bar { position: relative; z-index: 1; list-style: none; margin: -48px 40px 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+.intro-b__bar li { display: flex; align-items: center; gap: 12px; padding: 22px; font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--text); }
+.intro-b__bar li + li { border-left: 1px solid var(--border); }
+.intro-b__bar svg { flex: 0 0 auto; color: var(--teal-ink); }
+@media (max-width: 860px) {
+  .intro-b__photo { aspect-ratio: 4 / 3; }
+  .intro-b__bar { margin: -32px 12px 0; grid-template-columns: 1fr 1fr; }
+  .intro-b__bar li { padding: 16px; font-size: 15px; }
+  .intro-b__bar li:nth-child(3) { border-left: 0; }
+  .intro-b__bar li:nth-child(n+3) { border-top: 1px solid var(--border); }
+}
+/* Entrance: heading rises in, the photo settles from a slight zoom, then the bar and each strength follow */
+@media (prefers-reduced-motion: no-preference) {
+  .intro-b__head, .intro-b__bar, .intro-b__bar li { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+  .intro-b__photo { clip-path: inset(6% 4% round var(--radius-lg)); transition: clip-path 1100ms var(--ease) 150ms; }
+  .intro-b__photo img { transform: scale(1.1); transition: transform 1600ms var(--ease) 150ms; }
+  .intro-b__bar { transition-delay: 600ms; }
+  .intro-b__bar li { transform: translateY(10px); transition-delay: calc(800ms + var(--i) * 120ms); }
+  .intro-b.is-shown .intro-b__head, .intro-b.is-shown .intro-b__bar, .intro-b.is-shown .intro-b__bar li { opacity: 1; transform: none; }
+  .intro-b.is-shown .intro-b__photo { clip-path: inset(0 0 round var(--radius-lg)); }
+  .intro-b.is-shown .intro-b__photo img { transform: scale(1); }
+  .intro-b__bar li svg { transition: transform 400ms var(--ease); }
+  .intro-b__bar li:hover svg { transform: scale(1.15); }
+}
