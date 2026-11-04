@@ -695,29 +695,30 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
   .install-stat::after { display: none; }
 }
 
-/* ---------- Page header (layout A): text left, photo on the band's lower edge right ---------- */
-.page-hero { padding-top: clamp(32px, 5vw, 56px); background: linear-gradient(180deg, var(--surface-alt) 0 82%, var(--bg) 82%); border-bottom: 1px solid var(--border); }
-.page-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px clamp(32px, 5vw, 64px); align-items: end; }
-.page-hero__text { padding-bottom: clamp(40px, 6vw, 72px); }
+/* ---------- Page header: A text over a full-width photo, washed white from the left; shorter than the home hero ---------- */
+.page-hero { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; min-height: clamp(280px, 30vw, 340px); padding-block: clamp(36px, 4.5vw, 52px); background: var(--surface-alt); border-bottom: 1px solid var(--border); }
+.page-hero__bg { position: absolute; inset: 0; z-index: -2; }
+.page-hero__bg img { object-fit: cover; }
+.page-hero:not(.page-hero--text)::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.92) 40%, rgba(255,255,255,.4) 72%, rgba(255,255,255,.05) 100%); }
+.page-hero__note { left: auto; right: 12px; top: 12px; bottom: auto; }
+.page-hero__grid { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; width: 100%; }
+.page-hero__text { max-width: 620px; }
 .page-hero__crumbs { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 14px; color: var(--text-soft); }
 .page-hero__crumbs > span { display: inline-flex; gap: 8px; }
 .page-hero__crumbs a { color: var(--text-soft); text-decoration: none; }
 .page-hero__crumbs a:hover { color: var(--teal-ink); text-decoration: underline; }
 .page-hero__crumbs [aria-current] { color: var(--teal-ink); font-weight: 600; }
-.page-hero__title { margin-top: 14px; color: var(--marine); font-size: clamp(30px, 3.8vw, 46px); line-height: 1.2; letter-spacing: -0.01em; max-width: 20ch; }
-.page-hero__rule { display: block; width: 56px; height: 4px; margin: 18px 0; border-radius: 2px; background: var(--teal); }
+.page-hero__title { margin-top: 12px; color: var(--marine); font-size: clamp(28px, 3.4vw, 42px); line-height: 1.2; letter-spacing: -0.01em; max-width: 20ch; }
+.page-hero__rule { display: block; width: 56px; height: 4px; margin: 16px 0; border-radius: 2px; background: var(--teal); }
 .page-hero__desc { font-size: 17px; line-height: 1.7; color: var(--text-soft); max-width: 54ch; }
-.page-hero__photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--surface-alt); }
-.page-hero__photo img { object-fit: cover; }
-.page-hero__fact { position: absolute; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 4px; padding: 12px 18px; background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+.page-hero__fact { flex: 0 0 auto; display: flex; flex-direction: column; gap: 4px; padding: 12px 18px; background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
 .page-hero__fact strong { font-family: var(--font-mono); font-size: 28px; line-height: 1; color: var(--teal-ink); }
 .page-hero__fact span { font-size: 13px; color: var(--text-soft); }
-.page-hero--text { background: var(--surface-alt); }
-.page-hero--text .page-hero__grid { grid-template-columns: 1fr; }
-.page-hero--text .page-hero__text { padding-bottom: clamp(32px, 5vw, 56px); }
+.page-hero--text { min-height: 0; }
 @media (max-width: 760px) {
-  .page-hero { background: var(--surface-alt); }
-  .page-hero__grid { grid-template-columns: 1fr; gap: 20px; }
-  .page-hero__text { padding-bottom: 0; }
-  .page-hero__photo { aspect-ratio: 16 / 10; border-radius: var(--radius-lg); margin-bottom: 24px; }
+  .page-hero { min-height: 0; padding-block: 32px 28px; }
+  .page-hero:not(.page-hero--text)::after { background: linear-gradient(0deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.88) 55%, rgba(255,255,255,.4) 100%); }
+  .page-hero__grid { flex-direction: column; align-items: flex-start; }
+  .page-hero__fact { flex-direction: row; align-items: baseline; gap: 10px; padding: 10px 14px; }
+  .page-hero__fact strong { font-size: 22px; }
 }

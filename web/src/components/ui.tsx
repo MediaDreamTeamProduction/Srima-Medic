@@ -200,12 +200,19 @@ export type HeroFact = { value: string; label: string };
 export type Crumb = { label: string; href?: string };
 
 /**
- * Page header (layout A): breadcrumb, title, accent rule and description on the left; a photo on the right
- * that sits on the band's lower edge, with one fact chip. Without an image the text runs full width.
+ * Page header: the A text block (breadcrumb, title, accent rule, description) over a full-width photo
+ * washed white from the left, with one fact chip at the right. Kept shorter than the home hero.
+ * Without an image it is a plain grey band.
  */
 export function PageHero({ title, description, crumbs, image, imageAlt = "", note, fact }: { title: string; description?: ReactNode; crumbs?: Crumb[]; image?: string; imageAlt?: string; note?: string; fact?: HeroFact }) {
   return (
     <section className={`page-hero${image ? "" : " page-hero--text"}`}>
+      {image ? (
+        <div className="page-hero__bg">
+          <Image src={withBase(image)} alt={imageAlt} fill priority sizes="100vw" />
+        </div>
+      ) : null}
+      {note ? <span className="photo__note page-hero__note">{note}</span> : null}
       <div className="container page-hero__grid">
         <div className="page-hero__text">
           {crumbs ? (
@@ -222,16 +229,10 @@ export function PageHero({ title, description, crumbs, image, imageAlt = "", not
           <span className="page-hero__rule" aria-hidden="true" />
           {description ? <p className="page-hero__desc">{description}</p> : null}
         </div>
-        {image ? (
-          <div className="page-hero__photo">
-            <Image src={withBase(image)} alt={imageAlt} fill priority sizes="(max-width: 760px) 100vw, 50vw" />
-            {note ? <span className="photo__note">{note}</span> : null}
-            {fact ? (
-              <div className="page-hero__fact">
-                <strong>{fact.value}</strong>
-                <span>{fact.label}</span>
-              </div>
-            ) : null}
+        {fact ? (
+          <div className="page-hero__fact">
+            <strong>{fact.value}</strong>
+            <span>{fact.label}</span>
           </div>
         ) : null}
       </div>
