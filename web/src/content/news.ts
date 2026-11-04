@@ -89,23 +89,39 @@ export const ARTICLES: Article[] = [
   },
 ];
 
-export const EVENTS: { date: L; title: L; desc: L }[] = [
+/**
+ * Events the CEO attended. Each opens a page of photos and the title only. `photos` are AI/stock stand-ins until the
+ * client sends the event photos.
+ */
+export type SiteEvent = { slug: string; date: L; title: L; desc: L; photos: string[] };
+
+export const EVENTS: SiteEvent[] = [
   {
+    slug: "ct-application-update",
+    photos: ["/images/seminar.webp", "/images/office.webp", "/gallery/stock-reading.webp"],
     date: { th: "15 ต.ค. 2569", en: "15 Oct 2026" },
     title: { th: "สัมมนา CT Application Update", en: "CT Application Update seminar" },
     desc: { th: "อบรมการใช้งานฟีเจอร์ใหม่สำหรับทีมรังสีเทคนิค", en: "Training on new features for radiographer teams." },
   },
   {
+    slug: "radiology-congress-booth",
+    photos: ["/images/hospital.webp", "/images/seminar.webp", "/gallery/stock-suite.webp"],
     date: { th: "2 พ.ย. 2569", en: "2 Nov 2026" },
     title: { th: "ออกบูธงานประชุมวิชาการรังสีวิทยา", en: "Radiology congress exhibition booth" },
     desc: { th: "พบทีมงานและผลิตภัณฑ์ Philips ที่บูธของ Srima-Medic", en: "Meet our team and Philips solutions at the Srima-Medic booth." },
   },
   {
+    slug: "mri-safety-workshop",
+    photos: ["/gallery/stock-mri.webp", "/images/room-mri.webp", "/images/seminar.webp"],
     date: { th: "20 พ.ย. 2569", en: "20 Nov 2026" },
     title: { th: "MRI Safety Workshop", en: "MRI Safety Workshop" },
     desc: { th: "อบรมความปลอดภัยในการใช้งานเครื่อง MRI", en: "Safety training for MRI operation." },
   },
 ];
+
+export function getEvent(slug: string) {
+  return EVENTS.find((e) => e.slug === slug);
+}
 
 export function getArticle(slug: string) {
   return ARTICLES.find((a) => a.slug === slug);
