@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { company, ui } from "@/content/site";
 import { href, withBase, type Lang } from "@/lib/i18n";
+import { LineBubble } from "./BrandLogos";
 import { Icon } from "./Icon";
 
 /** Fixed bottom-right cluster on every page. Order top→bottom: LINE, phone, scroll-up. */
@@ -12,7 +13,7 @@ export function StickyContact({ lang }: { lang: Lang }) {
   return (
     <div className="fab">
       <a className="fab__line" href={lineHref} aria-label="LINE" {...(company.line ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-        <Icon name="message-circle" size={20} />
+        <LineBubble size={28} />
       </a>
       <a className="fab__phone" href={company.phoneHref} aria-label={`${ui.call[lang]} ${company.phone}`}>
         <Icon name="phone" size={20} />

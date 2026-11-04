@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { company, NAV, ui } from "@/content/site";
 import { href, withBase, type Lang } from "@/lib/i18n";
+import { FacebookLogo, LineLogo } from "./BrandLogos";
 import { Icon } from "./Icon";
 
 const copy = {
@@ -55,10 +56,10 @@ export function Footer({ lang }: { lang: Lang }) {
             <p style={{ marginTop: 14, maxWidth: "36ch", lineHeight: 1.6 }}>{company.name[lang]}</p>
             <div className="footer__social">
               <a href={company.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <Icon name="facebook" size={16} />
+                <FacebookLogo size={32} />
               </a>
               <a href={company.line ?? withBase(href(lang, "/contact#social"))} aria-label="LINE">
-                <Icon name="message-circle" size={16} />
+                <LineLogo size={32} />
               </a>
             </div>
           </div>

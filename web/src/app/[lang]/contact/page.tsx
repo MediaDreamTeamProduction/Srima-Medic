@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/Forms";
+import { FacebookLogo, LineLogo } from "@/components/BrandLogos";
 import { Icon } from "@/components/Icon";
 import { ButtonLink, PageHero, RegionCards, Section } from "@/components/ui";
 import { FAQ } from "@/content/faq";
@@ -119,12 +120,15 @@ export default async function ContactPage({ params }: PageParams) {
           <h2 className="h2" style={{ fontSize: 20, marginBottom: 20 }}>
             {copy.social[lang]}
           </h2>
-          <div className="row" style={{ justifyContent: "center", gap: 16 }}>
-            <a href={company.facebook} target="_blank" rel="noopener noreferrer" className="btn btn--secondary">
-              <Icon name="facebook" size={18} /> Facebook
+          {/* Brand marks in their own colours; the labels stay dark text so they read at AA */}
+          <div className="social-links">
+            <a href={company.facebook} target="_blank" rel="noopener noreferrer" className="social-link">
+              <FacebookLogo size={36} />
+              <span>Facebook</span>
             </a>
-            <span className="btn" style={{ background: "var(--line-green)", color: "#04210F", cursor: "default" }}>
-              <Icon name="message-circle" size={18} /> LINE OA
+            <span className="social-link is-pending">
+              <LineLogo size={36} />
+              <span>LINE OA</span>
             </span>
           </div>
           <p className="caption" style={{ marginTop: 14 }}>
