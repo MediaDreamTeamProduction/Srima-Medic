@@ -110,7 +110,7 @@ export default async function InstallationsPage({ params }: PageParams) {
         </div>
       </Section>
 
-      <Section alt>
+      <Section alt className="no-rings">
         {/* Region showcase after the client's "image 1" reference (Mayo Clinic Locations) */}
         <div className="region-grid">
           <div className="region-grid__intro">

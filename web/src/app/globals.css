@@ -62,14 +62,19 @@ button, input, select, textarea { font: inherit; }
 .section--alt::before, .closing::before, .section--alt::after, .closing::after { content: ""; position: absolute; top: 50%; right: -230px; width: 640px; height: 640px; margin-top: -320px; z-index: -1; pointer-events: none; }
 .closing::before, .closing::after { right: auto; left: -230px; }
 .section--alt::before, .closing::before { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Ccircle cx='320' cy='320' r='270' fill='none' stroke='%2321ACA0' stroke-opacity='.07' stroke-width='28'/%3E%3Ccircle cx='320' cy='320' r='170' fill='none' stroke='%2321ACA0' stroke-opacity='.05' stroke-width='12'/%3E%3C/svg%3E") center / contain no-repeat; }
-/* The arc: a 60° slice of the outer ring (r 270, 28 wide), masked to the ring's band */
-.section--alt::after, .closing::after { border-radius: 50%; background: conic-gradient(rgba(33,172,160,.18) 0deg 60deg, transparent 60deg); -webkit-mask: radial-gradient(circle, transparent 256px, #000 256.5px, #000 284px, transparent 284.5px); mask: radial-gradient(circle, transparent 256px, #000 256.5px, #000 284px, transparent 284.5px); animation: ring-scan 22s linear infinite; }
+/* The arc: a 60° stretch of the outer ring with round caps, turning slowly */
+.section--alt::after, .closing::after { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Cpath d='M320 50 A270 270 0 0 1 554 185' fill='none' stroke='%2321ACA0' stroke-opacity='.18' stroke-width='28' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; animation: ring-scan 22s linear infinite; }
 @keyframes ring-scan { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .section--alt::after, .closing::after { animation: none; } }
+.rings-left::before, .rings-left::after { right: auto; left: -230px; }
 @media (max-width: 760px) {
   .section--alt::before, .section--alt::after { right: -400px; }
-  .closing::before, .closing::after { left: -400px; }
+  .closing::before, .closing::after, .rings-left::before, .rings-left::after { right: auto; left: -400px; }
 }
+/* No rings: Installations (the map carries that page) and the FAQ bands */
+.no-rings::before, .no-rings::after, .section--fade::before, .section--fade::after { display: none; }
+/* FAQ bands: mint fading to white, top to bottom */
+.section--fade, .closing.section--fade { background: linear-gradient(180deg, #E3F3F0 0%, #FFFFFF 100%); }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 280px), 100%), 1fr)); gap: var(--gap, 20px); }
 .grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 56px; align-items: center; }
@@ -659,15 +664,14 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
 .install-map { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 1.05fr) minmax(0, 1fr); grid-template-rows: repeat(3, auto); gap: 20px 40px; align-items: center; margin-top: 40px; }
 .install-map__figure { grid-column: 2; grid-row: 1 / span 3; margin: 0; position: relative; }
 .install-map__figure svg { display: block; width: 100%; max-width: 340px; height: auto; margin: 0 auto; overflow: visible; }
-.install-stat { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 22px 26px; border-radius: var(--radius-lg); background: var(--surface-alt); border: 1px solid var(--border); }
-.install-stat--1, .install-stat--2, .install-stat--3 { grid-column: 1; text-align: right; align-items: flex-end; }
-.install-stat--4, .install-stat--5, .install-stat--6 { grid-column: 3; }
+/* Each box hugs its figure; mint fading to light grey, no border */
+.install-stat { position: relative; display: flex; flex-direction: column; gap: 6px; width: fit-content; max-width: 100%; padding: 20px 26px; border-radius: var(--radius-lg); background: linear-gradient(180deg, #DFF4F1 0%, #F5F7F7 100%); }
+.install-stat--1, .install-stat--2, .install-stat--3 { grid-column: 1; justify-self: end; text-align: right; align-items: flex-end; }
+.install-stat--4, .install-stat--5, .install-stat--6 { grid-column: 3; justify-self: start; }
 .install-stat--1, .install-stat--4 { grid-row: 1; }
 .install-stat--2, .install-stat--5 { grid-row: 2; }
 .install-stat--3, .install-stat--6 { grid-row: 3; }
-.install-stat.is-total { background: var(--teal-ink); border-color: var(--teal-ink); }
-.install-stat.is-total .counts__value { color: #fff; font-size: clamp(52px, 5.6vw, 72px); }
-.install-stat.is-total .counts__label { color: #fff; }
+.install-stat.is-total .counts__value { font-size: clamp(52px, 5.6vw, 72px); }
 /* Leader line from each figure toward the map */
 .install-stat::after { content: ""; position: absolute; top: 50%; width: 32px; height: 2px; background: linear-gradient(90deg, var(--teal), transparent); }
 .install-stat--1::after, .install-stat--2::after, .install-stat--3::after { left: 100%; margin-left: 4px; }
@@ -704,7 +708,7 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
   .install-map { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; gap: 14px; }
   .install-map__figure { grid-column: 1 / -1; grid-row: 1; margin-bottom: 12px; }
   .install-map__figure svg { max-width: 220px; }
-  .install-stat { grid-column: auto !important; grid-row: auto !important; text-align: left !important; align-items: flex-start !important; padding: 18px; }
+  .install-stat { grid-column: auto !important; grid-row: auto !important; text-align: left !important; align-items: flex-start !important; justify-self: stretch !important; width: auto; padding: 18px; }
   .install-stat.is-total { grid-column: 1 / -1 !important; }
   .install-stat::after { display: none; }
 }

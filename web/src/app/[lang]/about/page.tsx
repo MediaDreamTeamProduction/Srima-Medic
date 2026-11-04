@@ -250,7 +250,7 @@ export default async function AboutPage({ params }: PageParams) {
       </Section>
 
       {/* Strategic partnership: sits right before the awards, so the partnership leads into the recognition it earned */}
-      <Section alt>
+      <Section alt className="rings-left">
         <div className="partnership">
           <div className="partnership__marks" aria-hidden="true">
             <Image src={withBase("/brand/logo-srima.png")} alt="" width={200} height={80} />

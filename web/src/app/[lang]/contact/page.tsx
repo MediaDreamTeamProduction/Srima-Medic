@@ -94,7 +94,7 @@ export default async function ContactPage({ params }: PageParams) {
       </section>
 
       {/* FAQ */}
-      <Section alt>
+      <Section className="section--fade">
         <div className="container--narrow" style={{ margin: "0 auto", padding: 0 }}>
           <h2 className="h2 h2--sm" style={{ fontSize: 22 }}>
             {copy.faq[lang]}

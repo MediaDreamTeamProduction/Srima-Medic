@@ -202,7 +202,7 @@ export default async function HomePage({ params }: PageParams) {
       </Section>
 
       {/* FAQ (replaces the contact brief; the contact page keeps the full details) */}
-      <section className="section closing">
+      <section className="section closing section--fade">
         <div className="container faq-home">
           <div>
             <h2 className="h2 h2--sm">{copy.faqTitle[lang]}</h2>
