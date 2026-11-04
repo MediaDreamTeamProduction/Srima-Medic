@@ -164,10 +164,7 @@ button.badge[aria-pressed="true"] { background: var(--teal-ink); color: #fff; bo
 .hero::before { content: ""; position: absolute; inset: 0 0 0 auto; width: min(38%, 520px); z-index: -1; background: var(--mint-band-deep); }
 .hero__inner { width: 100%; max-width: var(--container-max); margin: 0 auto; position: relative; }
 .hero__title { color: var(--marine); font-size: clamp(1.9rem, 3.6vw, 2.75rem); line-height: 1.2; max-width: 20ch; letter-spacing: -0.01em; }
-.hero__desc { background: var(--surface); border-bottom: 1px solid var(--border); }
-.hero__desc p { padding: 1.75rem 0; color: var(--text-soft); max-width: 68ch; font-size: 17px; }
 /* Brand mark: the logo's cross, drawn as a hairline outline and cropped by the band edge */
-.hero__art { position: absolute; right: clamp(24px, 8vw, 140px); top: 50%; transform: translateY(-50%); width: clamp(180px, 24vw, 340px); aspect-ratio: 1; z-index: -1; pointer-events: none; }
 
 .hero-home { --hero-h: 0; align-items: stretch; padding-top: clamp(56px, 8vw, 104px); padding-bottom: 40px; }
 .hero-home::before { display: none; }
@@ -212,7 +209,6 @@ button.badge[aria-pressed="true"] { background: var(--teal-ink); color: #fff; bo
   .hero-badge img { width: 44px; }
   .hero-badge span { font-size: 11px; }
   .hero-home::after { background: linear-gradient(0deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.92) 55%, rgba(255,255,255,.75) 100%); }
-  .hero__art { width: 150px; top: 20px; right: -36px; transform: none; opacity: .45; }
   .hero { padding-top: 40px; padding-bottom: 40px; min-height: min(var(--hero-h, 300px), 200px); }
 }
 
@@ -697,4 +693,31 @@ body:has(.cookie) .fab { bottom: calc(var(--cookie-h, 88px) + 1rem); }
   .install-stat { grid-column: auto !important; grid-row: auto !important; text-align: left !important; align-items: flex-start !important; padding: 18px; }
   .install-stat.is-total { grid-column: 1 / -1 !important; }
   .install-stat::after { display: none; }
+}
+
+/* ---------- Page header (layout A): text left, photo on the band's lower edge right ---------- */
+.page-hero { padding-top: clamp(32px, 5vw, 56px); background: linear-gradient(180deg, var(--surface-alt) 0 82%, var(--bg) 82%); border-bottom: 1px solid var(--border); }
+.page-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px clamp(32px, 5vw, 64px); align-items: end; }
+.page-hero__text { padding-bottom: clamp(40px, 6vw, 72px); }
+.page-hero__crumbs { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 14px; color: var(--text-soft); }
+.page-hero__crumbs > span { display: inline-flex; gap: 8px; }
+.page-hero__crumbs a { color: var(--text-soft); text-decoration: none; }
+.page-hero__crumbs a:hover { color: var(--teal-ink); text-decoration: underline; }
+.page-hero__crumbs [aria-current] { color: var(--teal-ink); font-weight: 600; }
+.page-hero__title { margin-top: 14px; color: var(--marine); font-size: clamp(30px, 3.8vw, 46px); line-height: 1.2; letter-spacing: -0.01em; max-width: 20ch; }
+.page-hero__rule { display: block; width: 56px; height: 4px; margin: 18px 0; border-radius: 2px; background: var(--teal); }
+.page-hero__desc { font-size: 17px; line-height: 1.7; color: var(--text-soft); max-width: 54ch; }
+.page-hero__photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--surface-alt); }
+.page-hero__photo img { object-fit: cover; }
+.page-hero__fact { position: absolute; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 4px; padding: 12px 18px; background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+.page-hero__fact strong { font-family: var(--font-mono); font-size: 28px; line-height: 1; color: var(--teal-ink); }
+.page-hero__fact span { font-size: 13px; color: var(--text-soft); }
+.page-hero--text { background: var(--surface-alt); }
+.page-hero--text .page-hero__grid { grid-template-columns: 1fr; }
+.page-hero--text .page-hero__text { padding-bottom: clamp(32px, 5vw, 56px); }
+@media (max-width: 760px) {
+  .page-hero { background: var(--surface-alt); }
+  .page-hero__grid { grid-template-columns: 1fr; gap: 20px; }
+  .page-hero__text { padding-bottom: 0; }
+  .page-hero__photo { aspect-ratio: 16 / 10; border-radius: var(--radius-lg); margin-bottom: 24px; }
 }

@@ -4,7 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Badge, Grid, PageHero, Photo, Section } from "@/components/ui";
 import { IMG } from "@/content/images";
 import { ARTICLES, EVENTS, formatDate, TAGS } from "@/content/news";
-import { ui } from "@/content/site";
+import { NAV, ui } from "@/content/site";
 import { href, type Lang, type PageParams } from "@/lib/i18n";
 
 const NEWS_IMG: Record<string, string> = { "ct-vs-mri": IMG.mri, "pm-vs-cm": IMG.xray, "philips-ct-update": IMG.ct, "mri-trends": IMG.hospital };
@@ -29,7 +29,7 @@ export default async function NewsPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} art="calendar" />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/news")!.label[lang] }]} image={IMG.seminar} note={ui.aiSample[lang]} />
 
       <Section style={{ paddingTop: 56 }}>
         <h2 className="h2">{copy.news[lang]}</h2>

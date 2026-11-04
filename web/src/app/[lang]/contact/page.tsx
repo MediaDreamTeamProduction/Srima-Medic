@@ -3,8 +3,9 @@ import { ContactForm } from "@/components/Forms";
 import { Icon } from "@/components/Icon";
 import { PageHero, RegionCards, Section } from "@/components/ui";
 import { FAQ } from "@/content/faq";
-import { company, ui } from "@/content/site";
-import type { Lang, PageParams } from "@/lib/i18n";
+import { IMG } from "@/content/images";
+import { company, NAV, ui } from "@/content/site";
+import { href, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
   title: { th: "ติดต่อทีมขายและทีมบริการ", en: "Contact our sales & service teams" },
@@ -32,7 +33,7 @@ export default async function ContactPage({ params }: PageParams) {
 
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} height={260} art="phone" />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/contact")!.label[lang] }]} image={IMG.office} note={ui.aiSample[lang]} fact={{ value: "5", label: lang === "th" ? "ภูมิภาคที่ทีมขายดูแล" : "regions covered by sales" }} />
 
       {/* Office location */}
       <Section style={{ paddingTop: 56, paddingBottom: 40 }}>

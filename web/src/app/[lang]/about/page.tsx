@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PhotoRotator } from "@/components/PhotoRotator";
 import { AwardGrid, ButtonLink, Figures, Grid, PageHero, Placeholder, Sample, Section } from "@/components/ui";
 import { IMG, REAL } from "@/content/images";
-import { ui } from "@/content/site";
+import { NAV, ui } from "@/content/site";
 import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
@@ -135,15 +135,15 @@ export default async function AboutPage({ params }: PageParams) {
   ];
 
   const historyPhotos = [
-    { src: REAL.building, alt: lang === "th" ? "อาคารสำนักงาน Srima-Medic" : "Srima-Medic office building" },
     { src: IMG.office, alt: lang === "th" ? "สำนักงาน" : "Office", note: ui.aiSample[lang] },
     { src: IMG.seminar, alt: lang === "th" ? "งานสัมมนา" : "Seminar", note: ui.aiSample[lang] },
     { src: IMG.hospital, alt: lang === "th" ? "โรงพยาบาลที่ร่วมงาน" : "Partner hospital", note: ui.aiSample[lang] },
+    { src: REAL.building, alt: lang === "th" ? "อาคารสำนักงาน Srima-Medic" : "Srima-Medic office building" },
   ];
 
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} art="building" />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/about")!.label[lang] }]} image={REAL.building} imageAlt={lang === "th" ? "อาคารสำนักงาน Srima-Medic" : "Srima-Medic office building"} fact={{ value: "2015", label: lang === "th" ? "ก่อตั้งบริษัท" : "Founded" }} />
 
       <Section>
         <div className="split" style={{ alignItems: "start" }}>

@@ -4,7 +4,7 @@ import { PageHero } from "./ui";
 export function LegalPage({ doc }: { doc: LegalDoc }) {
   return (
     <>
-      <PageHero title={doc.title} height={220} />
+      <PageHero title={doc.title} />
       <section className="section">
         <div className="container container--narrow legal">
           <p>{doc.intro}</p>

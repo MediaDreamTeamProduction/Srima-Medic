@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { ButtonLink, PageHero, RegionCards, Section } from "@/components/ui";
+import { IMG } from "@/content/images";
 import { SERVICES } from "@/content/services";
+import { NAV, ui } from "@/content/site";
 import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
@@ -68,7 +70,7 @@ export default async function ServicesPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} art="wrench" />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/services")!.label[lang] }]} image={IMG.renovation} note={ui.aiSample[lang]} fact={{ value: "24/7", label: lang === "th" ? "ให้คำปรึกษาทุกวัน" : "consultation, every day" }} />
 
       {/* Same pattern as the home services row: illustration tile, title, detail */}
       <Section style={{ paddingTop: 56 }}>

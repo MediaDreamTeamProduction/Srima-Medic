@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { ProductGrid } from "@/components/Filters";
 import { PageHero, Section } from "@/components/ui";
 import { PRODUCTS } from "@/content/products";
-import type { Lang, PageParams } from "@/lib/i18n";
+import { IMG } from "@/content/images";
+import { NAV, ui } from "@/content/site";
+import { href, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
   title: { th: "ผลิตภัณฑ์ภาพวินิจฉัย", en: "Medical Imaging Products" },
@@ -25,7 +27,7 @@ export default async function ProductsPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} art="scan" />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/products")!.label[lang] }]} image={IMG.ct} note={ui.aiSample[lang]} fact={{ value: "4", label: lang === "th" ? "กลุ่มผลิตภัณฑ์ Philips" : "Philips product lines" }} />
       <Section style={{ paddingTop: 40 }}>
         <ProductGrid lang={lang} products={PRODUCTS} />
         <p className="caption" style={{ marginTop: 24 }}>

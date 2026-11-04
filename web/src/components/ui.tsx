@@ -196,42 +196,49 @@ export function Sample({ children }: { children: ReactNode }) {
   return <span className="sample">{children}</span>;
 }
 
-/** Page header: the image band shows the page title only; supporting copy sits below it. */
-/** `art` names the photo subject for this band; the cross mark stands in until photography arrives. */
-export function PageHero({ title, description, height = 260 }: { title: string; description?: ReactNode; height?: number; art?: IconName }) {
+export type HeroFact = { value: string; label: string };
+export type Crumb = { label: string; href?: string };
+
+/**
+ * Page header (layout A): breadcrumb, title, accent rule and description on the left; a photo on the right
+ * that sits on the band's lower edge, with one fact chip. Without an image the text runs full width.
+ */
+export function PageHero({ title, description, crumbs, image, imageAlt = "", note, fact }: { title: string; description?: ReactNode; crumbs?: Crumb[]; image?: string; imageAlt?: string; note?: string; fact?: HeroFact }) {
   return (
-    <section>
-      <div className="hero" style={{ "--hero-h": `${height}px` } as CSSProperties}>
-        <div className="hero__inner">
-          <h1 className="hero__title">{title}</h1>
+    <section className={`page-hero${image ? "" : " page-hero--text"}`}>
+      <div className="container page-hero__grid">
+        <div className="page-hero__text">
+          {crumbs ? (
+            <nav className="page-hero__crumbs" aria-label="Breadcrumb">
+              {crumbs.map((c, i) => (
+                <span key={c.label}>
+                  {i > 0 ? <span aria-hidden="true">/</span> : null}
+                  {c.href ? <Link href={c.href}>{c.label}</Link> : <span aria-current="page">{c.label}</span>}
+                </span>
+              ))}
+            </nav>
+          ) : null}
+          <h1 className="page-hero__title">{title}</h1>
+          <span className="page-hero__rule" aria-hidden="true" />
+          {description ? <p className="page-hero__desc">{description}</p> : null}
         </div>
-        <HeroArt />
-      </div>
-      {description ? (
-        <div className="hero__desc">
-          <div className="container">
-            <p>{description}</p>
+        {image ? (
+          <div className="page-hero__photo">
+            <Image src={withBase(image)} alt={imageAlt} fill priority sizes="(max-width: 760px) 100vw, 50vw" />
+            {note ? <span className="photo__note">{note}</span> : null}
+            {fact ? (
+              <div className="page-hero__fact">
+                <strong>{fact.value}</strong>
+                <span>{fact.label}</span>
+              </div>
+            ) : null}
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </section>
   );
 }
 
-/** The logo's cross as a hairline outline, cropped by the hero band. Stands in until room photography arrives. */
-export function HeroArt() {
-  return (
-    <svg className="hero__art" viewBox="0 0 200 200" aria-hidden>
-      <path
-        d="M76 14h48a8 8 0 0 1 8 8v46h46a8 8 0 0 1 8 8v48a8 8 0 0 1-8 8h-46v46a8 8 0 0 1-8 8H76a8 8 0 0 1-8-8v-46H22a8 8 0 0 1-8-8V76a8 8 0 0 1 8-8h46V22a8 8 0 0 1 8-8z"
-        fill="rgba(33,172,160,.10)"
-        stroke="rgba(33,172,160,.6)"
-        strokeWidth="1"
-      />
-      <path d="M88 40h24v48h48v24h-48v48H88v-48H40V88h48z" fill="none" stroke="rgba(11,110,101,.22)" strokeWidth="1" />
-    </svg>
-  );
-}
 
 export type TimelineItem = { year: string; title: string; sub?: ReactNode; logos?: string[] };
 export function Timeline({ items }: { items: TimelineItem[] }) {

@@ -6,8 +6,8 @@ import { Reveal } from "@/components/Reveal";
 import { Marquee, PageHero, Section } from "@/components/ui";
 import { MAP_POINTS, THAILAND_PATH, THAILAND_VIEWBOX } from "@/content/thailand-map";
 import { IMG, IMG_REGIONS } from "@/content/images";
-import { REGIONS, ui } from "@/content/site";
-import { withBase, type Lang, type PageParams } from "@/lib/i18n";
+import { NAV, REGIONS, ui } from "@/content/site";
+import { href, withBase, type Lang, type PageParams } from "@/lib/i18n";
 
 const copy = {
   title: { th: "ผลงานการติดตั้ง", en: "Installations" },
@@ -52,7 +52,7 @@ export default async function InstallationsPage({ params }: PageParams) {
   const { lang } = (await params) as { lang: Lang };
   return (
     <>
-      <PageHero title={copy.title[lang]} description={copy.desc[lang]} art="map-pin" />
+      <PageHero title={copy.title[lang]} description={copy.desc[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: NAV.find((n) => n.path === "/installations")!.label[lang] }]} image={IMG.hospital} note={ui.aiSample[lang]} fact={{ value: "320+", label: lang === "th" ? "ระบบที่ติดตั้งแล้ว" : "systems installed" }} />
 
       {/* Installed base around a map of Thailand: the outline draws in, region markers pulse, figures count up */}
       <Section>

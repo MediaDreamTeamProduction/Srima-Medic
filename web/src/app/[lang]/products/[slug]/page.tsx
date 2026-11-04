@@ -32,12 +32,9 @@ export default async function ProductDetailPage({ params }: PageParams<{ slug: s
 
   return (
     <>
-      <PageHero title={p.name} height={260} art={p.icon} />
+      <PageHero title={p.name} description={p.localName[lang]} crumbs={[{ label: NAV[0].label[lang], href: href(lang, "") }, { label: productsLabel, href: href(lang, "/products") }, { label: p.category }]} image={IMG_BY_CATEGORY[p.category]} imageAlt={p.name} note={ui.aiSample[lang]} fact={{ value: p.installed, label: lang === "th" ? "ระบบที่ติดตั้งแล้ว" : "systems installed" }} />
 
-      <Section style={{ paddingTop: 32 }}>
-        <nav className="breadcrumb" aria-label="Breadcrumb">
-          <Link href={href(lang, "/products")}>{productsLabel}</Link> / {p.category}
-        </nav>
+      <Section>
         <div className="split" style={{ alignItems: "start", gap: 40 }}>
           <div>
             <Photo variant="rounded" height={340} src={IMG_BY_CATEGORY[p.category]} alt={p.name} note={copy.gallery[lang]} style={{ marginBottom: 12 }} />
