@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { Disclaimer, Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { CookieBanner, StickyContact } from "@/components/SiteChrome";
 import { company } from "@/content/site";
 import { isLang, LANGS } from "@/lib/i18n";
@@ -47,6 +48,7 @@ export default async function LangLayout({ children, params }: { children: React
           <Footer lang={lang} />
         </div>
         <StickyContact lang={lang} />
+        <ScrollReveal />
         <CookieBanner lang={lang} />
       </body>
     </html>

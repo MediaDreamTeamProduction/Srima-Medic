@@ -851,3 +851,7 @@ a.social-link:hover { border-color: var(--teal-ink); color: var(--text); box-sha
   .intro-b__bar li svg { transition: transform 400ms var(--ease); }
   .intro-b__bar li:hover svg { transform: scale(1.15); }
 }
+
+/* ---------- Site-wide scroll-in (ScrollReveal adds these only below the first screen, never under reduced motion) ---------- */
+.sr { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); transition-delay: var(--sr-delay, 0ms); }
+.sr.sr-in { opacity: 1; transform: none; }
